@@ -1,0 +1,105 @@
+{
+  "env": {
+    "es2021": true,
+    "jest": true,
+    "react-native/react-native": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/recommended",
+    "prettier",
+    "plugin:react-hooks/recommended"
+  ],
+  "plugins": ["react", "react-native"],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "react-native/no-unused-styles": "error",
+    "react-native/split-platform-components": "error",
+    "react-native/no-inline-styles": "error",
+    "react-native/no-color-literals": "error",
+    "react-native/no-raw-text": "error",
+    "react-native/no-single-element-style-arrays": "error",
+    "react-native/sort-styles": "error",
+    "react/boolean-prop-naming": [
+      "error",
+      { "rule": "^(is|has)[A-Z]([A-Za-z0-9]?)+" }
+    ],
+    "react/destructuring-assignment": ["error", "always"],
+    "react/function-component-definition": [
+      "error",
+      { "namedComponents": "arrow-function" }
+    ],
+    "react/no-multi-comp": ["error", { "ignoreStateless": false }],
+    "react/no-unstable-nested-components": ["error", { "allowAsProps": false }],
+    "react/no-unused-prop-types": "error",
+    "react/sort-prop-types": "error",
+    "react/jsx-boolean-value": "never",
+    "react/jsx-closing-bracket-location": "error",
+    "react/jsx-closing-tag-location": "error",
+    "react/jsx-curly-brace-presence": [
+      "error",
+      { "props": "never", "children": "never" }
+    ],
+    "react/jsx-curly-newline": [
+      "error",
+      {
+        "multiline": "consistent",
+        "singleline": "consistent"
+      }
+    ],
+    "react/jsx-equals-spacing": [2, "never"],
+    "react/jsx-no-useless-fragment": "error",
+    "react/jsx-sort-props": "error",
+    "complexity": ["error", 8],
+    "arrow-body-style": ["error", "as-needed"],
+    "camelcase": "error",
+    "consistent-return": "error",
+    "curly": ["error", "multi-line"],
+    "default-case": "error",
+    "default-case-last": "error",
+    "dot-notation": "error",
+    "eqeqeq": "error",
+    "func-names": "error",
+    "max-params": ["error", 3],
+    "no-alert": "error",
+    "no-else-return": [
+      "error",
+      {
+        "allowElseIf": false
+      }
+    ],
+    "no-empty-function": "error",
+    "no-eq-null": "error",
+    "no-magic-numbers": [
+      "error",
+      {
+        "ignore": [],
+        "ignoreArrayIndexes": true,
+        "enforceConst": true,
+        "detectObjects": false
+      }
+    ],
+    "no-mixed-operators": "error",
+    "no-multi-assign": "error",
+    "no-nested-ternary": "error",
+    "no-shadow": "error",
+    "no-undefined": "error",
+    "prefer-const": "error",
+    "prefer-destructuring": [
+      "error",
+      {
+        "array": true,
+        "object": true
+      }
+    ],
+    "require-await": "error"
+  }
+}
