@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from '../../screens/Home';
+import Home from 'screens/Home';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 
 const homeRoutes = [

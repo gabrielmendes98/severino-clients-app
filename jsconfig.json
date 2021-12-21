@@ -4,7 +4,17 @@
     "target": "es6",
     "baseUrl": "src",
     "module": "commonjs",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "components/*": ["./components/*"],
+      "screens/*": ["./screens/*"],
+      "assets/*": ["./assets/*"],
+      "services/*": ["./services/*"],
+      "commons/*": ["./commons/*"],
+      "templates/*": ["./templates/*"],
+      "navigation/*": ["./navigation/*"],
+      "test-utils": ["./test-utils"]
+    }
   },
   "moduleResolution": "classic",
   "exclude": ["node_modules", "**/node_modules/*", "build"]

@@ -41,7 +41,7 @@
     "react/no-unstable-nested-components": ["error", { "allowAsProps": false }],
     "react/no-unused-prop-types": "error",
     "react/sort-prop-types": "error",
-    "react/jsx-boolean-value": "never",
+    "react/jsx-boolean-value": "error",
     "react/jsx-closing-bracket-location": "error",
     "react/jsx-closing-tag-location": "error",
     "react/jsx-curly-brace-presence": [
@@ -100,6 +100,60 @@
         "object": true
       }
     ],
-    "require-await": "error"
+    "require-await": "error",
+    "import/ignore": ["node_modules/react-native/index\\.js$"],
+    "import/no-unresolved": "off",
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "external",
+          "internal",
+          "builtin",
+          "parent",
+          "sibling",
+          "index",
+          "object"
+        ],
+        "pathGroupsExcludedImportTypes": [],
+        "pathGroups": [
+          {
+            "pattern": "services/**",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "assets/**",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "commons/**",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "screens/**",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "templates/**",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "components/**",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "navigation/**",
+            "group": "builtin",
+            "position": "after"
+          }
+        ]
+      }
+    ]
   }
 }

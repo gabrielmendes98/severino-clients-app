@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
-import Profile from '../../screens/Profile';
+import Profile from 'screens/Profile';
 
 const profileRoutes = [
   {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from '../../screens/Search';
+import Search from 'screens/Search';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 
 const searchRoutes = [
