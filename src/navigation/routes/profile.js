@@ -8,7 +8,7 @@ const profileRoutes = [
     component: Profile,
     options: {
       tabBarIcon: ({ color, size }) => (
-        <FontAwesomeIcons name="user-o" color={color} size={size} />
+        <FontAwesomeIcons color={color} name="user-o" size={size} />
       ),
     },
   },

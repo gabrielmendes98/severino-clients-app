@@ -23,13 +23,13 @@
   "settings": {
     "import/resolver": {
       "babel-module": {}
-    }
+    },
+    "import/ignore": ["react-native"]
   },
   "rules": {
     "react-native/no-unused-styles": "error",
     "react-native/split-platform-components": "error",
     "react-native/no-inline-styles": "error",
-    "react-native/no-color-literals": "error",
     "react-native/no-raw-text": "error",
     "react-native/no-single-element-style-arrays": "error",
     "react-native/sort-styles": "error",
@@ -48,7 +48,6 @@
     "react/sort-prop-types": "error",
     "react/jsx-boolean-value": "error",
     "react/jsx-closing-bracket-location": "error",
-    "react/jsx-closing-tag-location": "error",
     "react/jsx-curly-brace-presence": [
       "error",
       { "props": "never", "children": "never" }
@@ -84,7 +83,7 @@
     "no-empty-function": "error",
     "no-eq-null": "error",
     "no-magic-numbers": [
-      "error",
+      "off",
       {
         "ignore": [],
         "ignoreArrayIndexes": true,
@@ -106,7 +105,6 @@
       }
     ],
     "require-await": "error",
-    "import/ignore": ["node_modules/react-native/index\\.js$"],
     "import/no-internal-modules": "off",
     "import/no-relative-parent-imports": "off",
     "import/no-unresolved": "off",

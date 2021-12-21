@@ -8,7 +8,7 @@ const favoritesRoutes = [
     component: Favorites,
     options: {
       tabBarIcon: ({ color, size }) => (
-        <FontAwesomeIcons name="heart-o" color={color} size={size} />
+        <FontAwesomeIcons color={color} name="heart-o" size={size} />
       ),
     },
   },
