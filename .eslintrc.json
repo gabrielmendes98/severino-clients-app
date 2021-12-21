@@ -20,6 +20,11 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  },
   "rules": {
     "react-native/no-unused-styles": "error",
     "react-native/split-platform-components": "error",
@@ -102,6 +107,8 @@
     ],
     "require-await": "error",
     "import/ignore": ["node_modules/react-native/index\\.js$"],
+    "import/no-internal-modules": "off",
+    "import/no-relative-parent-imports": "off",
     "import/no-unresolved": "off",
     "import/order": [
       "warn",

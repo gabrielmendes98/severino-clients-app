@@ -13,6 +13,7 @@ const Navigation = () => (
       screenOptions={{
         tabBarActiveTintColor: theme.palette.primary.main,
         tabBarShowLabel: false,
+        headerShown: false,
       }}
     >
       {routes.map((route, index) => (
