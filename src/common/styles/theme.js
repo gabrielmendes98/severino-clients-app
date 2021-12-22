@@ -9,6 +9,7 @@ const theme = {
     },
   },
   spacing: size => size * 8,
+  fontSize: size => size * 12,
 };
 
 export default theme;
