@@ -1,18 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, TouchableOpacity } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import theme from 'common/styles/theme';
 import Logo from 'components/Icons/Logo';
+import withModal from 'components/Modal/withModal';
 import styles from './style';
+import { showLocationModal } from './util';
 
-const Header = () => (
+const Header = ({ showModal }) => (
   <View style={styles.header}>
     <Logo />
     <View>
       <TouchableOpacity
-        onPress={() => {
-          console.log('dale');
-        }}
+        onPress={() => showLocationModal(showModal)}
         style={styles.location}
       >
         <FontAwesomeIcons
@@ -26,4 +27,8 @@ const Header = () => (
   </View>
 );
 
-export default Header;
+Header.propTypes = {
+  showModal: PropTypes.func.isRequired,
+};
+
+export default withModal(Header);
