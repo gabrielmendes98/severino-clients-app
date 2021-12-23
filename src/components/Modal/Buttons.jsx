@@ -1,20 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Button } from 'react-native';
+import { View } from 'react-native';
+import Button from 'components/Button';
 
 const Buttons = ({ actions, handleClose }) => (
   <View>
     {actions.map(({ onClick, skipClose, label, color, ...btnProps }) => (
       <Button
-        color={color}
         key={label}
         onPress={() => {
           if (onClick) onClick(handleClose);
           if (!skipClose) handleClose();
         }}
-        title={label}
         {...btnProps}
-      />
+      >
+        {label}
+      </Button>
     ))}
   </View>
 );

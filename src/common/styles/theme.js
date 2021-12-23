@@ -7,12 +7,14 @@ const theme = {
       main: '#F0F0F0',
       light: '#FAFAFA',
     },
+    common: {},
   },
   typography: {
     colors: {
       main: '#000',
     },
   },
+  borderRadius: 5,
   spacing: size => size * 8,
   fontSize: size => size * 14.4,
 };
