@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal as RNModal, View, Text } from 'react-native';
+import { Modal as RNModal } from 'react-native';
+import Text from 'components/Text';
 import renderButtons from './renderButtons';
 
 const Modal = ({
@@ -19,17 +20,9 @@ const Modal = ({
   console.log(message);
   return (
     <RNModal animationType="slide">
-      {title && (
-        <View>
-          <Text testID="modal-title">{title}</Text>
-        </View>
-      )}
+      {title && <Text testID="modal-title">{title}</Text>}
 
-      {Boolean(message) && (
-        <View>
-          <Text testID="modal-message">{message}</Text>
-        </View>
-      )}
+      {Boolean(message) && <Text testID="modal-message">{message}</Text>}
 
       {bodyContent}
 

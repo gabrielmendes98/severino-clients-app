@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import theme from 'common/styles/theme';
 import Logo from 'components/Icons/Logo';
 import withModal from 'components/Modal/withModal';
+import Text from 'components/Text';
 import styles from './style';
 import { showLocationModal } from './util';
 
@@ -21,7 +22,7 @@ const Header = ({ showModal }) => (
           name="map-marker"
           size={theme.fontSize(2)}
         />
-        <Text style={styles.locationText}>Uberlândia, MG</Text>
+        <Text margin={{ left: 1 }}>Uberlândia, MG</Text>
       </TouchableOpacity>
     </View>
   </View>

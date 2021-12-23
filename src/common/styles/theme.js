@@ -8,8 +8,13 @@ const theme = {
       light: '#FAFAFA',
     },
   },
+  typography: {
+    colors: {
+      main: '#000',
+    },
+  },
   spacing: size => size * 8,
-  fontSize: size => size * 12,
+  fontSize: size => size * 14.4,
 };
 
 export default theme;
