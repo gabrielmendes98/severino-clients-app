@@ -7,7 +7,9 @@ const theme = {
       main: '#F0F0F0',
       light: '#FAFAFA',
     },
-    common: {},
+    common: {
+      border: '#CCC',
+    },
   },
   typography: {
     colors: {
@@ -15,6 +17,7 @@ const theme = {
     },
   },
   borderRadius: 5,
+  borderWidth: 1,
   spacing: size => size * 8,
   fontSize: size => size * 14.4,
 };
