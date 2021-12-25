@@ -3,7 +3,7 @@ import theme from 'common/styles/theme';
 import Modal from './Modal';
 
 const buttonCancel = label => ({
-  color: theme.palette.primary.main,
+  color: theme.colors.primary,
   id: 'modal-cancel',
   label: label || 'Cancelar',
 });

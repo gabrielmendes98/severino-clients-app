@@ -34,15 +34,11 @@ const getContrast = (color, threshold = 128) => {
   return rgbToYIQ(rgb) >= threshold ? '#000' : '#fff';
 };
 
-const getColor = color =>
-  theme.palette.common[color] ||
-  theme.palette[color]?.main ||
-  theme.palette.primary.main;
+const getColor = color => theme.colors[color] || theme.colors.primary;
 
 const getTextColor = color =>
   theme.typography.colors[color] ||
-  theme.palette.common[color] ||
-  theme.palette[color]?.main ||
+  theme.colors[color] ||
   theme.typography.colors.main;
 
 const marginHandler = ({ top = 0, right = 0, bottom = 0, left = 0 } = {}) => ({

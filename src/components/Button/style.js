@@ -24,7 +24,7 @@ const styles = ({
   }
 
   if (variant === OUTLINED) {
-    buttonStyles.borderColor = theme.palette.common.border;
+    buttonStyles.borderColor = theme.colors.border;
     buttonStyles.borderWidth = theme.borderWidth;
   }
 

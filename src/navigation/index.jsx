@@ -12,11 +12,11 @@ const Navigation = () => (
     <Navigator
       initialRouteName="Página Inicial"
       screenOptions={{
-        tabBarActiveTintColor: theme.palette.primary.main,
+        tabBarActiveTintColor: theme.colors.primary,
         tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: theme.palette.background.light,
+          backgroundColor: theme.colors.background.light,
         },
       }}
     >

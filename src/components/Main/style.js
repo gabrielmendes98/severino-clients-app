@@ -3,7 +3,7 @@ import theme from 'common/styles/theme';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: theme.palette.background.main,
+    backgroundColor: theme.colors.background.main,
     flex: 1,
   },
 });

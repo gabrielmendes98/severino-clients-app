@@ -18,7 +18,7 @@ const Header = ({ showModal }) => (
         style={styles.location}
       >
         <FontAwesomeIcons
-          color={theme.palette.primary.main}
+          color={theme.colors.primary}
           name="map-marker"
           size={theme.fontSize(2)}
         />

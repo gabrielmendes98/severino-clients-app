@@ -1,14 +1,10 @@
 const theme = {
-  palette: {
-    primary: {
-      main: '#7D3CFF',
-    },
+  colors: {
+    primary: '#7D3CFF',
+    border: '#CCC',
     background: {
       main: '#F0F0F0',
       light: '#FAFAFA',
-    },
-    common: {
-      border: '#CCC',
     },
   },
   typography: {
