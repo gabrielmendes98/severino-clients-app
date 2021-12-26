@@ -7,26 +7,27 @@ import styles from './style';
 const { CONTAINED, OUTLINED, TEXT } = BUTTON_TYPES;
 
 const Button = ({
+  color,
   children,
   style,
   size,
-  color,
   weight,
   margin,
   onPress,
   variant,
+  fullWidth,
   ...props
 }) => {
   const customStyle = useMemo(
-    () => styles({ size, color, weight, margin, variant }),
+    () => styles({ size, color, weight, margin, variant, fullWidth }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [color, size, weight],
   );
 
   return (
     <TouchableHighlight
-      style={customStyle.container}
       onPress={onPress}
+      style={customStyle.container}
       {...props}
     >
       <View style={[customStyle.button, style]}>
@@ -38,6 +39,8 @@ const Button = ({
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,
+  color: PropTypes.string,
+  fullWidth: PropTypes.bool,
   margin: PropTypes.shape({
     top: PropTypes.number,
     right: PropTypes.number,

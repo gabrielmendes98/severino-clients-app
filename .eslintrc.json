@@ -32,13 +32,8 @@
     "react-native/no-unused-styles": "error",
     "react-native/split-platform-components": "error",
     "react-native/no-inline-styles": "error",
-    "react-native/no-raw-text": "error",
     "react-native/no-single-element-style-arrays": "error",
     "react-native/sort-styles": "error",
-    "react/boolean-prop-naming": [
-      "error",
-      { "rule": "^(is|has)[A-Z]([A-Za-z0-9]?)+" }
-    ],
     "react/destructuring-assignment": ["error", "always"],
     "react/function-component-definition": [
       "error",
