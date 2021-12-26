@@ -6,6 +6,10 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.background.main,
     flex: 1,
   },
+  main: {
+    flex: 1,
+    padding: 12,
+  },
 });
 
 export default styles;

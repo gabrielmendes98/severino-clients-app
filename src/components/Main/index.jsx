@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from 'components/Header';
@@ -8,7 +9,7 @@ const Main = ({ children }) => (
   <SafeAreaView style={styles.container}>
     <Header />
 
-    {children}
+    <View style={styles.main}>{children}</View>
   </SafeAreaView>
 );
 

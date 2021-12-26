@@ -8,11 +8,11 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:import/recommended",
+    "plugin:react-hooks/recommended",
     "prettier",
-    "plugin:prettier/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:prettier/recommended"
   ],
-  "plugins": ["react", "react-native"],
+  "plugins": ["react", "react-native", "prettier"],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -28,6 +28,7 @@
     "import/ignore": ["react-native"]
   },
   "rules": {
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "react-native/no-unused-styles": "error",
     "react-native/split-platform-components": "error",
     "react-native/no-inline-styles": "error",

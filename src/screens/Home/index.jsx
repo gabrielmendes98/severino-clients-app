@@ -2,8 +2,10 @@ import React from 'react';
 import { View, Text } from 'react-native';
 
 const Home = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>Home!</Text>
+  <View>
+    <Text maxFontSizeMultiplier={1.5}>
+      Resolva seus problemas de maneira rápida e fácil
+    </Text>
   </View>
 );
 
