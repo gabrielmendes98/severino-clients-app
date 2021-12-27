@@ -21,7 +21,7 @@ const Button = ({
   const customStyle = useMemo(
     () => styles({ size, color, weight, margin, variant, fullWidth }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [color, size, weight],
+    [color, size, weight, variant, fullWidth],
   );
 
   return (
