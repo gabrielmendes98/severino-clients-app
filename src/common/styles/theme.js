@@ -10,10 +10,14 @@ const theme = {
       main: '#F0F0F0',
       light: '#FAFAFA',
     },
+    boxShadow: {
+      start: '#0000000F',
+    },
   },
   typography: {
     colors: {
       main: '#000',
+      light: '#838383',
     },
   },
   borderRadius: 5,

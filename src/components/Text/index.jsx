@@ -18,7 +18,8 @@ const Text = ({ children, style, size, color, weight, margin, ...props }) => {
 };
 
 Text.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
   color: PropTypes.string,
   margin: PropTypes.shape({
     top: PropTypes.number,

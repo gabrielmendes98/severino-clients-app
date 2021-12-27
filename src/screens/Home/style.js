@@ -8,14 +8,7 @@ const styles = StyleSheet.create({
     borderRadius: theme.borderRadius,
     height: theme.spacing(12),
     justifyContent: 'center',
-    shadowColor: '#171717',
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
     width: theme.spacing(12),
-  },
-  container: {
-    flexDirection: 'row',
   },
   image: {
     height: theme.spacing(10),
@@ -24,6 +17,7 @@ const styles = StyleSheet.create({
   serviceContainer: {
     alignItems: 'center',
     marginRight: theme.spacing(2),
+    paddingTop: theme.spacing(1),
   },
 });
 
