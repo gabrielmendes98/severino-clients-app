@@ -25,7 +25,7 @@ WhatsAppIcon.defaultProps = {
   size: 18,
 };
 
-WhatsAppIcon.props = {
+WhatsAppIcon.propTypes = {
   size: PropTypes.number,
 };
 
