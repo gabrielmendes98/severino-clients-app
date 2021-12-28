@@ -4,8 +4,11 @@ import theme from 'common/styles/theme';
 const styles = StyleSheet.create({
   actions: {
     alignItems: 'center',
+    // alignSelf: 'flex-end',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    // width: '100%',
+    marginTop: 'auto',
   },
   avatar: {
     borderRadius: theme.spacing(12) / 2,
@@ -16,6 +19,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: theme.colors.white,
     borderRadius: theme.borderRadius,
+    flex: 1,
     marginTop: theme.spacing(-9),
     padding: theme.spacing(1),
     paddingTop: theme.spacing(9),
