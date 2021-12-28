@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView } from 'react-native';
+import HorizontalScroll from 'components/Views/HorizontalScroll';
 import Professional from './Professional';
 
 const Professionals = ({ professionals }) => (
-  <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+  <HorizontalScroll>
     {professionals.map(professional => (
       <Professional key={professional.id} professional={professional} />
     ))}
-  </ScrollView>
+  </HorizontalScroll>
 );
 
 Professionals.defaultProps = {
