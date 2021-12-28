@@ -20,13 +20,17 @@ const Professional = ({ professional }) => (
         </Text>
       </View>
 
-      <Text weight="bold">{professional.name}</Text>
+      <Text margin={{ bottom: 1 }} numberOfLines={2} weight="bold">
+        {professional.name}
+      </Text>
 
-      <Text color="light">{formatList(professional.services)}</Text>
+      <Text color="light" margin={{ bottom: 2 }} numberOfLines={2}>
+        {formatList(professional.services)}
+      </Text>
 
       <View style={styles.actions}>
         <FontAwesomeIcons color={theme.colors.black} name="heart-o" size={20} />
-        <Text color="light" size={1.5}>
+        <Text color="light" size={1.3}>
           |
         </Text>
         <WhatsAppIcon size={21} />

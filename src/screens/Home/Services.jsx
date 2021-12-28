@@ -7,23 +7,29 @@ import Text from 'components/Text';
 import styles from './style';
 
 const Services = ({ services }) => (
-  <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-    {services.map(({ name, id, imageUrl }) => (
-      <View key={id} style={styles.serviceContainer}>
-        <Shadow
-          distance={5}
-          offset={[0, 1]}
-          startColor={theme.colors.boxShadow.start}
-        >
-          <View key={id} style={styles.card}>
-            <Image source={{ uri: imageUrl }} style={styles.image} />
-          </View>
-        </Shadow>
-        <Text margin={{ top: 0.5 }} weight="bold">
-          {name}
-        </Text>
-      </View>
-    ))}
+  <ScrollView
+    horizontal
+    showsHorizontalScrollIndicator={false}
+    style={styles.servicesWrapper}
+  >
+    <View style={styles.services}>
+      {services.map(({ name, id, imageUrl }) => (
+        <View key={id} style={styles.serviceContainer}>
+          <Shadow
+            distance={5}
+            offset={[0, 1]}
+            startColor={theme.colors.boxShadow.start}
+          >
+            <View key={id} style={styles.card}>
+              <Image source={{ uri: imageUrl }} style={styles.image} />
+            </View>
+          </Shadow>
+          <Text margin={{ top: 0.5 }} weight="bold">
+            {name}
+          </Text>
+        </View>
+      ))}
+    </View>
   </ScrollView>
 );
 

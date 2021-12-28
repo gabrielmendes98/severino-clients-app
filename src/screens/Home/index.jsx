@@ -48,8 +48,24 @@ const Home = () => {
       avatarUrl:
         'https://st2.depositphotos.com/1017986/6484/i/950/depositphotos_64848789-stock-photo-close-up-of-male-brooming.jpg',
       evaluation: 4.5,
-      name: 'Pedro Faria',
-      services: ['Pedreiro', 'Carpinteiro', 'Eletricista', 'Faxineiro'],
+      name: 'Gabriel Mendes de Souza Santiago',
+      services: [
+        'Pedreiro',
+        'Carpinteiro',
+        'Eletricista',
+        'Faxineiro',
+        'dale',
+        'dale',
+        'dale',
+      ],
+    },
+    {
+      id: 2,
+      avatarUrl:
+        'https://st2.depositphotos.com/1017986/6484/i/950/depositphotos_64848789-stock-photo-close-up-of-male-brooming.jpg',
+      evaluation: 4.5,
+      name: 'Pedro',
+      services: ['Pedreiro'],
     },
   ];
 

@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import theme from 'common/styles/theme';
+import { SAFE_SPACING } from 'common/constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,7 +9,8 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 1,
-    padding: 12,
+    marginVertical: theme.spacing(SAFE_SPACING),
+    paddingHorizontal: theme.spacing(SAFE_SPACING),
   },
 });
 

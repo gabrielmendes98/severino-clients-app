@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import theme from 'common/styles/theme';
+import { SAFE_SPACING } from 'common/constants';
 
 const styles = StyleSheet.create({
   card: {
@@ -18,6 +19,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: theme.spacing(2),
     paddingTop: theme.spacing(1),
+  },
+  services: {
+    flexDirection: 'row',
+    marginLeft: theme.spacing(SAFE_SPACING),
+  },
+  servicesWrapper: {
+    marginHorizontal: theme.spacing(-SAFE_SPACING),
   },
 });
 
