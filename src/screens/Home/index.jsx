@@ -13,31 +13,31 @@ const Home = () => {
     {
       id: 1,
       imageUrl:
-        'https://st2.depositphotos.com/1017986/6484/i/950/depositphotos_64848789-stock-photo-close-up-of-male-brooming.jpg',
+        'https://cdn-icons.flaticon.com/png/512/573/premium/573848.png?token=exp=1640715884~hmac=d0c5c8611a8b37bb2f3bb4ed5ccbfd64',
       name: 'Limpeza',
     },
     {
       id: 2,
       imageUrl:
-        'https://st2.depositphotos.com/1017986/6484/i/950/depositphotos_64848789-stock-photo-close-up-of-male-brooming.jpg',
+        'https://cdn-icons.flaticon.com/png/512/573/premium/573848.png?token=exp=1640715884~hmac=d0c5c8611a8b37bb2f3bb4ed5ccbfd64',
       name: 'Limpeza',
     },
     {
       id: 3,
       imageUrl:
-        'https://st2.depositphotos.com/1017986/6484/i/950/depositphotos_64848789-stock-photo-close-up-of-male-brooming.jpg',
+        'https://cdn-icons.flaticon.com/png/512/573/premium/573848.png?token=exp=1640715884~hmac=d0c5c8611a8b37bb2f3bb4ed5ccbfd64',
       name: 'Limpeza',
     },
     {
       id: 4,
       imageUrl:
-        'https://st2.depositphotos.com/1017986/6484/i/950/depositphotos_64848789-stock-photo-close-up-of-male-brooming.jpg',
+        'https://cdn-icons.flaticon.com/png/512/573/premium/573848.png?token=exp=1640715884~hmac=d0c5c8611a8b37bb2f3bb4ed5ccbfd64',
       name: 'Limpeza',
     },
     {
       id: 5,
       imageUrl:
-        'https://st2.depositphotos.com/1017986/6484/i/950/depositphotos_64848789-stock-photo-close-up-of-male-brooming.jpg',
+        'https://cdn-icons.flaticon.com/png/512/573/premium/573848.png?token=exp=1640715884~hmac=d0c5c8611a8b37bb2f3bb4ed5ccbfd64',
       name: 'Limpeza',
     },
   ];
@@ -46,7 +46,7 @@ const Home = () => {
     {
       id: 1,
       avatarUrl:
-        'https://st2.depositphotos.com/1017986/6484/i/950/depositphotos_64848789-stock-photo-close-up-of-male-brooming.jpg',
+        'https://imgsapp2.correiobraziliense.com.br/app/noticia_127983242361/2019/04/12/749144/20190412122053420189e.jpg',
       evaluation: 4.5,
       name: 'Gabriel Mendes de Souza Santiago',
       services: [
@@ -62,7 +62,7 @@ const Home = () => {
     {
       id: 2,
       avatarUrl:
-        'https://st2.depositphotos.com/1017986/6484/i/950/depositphotos_64848789-stock-photo-close-up-of-male-brooming.jpg',
+        'https://imgsapp2.correiobraziliense.com.br/app/noticia_127983242361/2019/04/12/749144/20190412122053420189e.jpg',
       evaluation: 4.5,
       name: 'Pedro',
       services: ['Pedreiro'],
