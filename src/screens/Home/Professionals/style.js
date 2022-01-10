@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   evaluation: {
     alignItems: 'center',
     flexDirection: 'row',
-    marginBottom: theme.spacing(1),
+    marginVertical: theme.spacing(1),
   },
 });
 

@@ -1,73 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
+import professionalsService from 'api/services/professionals';
+import servicesService from 'api/services/services';
 import Text from 'components/Text';
 import SearchInput from 'components/Input/Search';
 import Button from 'components/Button';
 import Services from './Services';
 import Professionals from './Professionals';
+import { prepareProfessionals } from './util';
 
 const Home = () => {
   const handleSearch = () => console.log('handling...');
+  const [professionals, setProfessionals] = useState();
+  const [services, setServices] = useState();
 
-  const services = [
-    {
-      id: 1,
-      imageUrl:
-        'https://cdn-icons.flaticon.com/png/512/573/premium/573848.png?token=exp=1640715884~hmac=d0c5c8611a8b37bb2f3bb4ed5ccbfd64',
-      name: 'Limpeza',
-    },
-    {
-      id: 2,
-      imageUrl:
-        'https://cdn-icons.flaticon.com/png/512/573/premium/573848.png?token=exp=1640715884~hmac=d0c5c8611a8b37bb2f3bb4ed5ccbfd64',
-      name: 'Limpeza',
-    },
-    {
-      id: 3,
-      imageUrl:
-        'https://cdn-icons.flaticon.com/png/512/573/premium/573848.png?token=exp=1640715884~hmac=d0c5c8611a8b37bb2f3bb4ed5ccbfd64',
-      name: 'Limpeza',
-    },
-    {
-      id: 4,
-      imageUrl:
-        'https://cdn-icons.flaticon.com/png/512/573/premium/573848.png?token=exp=1640715884~hmac=d0c5c8611a8b37bb2f3bb4ed5ccbfd64',
-      name: 'Limpeza',
-    },
-    {
-      id: 5,
-      imageUrl:
-        'https://cdn-icons.flaticon.com/png/512/573/premium/573848.png?token=exp=1640715884~hmac=d0c5c8611a8b37bb2f3bb4ed5ccbfd64',
-      name: 'Limpeza',
-    },
-  ];
+  useEffect(() => {
+    professionalsService
+      .listRecent()
+      .then(prepareProfessionals)
+      .then(setProfessionals);
 
-  const professionals = [
-    {
-      id: 1,
-      avatarUrl:
-        'https://imgsapp2.correiobraziliense.com.br/app/noticia_127983242361/2019/04/12/749144/20190412122053420189e.jpg',
-      evaluation: 4.5,
-      name: 'Gabriel Mendes de Souza Santiago',
-      services: [
-        'Pedreiro',
-        'Carpinteiro',
-        'Eletricista',
-        'Faxineiro',
-        'dale',
-        'dale',
-        'dale',
-      ],
-    },
-    {
-      id: 2,
-      avatarUrl:
-        'https://imgsapp2.correiobraziliense.com.br/app/noticia_127983242361/2019/04/12/749144/20190412122053420189e.jpg',
-      evaluation: 4.5,
-      name: 'Pedro',
-      services: ['Pedreiro'],
-    },
-  ];
+    servicesService.listMostSearched().then(setServices);
+  }, []);
+
+  console.log(services);
 
   return (
     <View>

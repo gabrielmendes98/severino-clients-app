@@ -2,21 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Image } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
-import { formatList } from 'common/util/format';
 import theme from 'common/styles/theme';
 import WhatsAppIcon from 'components/Icons/WhatsApp';
 import Text from 'components/Text';
+import TextAvatar from 'components/TextAvatar';
 import styles from './style';
 
 const Professional = ({ professional }) => (
   <View style={styles.container}>
-    <Image source={{ uri: professional.avatarUrl }} style={styles.avatar} />
+    {professional.avatarUrl ? (
+      <Image source={{ uri: professional.avatarUrl }} style={styles.avatar} />
+    ) : (
+      <TextAvatar text={professional.name} />
+    )}
 
     <View style={styles.card}>
       <View style={styles.evaluation}>
         <FontAwesomeIcons color={theme.colors.primary} name="star" size={20} />
         <Text color="primary" margin={{ left: 0.5 }} weight="bold">
-          {professional.evaluation}
+          {professional.rating}
         </Text>
       </View>
 
@@ -25,7 +29,7 @@ const Professional = ({ professional }) => (
       </Text>
 
       <Text color="light" margin={{ bottom: 2 }} numberOfLines={2}>
-        {formatList(professional.services)}
+        {professional.services}
       </Text>
 
       <View style={styles.actions}>
