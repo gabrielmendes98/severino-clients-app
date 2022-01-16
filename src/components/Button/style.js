@@ -41,12 +41,12 @@ const styles = ({
       paddingHorizontal: theme.spacing(2),
       paddingVertical: theme.spacing(1),
       width,
-      ...marginHandler(margin),
     },
     container: {
       alignSelf: 'flex-start',
       borderRadius: theme.borderRadius,
       width,
+      ...marginHandler(margin),
     },
     text: {
       ...textStyles,
