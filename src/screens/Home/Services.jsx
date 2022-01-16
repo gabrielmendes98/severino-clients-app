@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
-import { SvgXml } from 'react-native-svg';
+import { SvgCssUri } from 'react-native-svg';
 import theme from 'common/styles/theme';
 import HorizontalScroll from 'components/Views/HorizontalScroll';
 import Text from 'components/Text';
@@ -18,7 +18,7 @@ const Services = ({ services }) => (
           startColor={theme.colors.boxShadow.start}
         >
           <View key={id} style={styles.card}>
-            {/* <SvgXml xml={avatarUrl} width="301" height="301" /> */}
+            <SvgCssUri height="100%" uri={avatarUrl} width="100%" />
           </View>
         </Shadow>
         <Text margin={{ top: 0.5 }} weight="bold">
