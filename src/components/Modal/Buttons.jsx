@@ -5,7 +5,7 @@ import Button from 'components/Button';
 
 const Buttons = ({ actions, handleClose }) => (
   <View>
-    {actions.map(({ onClick, skipClose, label, color, ...btnProps }) => (
+    {actions.map(({ onClick, skipClose, label, ...btnProps }) => (
       <Button
         key={label}
         onPress={() => {

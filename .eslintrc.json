@@ -33,7 +33,6 @@
     "react-native/split-platform-components": "error",
     "react-native/no-inline-styles": "error",
     "react-native/no-single-element-style-arrays": "error",
-    "react-native/sort-styles": "error",
     "react/destructuring-assignment": ["error", "always"],
     "react/function-component-definition": [
       "error",
@@ -42,7 +41,6 @@
     "react/no-multi-comp": ["error", { "ignoreStateless": false }],
     "react/no-unstable-nested-components": ["error", { "allowAsProps": false }],
     "react/no-unused-prop-types": "error",
-    "react/sort-prop-types": "error",
     "react/jsx-boolean-value": "error",
     "react/jsx-closing-bracket-location": "error",
     "react/jsx-curly-brace-presence": [
@@ -58,7 +56,6 @@
     ],
     "react/jsx-equals-spacing": [2, "never"],
     "react/jsx-no-useless-fragment": "error",
-    "react/jsx-sort-props": "error",
     "complexity": ["error", 8],
     "arrow-body-style": ["error", "as-needed"],
     "camelcase": "error",
