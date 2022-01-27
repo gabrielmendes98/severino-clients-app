@@ -11,6 +11,7 @@ const createStyles = ({ margin }) =>
       flexDirection: 'row',
       height: 45,
       paddingHorizontal: theme.spacing(2),
+      width: '100%',
       ...marginHandler(margin),
     },
     input: {
