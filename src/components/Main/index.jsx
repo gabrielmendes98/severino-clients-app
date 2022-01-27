@@ -5,9 +5,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from 'components/Header';
 import styles from './style';
 
-const Main = ({ children }) => (
+const Main = ({ children, back }) => (
   <SafeAreaView style={styles.container}>
-    <Header />
+    <Header back={back} />
 
     <ScrollView>
       <View style={styles.main}>{children}</View>
@@ -17,6 +17,7 @@ const Main = ({ children }) => (
 
 Main.propTypes = {
   children: PropTypes.node.isRequired,
+  back: PropTypes.bool,
 };
 
 export default Main;

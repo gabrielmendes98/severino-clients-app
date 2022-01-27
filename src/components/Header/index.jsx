@@ -9,8 +9,11 @@ import Text from 'components/Text';
 import styles from './style';
 import { showLocationModal } from './util';
 
-const Header = ({ showModal }) => (
+const Header = ({ showModal, back }) => (
   <View style={styles.header}>
+    {
+      back ? <BackButton />
+    }
     <Logo />
     <View>
       <TouchableOpacity

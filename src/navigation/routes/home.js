@@ -3,17 +3,15 @@ import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import Home from 'screens/Home';
 import Main from 'components/Main';
 
-const homeRoutes = [
-  {
-    name: 'Página Inicial',
-    component: Home,
-    layout: Main,
-    options: {
-      tabBarIcon: ({ color, size }) => (
-        <FontAwesomeIcons color={color} name="home" size={size} />
-      ),
-    },
+const homeTab = {
+  name: 'Página Inicial',
+  component: Home,
+  layout: Main,
+  options: {
+    tabBarIcon: ({ color, size }) => (
+      <FontAwesomeIcons color={color} name="home" size={size} />
+    ),
   },
-];
+};
 
-export default homeRoutes;
+export default homeTab;

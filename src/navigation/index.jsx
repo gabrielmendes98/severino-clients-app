@@ -23,7 +23,7 @@ const Navigation = () => (
       {routes.map((route, index) => {
         const { layout, component, ...routeProps } = route;
 
-        const Component = wrapper({ component, layout });
+        const Component = layout ? wrapper({ component, layout }) : component;
 
         return <Screen {...routeProps} component={Component} key={index} />;
       })}

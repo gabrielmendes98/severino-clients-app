@@ -1,13 +1,8 @@
-import favoritesRoutes from './favorites';
-import homeRoutes from './home';
-import profileRoutes from './profile';
-import searchRoutes from './search';
+import favoritesTabs from './favorites';
+import homeTab from './home';
+import profileTab from './profile';
+import searchTab from './search';
 
-const routes = [
-  ...homeRoutes,
-  ...searchRoutes,
-  ...favoritesRoutes,
-  ...profileRoutes,
-];
+const routes = [homeTab, searchTab, favoritesTabs, profileTab];
 
 export default routes;
