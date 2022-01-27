@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: '100%',
     justifyContent: 'center',
-    paddingTop: theme.spacing(1),
   },
 });
 

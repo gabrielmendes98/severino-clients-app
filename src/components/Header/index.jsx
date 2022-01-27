@@ -4,6 +4,7 @@ import { View, TouchableOpacity } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import theme from 'common/styles/theme';
 import Logo from 'components/Icons/Logo';
+import BackButton from 'components/Button/BackButton';
 import withModal from 'components/Modal/withModal';
 import Text from 'components/Text';
 import styles from './style';
@@ -11,10 +12,7 @@ import { showLocationModal } from './util';
 
 const Header = ({ showModal, back }) => (
   <View style={styles.header}>
-    {
-      back ? <BackButton />
-    }
-    <Logo />
+    {back ? <BackButton /> : <Logo />}
     <View>
       <TouchableOpacity
         onPress={() => showLocationModal(showModal)}
@@ -33,6 +31,7 @@ const Header = ({ showModal, back }) => (
 
 Header.propTypes = {
   showModal: PropTypes.func.isRequired,
+  back: PropTypes.bool,
 };
 
 export default withModal(Header);
