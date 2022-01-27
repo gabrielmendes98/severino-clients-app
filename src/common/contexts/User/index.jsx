@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import jwtDecode from 'jwt-decode';
+import AppLoading from 'expo-app-loading';
 import usersService from 'api/services/user';
 import { setToken, getToken } from 'common/util/storage';
 import { baseApi } from 'api/apis';
@@ -41,7 +42,9 @@ const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <Provider value={{ user, signUp, login }}>{!loading && children}</Provider>
+    <Provider value={{ user, signUp, login }}>
+      {loading ? <AppLoading /> : children}
+    </Provider>
   );
 };
 

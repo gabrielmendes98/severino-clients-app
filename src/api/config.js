@@ -6,7 +6,14 @@ const createApi = (baseURL = '', config = {}) => {
     ...config,
   });
 
-  api.interceptors.response.use(response => response.data);
+  api.interceptors.response.use(
+    response => response.data,
+    error => {
+      const message = error.response?.data?.message;
+      console.log(message);
+      return Promise.reject(error);
+    },
+  );
 
   return api;
 };

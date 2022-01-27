@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useForm } from 'react-hook-form';
 import { Image, View } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import useUser from 'common/contexts/User/useUser';
@@ -12,9 +13,17 @@ import { iconCommonProps } from './util';
 const SignUp = () => {
   const { navigate } = useNavigation();
   const { signUp } = useUser();
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
+  });
 
-  const handleSignUp = () => {
-    signUp().then(() => navigate('ProfileInfo'));
+  const handleSignUp = data => {
+    console.log(data);
+    signUp(data).then(() => console.log('logado pai'));
   };
 
   return (
@@ -25,22 +34,28 @@ const SignUp = () => {
       </Text>
 
       <TextInput
+        name="name"
+        control={control}
         placeholder="Usuário"
         margin={{ bottom: 2 }}
         icon={<IonIcons name="person-outline" {...iconCommonProps} />}
       />
       <TextInput
+        name="email"
+        control={control}
         placeholder="E-mail"
         margin={{ bottom: 2 }}
         icon={<IonIcons name="mail-outline" {...iconCommonProps} />}
       />
       <TextInput
+        name="password"
+        control={control}
         placeholder="Senha"
         margin={{ bottom: 2 }}
         icon={<IonIcons name="lock-closed-outline" {...iconCommonProps} />}
       />
 
-      <Button fullWidth onPress={handleSignUp}>
+      <Button fullWidth onPress={handleSubmit(handleSignUp)}>
         Criar conta
       </Button>
     </View>

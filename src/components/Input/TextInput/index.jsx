@@ -1,4 +1,5 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
+import { Controller } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import {
   TextInput as RNTextInput,
@@ -7,10 +8,8 @@ import {
 } from 'react-native';
 import createStyles from './style';
 
-const TextInput = ({ placeholder, margin, icon }) => {
-  const [value, setValue] = useState('');
+const TextInput = ({ placeholder, margin, icon, name, control, rules }) => {
   const inputRef = useRef();
-
   const styles = useMemo(
     () => createStyles({ margin }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -24,16 +23,28 @@ const TextInput = ({ placeholder, margin, icon }) => {
       <View style={styles.container}>
         {Boolean(icon) && icon}
 
-        <RNTextInput
-          onChangeText={setValue}
-          placeholder={placeholder}
-          ref={inputRef}
-          style={styles.input}
-          value={value}
+        <Controller
+          control={control}
+          rules={rules}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <RNTextInput
+              onBlur={onBlur}
+              onChangeText={onChange}
+              placeholder={placeholder}
+              ref={inputRef}
+              style={styles.input}
+              value={value}
+            />
+          )}
+          name={name}
         />
       </View>
     </TouchableWithoutFeedback>
   );
+};
+
+TextInput.defaultProps = {
+  rules: {},
 };
 
 TextInput.propTypes = {
@@ -45,6 +56,9 @@ TextInput.propTypes = {
     left: PropTypes.number,
   }),
   placeholder: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  control: PropTypes.object.isRequired,
+  rules: PropTypes.object,
 };
 
 export default TextInput;
