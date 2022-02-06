@@ -12,6 +12,7 @@ const styles = ({
   weight = 'normal',
   margin,
   variant = 'contained',
+  textAlign = 'center',
 }) => {
   const buttonStyles = {};
   const textStyles = {};
@@ -41,6 +42,7 @@ const styles = ({
       paddingHorizontal: theme.spacing(2),
       paddingVertical: theme.spacing(1),
       width,
+      flexDirection: 'row',
     },
     container: {
       alignSelf: 'flex-start',
@@ -53,6 +55,11 @@ const styles = ({
       alignSelf: 'center',
       fontSize: theme.fontSize(size),
       fontWeight: String(weight),
+      flex: 1,
+      textAlign,
+    },
+    icon: {
+      marginRight: theme.spacing(2),
     },
   });
 };

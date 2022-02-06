@@ -1,7 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import IonIcons from 'react-native-vector-icons/Ionicons';
 import useUser from 'common/contexts/User/useUser';
+import theme from 'common/styles/theme';
 import Text from 'components/Text';
 import Button from 'components/Button';
 
@@ -16,18 +17,37 @@ const Profile = () => {
         Bem-vindo (a), {user.name}
       </Text>
 
-      <Button fullWidth margin={{ bottom: 2 }}>
+      <Button
+        fullWidth
+        margin={{ bottom: 2 }}
+        textAlign="left"
+        icon={
+          <IonIcons
+            name="lock-closed-outline"
+            size={20}
+            color={theme.colors.white}
+          />
+        }
+      >
         Mudar senha
       </Button>
-      <Button fullWidth variant="outlined" onPress={handleLogout}>
+      <Button
+        fullWidth
+        variant="outlined"
+        onPress={handleLogout}
+        textAlign="left"
+        icon={
+          <IonIcons
+            name="log-out-outline"
+            size={20}
+            color={theme.colors.primary}
+          />
+        }
+      >
         Sair
       </Button>
     </View>
   );
 };
-
-// Profile.propTypes = {
-//   navigation: PropTypes.object,
-// };
 
 export default Profile;
