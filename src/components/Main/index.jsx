@@ -9,7 +9,7 @@ const Main = ({ children, back }) => (
   <SafeAreaView style={styles.container}>
     <Header back={back} />
 
-    <ScrollView>
+    <ScrollView keyboardShouldPersistTaps="handled">
       <View style={styles.main}>{children}</View>
     </ScrollView>
   </SafeAreaView>
