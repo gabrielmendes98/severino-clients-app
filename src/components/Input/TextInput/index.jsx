@@ -8,7 +8,15 @@ import {
 } from 'react-native';
 import createStyles from './style';
 
-const TextInput = ({ placeholder, margin, icon, name, control, rules }) => {
+const TextInput = ({
+  placeholder,
+  margin,
+  icon,
+  name,
+  control,
+  rules,
+  ...props
+}) => {
   const inputRef = useRef();
   const styles = useMemo(
     () => createStyles({ margin }),
@@ -34,6 +42,7 @@ const TextInput = ({ placeholder, margin, icon, name, control, rules }) => {
               ref={inputRef}
               style={styles.input}
               value={value}
+              {...props}
             />
           )}
           name={name}

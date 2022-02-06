@@ -39,12 +39,14 @@ const Login = () => {
         margin={{ bottom: 2 }}
         icon={<IonIcons name="mail-outline" {...iconCommonProps} />}
       />
+
       <TextInput
         name="password"
         control={control}
         placeholder="Senha"
         margin={{ bottom: 2 }}
         icon={<IonIcons name="lock-closed-outline" {...iconCommonProps} />}
+        secureTextEntry
       />
 
       <Button fullWidth onPress={handleSubmit(handleLogin)}>

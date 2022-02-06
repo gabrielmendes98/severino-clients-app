@@ -48,6 +48,7 @@ const SignUp = () => {
         placeholder="Senha"
         margin={{ bottom: 2 }}
         icon={<IonIcons name="lock-closed-outline" {...iconCommonProps} />}
+        secureTextEntry
       />
 
       <Button fullWidth onPress={handleSubmit(handleSignUp)}>
