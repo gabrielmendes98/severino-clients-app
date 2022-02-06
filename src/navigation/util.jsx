@@ -17,7 +17,7 @@ const createStack =
           headerShown: false,
         }}
       >
-        {(signed ? signedRoutes : normalRoutes).map(
+        {(signed && signedRoutes ? signedRoutes : normalRoutes).map(
           ({ component, layout, back, ...props }, index) => {
             const Component = wrapper({ component, layout, back });
             return <Screen component={Component} key={index} {...props} />;
