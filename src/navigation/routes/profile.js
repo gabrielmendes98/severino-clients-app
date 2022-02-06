@@ -1,14 +1,16 @@
 import React from 'react';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
-import Profile from 'screens/Profile';
+import Join from 'screens/Join';
 import SignUp from 'screens/SignUp';
+import Profile from 'screens/Profile';
+import Login from 'screens/Login';
 import Main from 'components/Main';
 import { createStack } from '../util';
 
 const profileStackRoutes = [
   {
-    name: 'ProfileChoose',
-    component: Profile,
+    name: 'Join',
+    component: Join,
     layout: Main,
   },
   {
@@ -17,11 +19,25 @@ const profileStackRoutes = [
     layout: Main,
     back: true,
   },
+  {
+    name: 'Login',
+    component: Login,
+    layout: Main,
+    back: true,
+  },
+];
+
+const signedProfileStackRoutes = [
+  {
+    name: 'Profile',
+    component: Profile,
+    layout: Main,
+  },
 ];
 
 const profileTab = {
-  name: 'Profile',
-  component: createStack(profileStackRoutes),
+  name: 'User',
+  component: createStack(profileStackRoutes, signedProfileStackRoutes),
   options: {
     tabBarIcon: ({ color, size }) => (
       <FontAwesomeIcons color={color} name="user-o" size={size} />

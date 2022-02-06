@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import jwtDecode from 'jwt-decode';
 import AppLoading from 'expo-app-loading';
 import usersService from 'api/services/user';
-import { setToken, getToken } from 'common/util/storage';
+import { setToken, getToken, removeToken } from 'common/util/storage';
 import { baseApi } from 'api/apis';
 
 const UserContext = createContext();
@@ -30,6 +30,12 @@ const UserProvider = ({ children }) => {
 
   const signUp = userData => usersService.create(userData).then(configureUser);
 
+  const logout = () => {
+    setUser(null);
+    setApiHeaders(null);
+    return removeToken();
+  };
+
   useEffect(() => {
     getToken().then(token => {
       if (token) {
@@ -42,7 +48,7 @@ const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <Provider value={{ user, signUp, login }}>
+    <Provider value={{ user, signed: Boolean(user), signUp, login, logout }}>
       {loading ? <AppLoading /> : children}
     </Provider>
   );

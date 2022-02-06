@@ -4,7 +4,7 @@ import Home from 'screens/Home';
 import Main from 'components/Main';
 
 const homeTab = {
-  name: 'Página Inicial',
+  name: 'Home',
   component: Home,
   layout: Main,
   options: {

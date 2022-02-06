@@ -1,32 +1,33 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import useUser from 'common/contexts/User/useUser';
 import Text from 'components/Text';
 import Button from 'components/Button';
 
-const Profile = ({ navigation }) => {
-  const handleSignUpPress = () => {
-    navigation.navigate('SignUp');
-  };
+const Profile = () => {
+  const { user, logout } = useUser();
+
+  const handleLogout = () => logout();
 
   return (
     <View>
       <Text size={1.5} weight="bold" margin={{ bottom: 3 }}>
-        Faça login ou crie uma conta!
+        Bem-vindo (a), {user.name}
       </Text>
 
       <Button fullWidth margin={{ bottom: 2 }}>
-        Entrar
+        Mudar senha
       </Button>
-      <Button fullWidth variant="outlined" onPress={handleSignUpPress}>
-        Criar conta
+      <Button fullWidth variant="outlined" onPress={handleLogout}>
+        Sair
       </Button>
     </View>
   );
 };
 
-Profile.propTypes = {
-  navigation: PropTypes.object,
-};
+// Profile.propTypes = {
+//   navigation: PropTypes.object,
+// };
 
 export default Profile;

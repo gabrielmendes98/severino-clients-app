@@ -23,8 +23,6 @@ const Home = () => {
     servicesService.listMostSearched().then(setServices);
   }, []);
 
-  console.log(services);
-
   return (
     <View>
       <Text margin={{ bottom: 3 }} size={1.4} weight="bold">

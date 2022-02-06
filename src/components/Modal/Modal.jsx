@@ -17,7 +17,6 @@ const Modal = ({
     <Body {...other} closeModal={closeModal} renderButtons={getButtons} />
   ) : null;
 
-  console.log(message);
   return (
     <RNModal animationType="slide">
       {title && <Text testID="modal-title">{title}</Text>}

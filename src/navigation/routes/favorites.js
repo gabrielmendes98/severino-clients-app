@@ -4,7 +4,7 @@ import Favorites from 'screens/Favorites';
 import Main from 'components/Main';
 
 const favoritesTabs = {
-  name: 'Favoritos',
+  name: 'Favorites',
   component: Favorites,
   layout: Main,
   options: {

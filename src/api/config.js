@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { DEFAULT_ERROR_MESSAGE } from 'common/constants';
 import toast from 'common/util/toast';
 
 const createApi = (baseURL = '', config = {}) => {
@@ -11,7 +12,13 @@ const createApi = (baseURL = '', config = {}) => {
     response => response.data,
     error => {
       const message = error.response?.data?.message;
-      toast.error(message);
+
+      if (message) {
+        toast.error(message);
+      } else {
+        toast.error(DEFAULT_ERROR_MESSAGE);
+      }
+
       return Promise.reject(error);
     },
   );

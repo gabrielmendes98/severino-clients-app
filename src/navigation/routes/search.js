@@ -4,7 +4,7 @@ import Search from 'screens/Search';
 import Main from 'components/Main';
 
 const searchTab = {
-  name: 'Buscar',
+  name: 'Search',
   component: Search,
   layout: Main,
   options: {

@@ -9,32 +9,29 @@ import Text from 'components/Text';
 import styles from './style';
 import { iconCommonProps } from './util';
 
-const SignUp = () => {
-  const { signUp } = useUser();
+const Login = () => {
+  const { login } = useUser();
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      name: '',
       email: '',
       password: '',
     },
   });
 
-  const handleSignUp = data => signUp(data);
+  const handleLogin = data => login(data);
 
   return (
     <View style={styles.container}>
-      <Image source={require('assets/signUpDoodle.png')} />
-      <Text color="primary" weight="bold" size={1.2} margin={{ bottom: 4 }}>
-        Informe seus dados para continuar
+      <Image source={require('assets/loginDoodle.png')} style={styles.image} />
+      <Text
+        color="primary"
+        weight="bold"
+        size={1.2}
+        margin={{ bottom: 4, top: 3 }}
+      >
+        Informe o seu e-mail e senha para continuar
       </Text>
 
-      <TextInput
-        name="name"
-        control={control}
-        placeholder="Usuário"
-        margin={{ bottom: 2 }}
-        icon={<IonIcons name="person-outline" {...iconCommonProps} />}
-      />
       <TextInput
         name="email"
         control={control}
@@ -50,11 +47,11 @@ const SignUp = () => {
         icon={<IonIcons name="lock-closed-outline" {...iconCommonProps} />}
       />
 
-      <Button fullWidth onPress={handleSubmit(handleSignUp)}>
-        Criar conta
+      <Button fullWidth onPress={handleSubmit(handleLogin)}>
+        Entrar
       </Button>
     </View>
   );
 };
 
-export default SignUp;
+export default Login;

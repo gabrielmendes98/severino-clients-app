@@ -10,6 +10,8 @@ const Text = ({ children, style, size, color, weight, margin, ...props }) => {
     [color, size, weight],
   );
 
+  console.log(typeof children, String(children));
+
   return (
     <RNText style={[customStyle.text, style]} {...props}>
       {children}
@@ -18,8 +20,7 @@ const Text = ({ children, style, size, color, weight, margin, ...props }) => {
 };
 
 Text.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    .isRequired,
+  children: PropTypes.any.isRequired,
   color: PropTypes.string,
   margin: PropTypes.shape({
     top: PropTypes.number,
