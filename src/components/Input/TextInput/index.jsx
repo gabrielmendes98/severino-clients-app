@@ -6,6 +6,7 @@ import {
   View,
   TouchableWithoutFeedback,
 } from 'react-native';
+import Text from 'components/Text';
 import createStyles from './style';
 
 const TextInput = ({
@@ -27,28 +28,39 @@ const TextInput = ({
   const focusInput = () => inputRef.current.focus();
 
   return (
-    <TouchableWithoutFeedback onPress={focusInput}>
-      <View style={styles.container}>
-        {Boolean(icon) && icon}
+    <Controller
+      control={control}
+      rules={rules}
+      render={({
+        field: { onChange, onBlur, value },
+        fieldState: { error },
+      }) => (
+        <TouchableWithoutFeedback onPress={focusInput}>
+          <View style={styles.wrapper}>
+            {Boolean(error) && (
+              <Text color="red" size={0.8} margin={{ top: -2 }}>
+                {error.message}
+              </Text>
+            )}
+            <View style={styles.container}>
+              {Boolean(icon) && icon}
 
-        <Controller
-          control={control}
-          rules={rules}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <RNTextInput
-              onBlur={onBlur}
-              onChangeText={onChange}
-              placeholder={placeholder}
-              ref={inputRef}
-              style={styles.input}
-              value={value}
-              {...props}
-            />
-          )}
-          name={name}
-        />
-      </View>
-    </TouchableWithoutFeedback>
+              {console.log(error)}
+              <RNTextInput
+                onBlur={onBlur}
+                onChangeText={onChange}
+                placeholder={placeholder}
+                ref={inputRef}
+                style={styles.input}
+                value={value}
+                {...props}
+              />
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
+      )}
+      name={name}
+    />
   );
 };
 

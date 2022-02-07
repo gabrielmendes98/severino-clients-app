@@ -4,6 +4,10 @@ import { marginHandler } from 'common/styles/util';
 
 const createStyles = ({ margin }) =>
   StyleSheet.create({
+    wrapper: {
+      width: '100%',
+      marginTop: theme.spacing(2),
+    },
     container: {
       alignItems: 'center',
       backgroundColor: theme.colors.white,

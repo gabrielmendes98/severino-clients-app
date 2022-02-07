@@ -7,24 +7,18 @@ import Button from 'components/Button';
 import TextInput from 'components/Input/TextInput';
 import Text from 'components/Text';
 import styles from './style';
-import { iconCommonProps } from './util';
+import { form, iconCommonProps } from './util';
 
 const SignUp = () => {
   const { signUp } = useUser();
-  const { control, handleSubmit } = useForm({
-    defaultValues: {
-      name: '',
-      email: '',
-      password: '',
-    },
-  });
+  const { control, handleSubmit } = useForm(form);
 
   const handleSignUp = data => signUp(data);
 
   return (
     <View style={styles.container}>
       <Image source={require('assets/signUpDoodle.png')} />
-      <Text color="primary" weight="bold" size={1.2} margin={{ bottom: 4 }}>
+      <Text color="primary" weight="bold" size={1.2} margin={{ bottom: 3 }}>
         Informe seus dados para continuar
       </Text>
 
@@ -32,26 +26,27 @@ const SignUp = () => {
         name="name"
         control={control}
         placeholder="Usuário"
-        margin={{ bottom: 2 }}
         icon={<IonIcons name="person-outline" {...iconCommonProps} />}
       />
       <TextInput
         name="email"
         control={control}
         placeholder="E-mail"
-        margin={{ bottom: 2 }}
         icon={<IonIcons name="mail-outline" {...iconCommonProps} />}
       />
       <TextInput
         name="password"
         control={control}
         placeholder="Senha"
-        margin={{ bottom: 2 }}
         icon={<IonIcons name="lock-closed-outline" {...iconCommonProps} />}
         secureTextEntry
       />
 
-      <Button fullWidth onPress={handleSubmit(handleSignUp)}>
+      <Button
+        fullWidth
+        onPress={handleSubmit(handleSignUp)}
+        margin={{ top: 2 }}
+      >
         Criar conta
       </Button>
     </View>
