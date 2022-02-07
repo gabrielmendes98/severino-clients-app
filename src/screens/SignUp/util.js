@@ -12,15 +12,11 @@ const form = {
     email: '',
     password: '',
   },
-  resolver: resolver(
-    yup
-      .object({
-        name: yup.string().trim().required(),
-        email: yup.string().trim().email().required(),
-        password: yup.string().trim().required(),
-      })
-      .required(),
-  ),
+  resolver: resolver({
+    name: yup.string().trim().required(),
+    email: yup.string().trim().email().required(),
+    password: yup.string().trim().required(),
+  }),
 };
 
 export { iconCommonProps, form };

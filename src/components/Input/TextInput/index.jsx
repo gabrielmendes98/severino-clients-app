@@ -45,7 +45,6 @@ const TextInput = ({
             <View style={styles.container}>
               {Boolean(icon) && icon}
 
-              {console.log(error)}
               <RNTextInput
                 onBlur={onBlur}
                 onChangeText={onChange}
