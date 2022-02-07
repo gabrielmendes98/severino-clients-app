@@ -7,16 +7,11 @@ import Button from 'components/Button';
 import TextInput from 'components/Input/TextInput';
 import Text from 'components/Text';
 import styles from './style';
-import { iconCommonProps } from './util';
+import { form, iconCommonProps } from './util';
 
 const Login = () => {
   const { login } = useUser();
-  const { control, handleSubmit } = useForm({
-    defaultValues: {
-      email: '',
-      password: '',
-    },
-  });
+  const { control, handleSubmit } = useForm(form);
 
   const handleLogin = data => login(data);
 
@@ -36,7 +31,6 @@ const Login = () => {
         name="email"
         control={control}
         placeholder="E-mail"
-        margin={{ bottom: 2 }}
         icon={<IonIcons name="mail-outline" {...iconCommonProps} />}
       />
 
@@ -44,12 +38,11 @@ const Login = () => {
         name="password"
         control={control}
         placeholder="Senha"
-        margin={{ bottom: 2 }}
         icon={<IonIcons name="lock-closed-outline" {...iconCommonProps} />}
         secureTextEntry
       />
 
-      <Button fullWidth onPress={handleSubmit(handleLogin)}>
+      <Button fullWidth onPress={handleSubmit(handleLogin)} margin={{ top: 2 }}>
         Entrar
       </Button>
     </View>
