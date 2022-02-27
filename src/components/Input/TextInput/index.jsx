@@ -6,18 +6,12 @@ import {
   View,
   TouchableWithoutFeedback,
 } from 'react-native';
+import useForm from 'common/providers/Form/useForm';
 import Text from 'components/Text';
 import createStyles from './style';
 
-const TextInput = ({
-  placeholder,
-  margin,
-  icon,
-  name,
-  control,
-  rules,
-  ...props
-}) => {
+const TextInput = ({ placeholder, margin, icon, name, rules, ...props }) => {
+  const { control } = useForm();
   const inputRef = useRef();
   const styles = useMemo(
     () => createStyles({ margin }),
@@ -77,7 +71,6 @@ TextInput.propTypes = {
   }),
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
-  control: PropTypes.object.isRequired,
   rules: PropTypes.object,
 };
 

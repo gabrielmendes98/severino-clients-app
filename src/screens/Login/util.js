@@ -1,5 +1,5 @@
 import theme from 'common/styles/theme';
-import yup, { resolver } from 'common/util/yup';
+import yup from 'common/util/yup';
 
 const iconCommonProps = {
   color: theme.colors.primary,
@@ -11,10 +11,10 @@ const form = {
     email: '',
     password: '',
   },
-  resolver: resolver({
+  validations: {
     email: yup.string().trim().email().required(),
     password: yup.string().trim().required(),
-  }),
+  },
 };
 
 export { iconCommonProps, form };
