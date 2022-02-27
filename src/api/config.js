@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { DEFAULT_ERROR_MESSAGE } from 'common/constants';
+import loader from 'common/util/loader';
 import toast from 'common/util/toast';
 
 const createApi = (baseURL = '', config = {}) => {
@@ -8,9 +9,24 @@ const createApi = (baseURL = '', config = {}) => {
     ...config,
   });
 
-  api.interceptors.response.use(
-    response => response.data,
+  api.interceptors.request.use(
+    request => {
+      loader.show();
+      return request;
+    },
     error => {
+      loader.hide();
+      return Promise.reject(error);
+    },
+  );
+
+  api.interceptors.response.use(
+    response => {
+      loader.hide();
+      return response.data;
+    },
+    error => {
+      loader.hide();
       const message = error.response?.data?.message;
 
       if (message) {

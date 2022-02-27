@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import professionalsService from 'api/services/professionals';
 import servicesService from 'api/services/services';
+import loader from 'common/util/loader';
 import Text from 'components/Text';
 import SearchInput from 'components/Input/Search';
 import Button from 'components/Button';
@@ -10,7 +11,7 @@ import Professionals from './Professionals';
 import { prepareProfessionals } from './util';
 
 const Home = () => {
-  const handleSearch = () => console.log('handling...');
+  const handleSearch = () => loader.hide();
   const [professionals, setProfessionals] = useState();
   const [services, setServices] = useState();
 
