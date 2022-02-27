@@ -32,6 +32,7 @@ const Login = () => {
             <TextInput
               name="email"
               placeholder="E-mail"
+              autoCapitalize="none"
               icon={<IonIcons name="mail-outline" {...iconCommonProps} />}
             />
 

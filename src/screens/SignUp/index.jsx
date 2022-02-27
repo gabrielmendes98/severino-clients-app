@@ -27,11 +27,13 @@ const SignUp = () => {
             <TextInput
               name="name"
               placeholder="Nome"
+              autoCapitalize="words"
               icon={<IonIcons name="person-outline" {...iconCommonProps} />}
             />
             <TextInput
               name="email"
               placeholder="E-mail"
+              autoCapitalize="none"
               icon={<IonIcons name="mail-outline" {...iconCommonProps} />}
             />
             <TextInput
