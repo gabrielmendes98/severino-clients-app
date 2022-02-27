@@ -8,9 +8,13 @@ const styles = StyleSheet.create({
     zIndex: 9999,
     top: 0,
     left: 0,
-    backgroundColor: '#000000',
+    backgroundColor: '#FFFFFFCC',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  animation: {
+    width: 100,
+    height: 100,
   },
 });
 

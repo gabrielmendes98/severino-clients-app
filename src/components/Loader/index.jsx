@@ -1,11 +1,11 @@
 /* eslint-disable react/function-component-definition */
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import Text from 'components/Text';
+import LottieView from 'lottie-react-native';
 import styles from './style';
 
 function Loader() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   const hideLoader = () => setShow(false);
   const showLoader = () => setShow(true);
@@ -23,7 +23,11 @@ function Loader() {
   return (
     show && (
       <View style={styles.container}>
-        <Text color="white">loading...</Text>
+        <LottieView
+          source={require('../../assets/loader.json')}
+          style={styles.animation}
+          autoPlay
+        />
       </View>
     )
   );
