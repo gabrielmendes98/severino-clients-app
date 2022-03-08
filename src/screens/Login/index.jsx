@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Image, View } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import Form from 'common/providers/Form';
 import useUser from 'common/contexts/User/useUser';
 import Button from 'components/Button';
 import TextInput from 'components/Input/TextInput';
+import Loader from 'components/Loader';
 import Text from 'components/Text';
 import styles from './style';
 import { form, iconCommonProps } from './util';
@@ -13,6 +14,19 @@ const Login = () => {
   const { login } = useUser();
 
   const handleLogin = data => login(data);
+
+  useEffect(() => {
+    Loader.show();
+    Loader.show();
+    setTimeout(() => {
+      Loader.hide();
+      console.log('first hide');
+    }, 3000);
+    setTimeout(() => {
+      Loader.hide();
+      console.log('second hide');
+    }, 6000);
+  }, []);
 
   return (
     <View style={styles.container}>
