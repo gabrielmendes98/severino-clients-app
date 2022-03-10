@@ -12,7 +12,7 @@ UserContext.displayName = 'UserContext';
 const { Provider } = UserContext;
 
 const setApiHeaders = token => {
-  baseApi.defaults.headers.Authorization = `Bearer ${token}`;
+  baseApi.defaults.headers.Authorization = token ? `Bearer ${token}` : '';
 };
 
 const UserProvider = ({ children }) => {

@@ -5,6 +5,7 @@ import useUser from 'common/contexts/User/useUser';
 import theme from 'common/styles/theme';
 import routes from './routes';
 import wrapper from './Wrapper';
+import { navigationRef } from './RootNavigation';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -12,7 +13,7 @@ const Navigation = () => {
   const { signed } = useUser();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Navigator
         initialRouteName="Home"
         screenOptions={{

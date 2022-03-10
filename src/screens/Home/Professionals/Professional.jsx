@@ -6,6 +6,7 @@ import theme from 'common/styles/theme';
 import WhatsAppIcon from 'components/Icons/WhatsApp';
 import Text from 'components/Text';
 import TextAvatar from 'components/TextAvatar';
+import FavoriteButton from 'components/Button/FavoriteButton';
 import styles from './style';
 
 const Professional = ({ professional }) => (
@@ -33,7 +34,12 @@ const Professional = ({ professional }) => (
       </Text>
 
       <View style={styles.actions}>
-        <FontAwesomeIcons color={theme.colors.black} name="heart-o" size={20} />
+        <FavoriteButton
+          workerId={professional.id}
+          initialFavorite={Boolean(
+            professional.customerWorkerFavorites?.length,
+          )}
+        />
         <Text color="light" size={1.3}>
           |
         </Text>
