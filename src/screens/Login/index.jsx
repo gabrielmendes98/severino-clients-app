@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Image, View } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import Form from 'common/providers/Form';
@@ -9,10 +10,15 @@ import Text from 'components/Text';
 import styles from './style';
 import { form, iconCommonProps } from './util';
 
-const Login = () => {
+const Login = ({ navigation, route }) => {
   const { login } = useUser();
 
-  const handleLogin = data => login(data);
+  const handleLogin = data =>
+    login(data).then(() => {
+      if (route.params?.redirect) {
+        navigation.goBack();
+      }
+    });
 
   return (
     <View style={styles.container}>
@@ -57,6 +63,11 @@ const Login = () => {
       </Form>
     </View>
   );
+};
+
+Login.propTypes = {
+  navigation: PropTypes.object,
+  route: PropTypes.object,
 };
 
 export default Login;

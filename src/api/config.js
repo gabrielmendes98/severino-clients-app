@@ -32,7 +32,10 @@ const createApi = (baseURL = '', config = {}) => {
       const status = error.response?.status;
 
       if (status === 401 || status === 403) {
-        RootNavigation.navigate('User', { screen: 'Login' });
+        RootNavigation.navigate('User', {
+          screen: 'Login',
+          params: { redirect: true },
+        });
       }
 
       if (message) {
