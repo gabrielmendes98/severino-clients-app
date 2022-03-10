@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import { View, Image } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import theme from 'common/styles/theme';
-import WhatsAppIcon from 'components/Icons/WhatsApp';
 import Text from 'components/Text';
 import TextAvatar from 'components/TextAvatar';
-import FavoriteButton from 'components/Button/FavoriteButton';
+import FavoriteButton from 'components/Button/Favorite';
+import WhatsappButton from 'components/Button/Whatsapp';
 import styles from './style';
 
 const Professional = ({ professional }) => (
   <View style={styles.container}>
+    {console.log(professional)}
     {professional.avatarUrl ? (
       <Image source={{ uri: professional.avatarUrl }} style={styles.avatar} />
     ) : (
@@ -40,10 +41,14 @@ const Professional = ({ professional }) => (
             professional.customerWorkerFavorites?.length,
           )}
         />
-        <Text color="light" size={1.3}>
-          |
-        </Text>
-        <WhatsAppIcon size={21} />
+        {professional.hasWhatsapp && (
+          <>
+            <Text color="light" size={1.3}>
+              |
+            </Text>
+            <WhatsappButton phone={professional.phone} />
+          </>
+        )}
       </View>
     </View>
   </View>

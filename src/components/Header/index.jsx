@@ -4,7 +4,7 @@ import { View, TouchableOpacity } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import theme from 'common/styles/theme';
 import Logo from 'components/Icons/Logo';
-import BackButton from 'components/Button/BackButton';
+import BackButton from 'components/Button/Back';
 import withModal from 'components/Modal/withModal';
 import Text from 'components/Text';
 import styles from './style';
