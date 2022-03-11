@@ -11,7 +11,6 @@ import styles from './style';
 
 const Professional = ({ professional }) => (
   <View style={styles.container}>
-    {console.log(professional)}
     {professional.avatarUrl ? (
       <Image source={{ uri: professional.avatarUrl }} style={styles.avatar} />
     ) : (

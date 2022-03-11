@@ -1,12 +1,11 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { TextInput, View, TouchableWithoutFeedback } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import theme from 'common/styles/theme';
 import createStyles from './style';
 
-const SearchInput = ({ placeholder, margin }) => {
-  const [value, setValue] = useState('');
+const SearchInput = ({ placeholder, margin, value, setValue }) => {
   const inputRef = useRef();
 
   const styles = useMemo(
@@ -42,6 +41,8 @@ SearchInput.propTypes = {
     left: PropTypes.number,
   }),
   placeholder: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  setValue: PropTypes.func.isRequired,
 };
 
 export default SearchInput;
