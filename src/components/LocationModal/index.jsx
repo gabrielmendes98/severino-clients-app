@@ -12,6 +12,7 @@ import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import debounce from 'lodash.debounce';
 import locationsService from 'api/services/locations';
 import theme from 'common/styles/theme';
+import useLocation from 'common/contexts/Location/useLocation';
 import toast from 'common/util/toast';
 import Button from 'components/Button';
 import Text from 'components/Text';
@@ -19,7 +20,7 @@ import styles, { selectedItemStyle, selectedItemTextColor } from './style';
 
 const LocationModal = ({ closeModal }) => {
   const inputRef = useRef();
-  const [location, setLocation] = useState();
+  const { location, setLocation } = useLocation();
   const [inputValue, setInputValue] = useState();
   const [selectedLocation, setSelectedLocation] = useState();
   const [listOptions, setListOptions] = useState([]);
