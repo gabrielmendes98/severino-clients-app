@@ -7,8 +7,8 @@ import Logo from 'components/Icons/Logo';
 import BackButton from 'components/Button/Back';
 import withModal from 'components/Modal/withModal';
 import Text from 'components/Text';
+import showLocationModal from 'components/LocationModal/showModal';
 import styles from './style';
-import { showLocationModal } from './util';
 
 const Header = ({ showModal, back }) => (
   <View style={styles.header}>

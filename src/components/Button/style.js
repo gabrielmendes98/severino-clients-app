@@ -36,6 +36,11 @@ const styles = ({
   }
 
   return StyleSheet.create({
+    container: {
+      borderRadius: theme.borderRadius,
+      width,
+      ...marginHandler(margin),
+    },
     button: {
       ...buttonStyles,
       borderRadius: theme.borderRadius,
@@ -43,12 +48,6 @@ const styles = ({
       paddingVertical: theme.spacing(1),
       width,
       flexDirection: 'row',
-    },
-    container: {
-      alignSelf: 'flex-start',
-      borderRadius: theme.borderRadius,
-      width,
-      ...marginHandler(margin),
     },
     text: {
       ...textStyles,

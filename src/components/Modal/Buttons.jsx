@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { SAFE_SPACING } from 'common/constants';
+import theme from 'common/styles/theme';
 import Button from 'components/Button';
 
 const Buttons = ({ actions, handleClose }) => (
-  <View>
+  <View style={styles.container}>
     {actions.map(({ onClick, skipClose, label, ...btnProps }) => (
       <Button
         key={label}
@@ -19,6 +21,15 @@ const Buttons = ({ actions, handleClose }) => (
     ))}
   </View>
 );
+
+const styles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+    right: theme.spacing(SAFE_SPACING),
+    left: theme.spacing(SAFE_SPACING),
+    bottom: theme.spacing(SAFE_SPACING),
+  },
+});
 
 Buttons.propTypes = {
   actions: PropTypes.array.isRequired,
