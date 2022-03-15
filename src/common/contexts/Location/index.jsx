@@ -1,6 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { getLocation } from 'common/util/storage';
+import {
+  getLocation,
+  setLocation as setStorageLocation,
+} from 'common/util/storage';
 
 const LocationContext = createContext();
 LocationContext.displayName = 'LocationContext';
@@ -10,6 +13,11 @@ const LocationProvider = ({ children }) => {
   const [location, setLocation] = useState();
   const [loading, setLoading] = useState(true);
 
+  const saveLocation = selectedLocation => {
+    setLocation(selectedLocation);
+    setStorageLocation(selectedLocation);
+  };
+
   useEffect(() => {
     getLocation()
       .then(setLocation)
@@ -17,7 +25,7 @@ const LocationProvider = ({ children }) => {
   }, []);
 
   return (
-    <Provider value={{ location, setLocation, loading }}>{children}</Provider>
+    <Provider value={{ location, saveLocation, loading }}>{children}</Provider>
   );
 };
 

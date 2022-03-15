@@ -20,7 +20,7 @@ import styles, { selectedItemStyle, selectedItemTextColor } from './style';
 
 const LocationModal = ({ closeModal }) => {
   const inputRef = useRef();
-  const { location, setLocation } = useLocation();
+  const { location, saveLocation } = useLocation();
   const [inputValue, setInputValue] = useState();
   const [selectedLocation, setSelectedLocation] = useState();
   const [listOptions, setListOptions] = useState([]);
@@ -28,7 +28,7 @@ const LocationModal = ({ closeModal }) => {
   const focusInput = () => inputRef.current.focus();
 
   const handleSave = () => {
-    setLocation(selectedLocation);
+    saveLocation(selectedLocation);
     toast.success('Localização alterada com sucesso.');
     closeModal();
   };
