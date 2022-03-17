@@ -60,4 +60,4 @@ Button.propTypes = {
   textAlign: PropTypes.oneOf(['auto', 'left', 'right', 'center', 'justify']),
 };
 
-export default memo(Button);
+export default Button;
