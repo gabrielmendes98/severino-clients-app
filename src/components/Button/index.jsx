@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, memo } from 'react';
 import PropTypes from 'prop-types';
 import { View, TouchableHighlight, Text } from 'react-native';
 import { BUTTON_TYPES } from './constants';
@@ -60,4 +60,4 @@ Button.propTypes = {
   textAlign: PropTypes.oneOf(['auto', 'left', 'right', 'center', 'justify']),
 };
 
-export default Button;
+export default memo(Button);

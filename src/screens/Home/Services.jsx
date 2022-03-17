@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
@@ -37,4 +37,4 @@ Services.propTypes = {
   services: PropTypes.array,
 };
 
-export default Services;
+export default memo(Services);

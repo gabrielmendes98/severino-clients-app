@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import HorizontalScroll from 'components/Views/HorizontalScroll';
 import Professional from './Professional';
@@ -19,4 +19,4 @@ Professionals.propTypes = {
   professionals: PropTypes.array,
 };
 
-export default Professionals;
+export default memo(Professionals);
