@@ -10,6 +10,7 @@ import Button from 'components/Button';
 import Services from './Services';
 import Professionals from './Professionals';
 import { prepareProfessionals } from './util';
+import { removeLocation } from 'common/util/storage';
 
 const Home = ({ navigation }) => {
   const [professionals, setProfessionals] = useState();
@@ -42,6 +43,8 @@ const Home = ({ navigation }) => {
 
     servicesService.listMostSearched().then(setServices);
   }, []);
+
+  removeLocation();
 
   return (
     <View>

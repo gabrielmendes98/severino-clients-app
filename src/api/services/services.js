@@ -7,7 +7,8 @@ const routes = {
 
 const servicesService = {
   listMostSearched: () => baseApi.get(routes.listMostSearched),
-  search: value => baseApi.get(`${routes.search}${value}`),
+  search: value =>
+    baseApi.get(`${routes.search}${value}`, { needLocation: true }),
 };
 
 export { routes as servicesRoutes };

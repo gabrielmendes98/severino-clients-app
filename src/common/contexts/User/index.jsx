@@ -4,15 +4,15 @@ import jwtDecode from 'jwt-decode';
 import AppLoading from 'expo-app-loading';
 import usersService from 'api/services/user';
 import { setToken, getToken, removeToken } from 'common/util/storage';
-import { baseApi } from 'api/apis';
+import { setApiHeaders } from 'api/util';
 
 const UserContext = createContext();
 UserContext.displayName = 'UserContext';
 
 const { Provider } = UserContext;
 
-const setApiHeaders = token => {
-  baseApi.defaults.headers.Authorization = token ? `Bearer ${token}` : '';
+const setAuthorizationHeader = token => {
+  setApiHeaders('Authorization', token ? `Bearer ${token}` : '');
 };
 
 const UserProvider = ({ children }) => {
@@ -23,7 +23,7 @@ const UserProvider = ({ children }) => {
     setToken(token);
     const decodedToken = jwtDecode(token);
     setUser(decodedToken.user);
-    setApiHeaders(token);
+    setAuthorizationHeader(token);
   };
 
   const login = loginInfo => usersService.login(loginInfo).then(configureUser);
@@ -32,7 +32,7 @@ const UserProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
-    setApiHeaders(null);
+    setAuthorizationHeader(null);
     return removeToken();
   };
 
@@ -41,7 +41,7 @@ const UserProvider = ({ children }) => {
       if (token) {
         const decodedToken = jwtDecode(token);
         setUser(decodedToken.user);
-        setApiHeaders(token);
+        setAuthorizationHeader(token);
       }
       setLoading(false);
     });

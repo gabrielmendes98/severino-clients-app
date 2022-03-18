@@ -4,6 +4,7 @@ import {
   getLocation,
   setLocation as setStorageLocation,
 } from 'common/util/storage';
+import store from 'common/util/store';
 
 const LocationContext = createContext();
 LocationContext.displayName = 'LocationContext';
@@ -16,12 +17,17 @@ const LocationProvider = ({ children }) => {
   const saveLocation = selectedLocation => {
     setLocation(selectedLocation);
     setStorageLocation(selectedLocation);
+    store.setLocation(selectedLocation.id);
   };
 
   useEffect(() => {
-    getLocation()
-      .then(setLocation)
-      .then(() => setLoading(false));
+    getLocation().then(storeLocation => {
+      if (storeLocation) {
+        setLocation(storeLocation);
+        store.setLocation(storeLocation.id);
+      }
+      setLoading(false);
+    });
   }, []);
 
   return (
