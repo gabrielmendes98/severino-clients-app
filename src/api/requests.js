@@ -1,5 +1,4 @@
-import store from 'common/util/store';
-import toast from 'common/util/toast';
+import { locationInterceptor } from './interceptors';
 
 const requests = baseApi => ({
   request(path, options) {
@@ -7,16 +6,11 @@ const requests = baseApi => ({
   },
 
   get(path, options = {}) {
-    if (options.needLocation) {
-      if (store.location) {
-        path = `${path}&location=${store.location}`;
-      } else {
-        toast.error('Informe sua localização acima');
-        return Promise.reject();
-      }
+    const newPath = locationInterceptor(path, options);
+    if (!newPath) {
+      return Promise.reject();
     }
-
-    return baseApi.request(path, { ...options, data: null });
+    return baseApi.request(newPath, { ...options, data: null });
   },
 
   post(path, options = {}) {
