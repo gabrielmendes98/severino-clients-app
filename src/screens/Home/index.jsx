@@ -10,14 +10,18 @@ import Button from 'components/Button';
 import Services from './Services';
 import Professionals from './Professionals';
 import { prepareProfessionals } from './util';
-import { removeLocation } from 'common/util/storage';
 
 const Home = ({ navigation }) => {
   const [professionals, setProfessionals] = useState();
   const [services, setServices] = useState();
   const [searchValue, setSearchValue] = useState('');
 
-  const handleSearch = () =>
+  const handleSearch = () => {
+    if (!searchValue) {
+      toast.error('Digite o serviço que deseja buscar');
+      return;
+    }
+
     servicesService.search(searchValue).then(servicesFound => {
       if (servicesFound.length === 0) {
         toast.error('Nenhum serviço encontrado');
@@ -34,6 +38,7 @@ const Home = ({ navigation }) => {
         },
       });
     });
+  };
 
   useEffect(() => {
     professionalsService
@@ -43,8 +48,6 @@ const Home = ({ navigation }) => {
 
     servicesService.listMostSearched().then(setServices);
   }, []);
-
-  removeLocation();
 
   return (
     <View>
