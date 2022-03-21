@@ -1,8 +1,8 @@
 import { baseApi } from '../apis';
 
 const routes = {
-  listMostSearched: '/general-services/most-searched',
-  search: '/general-services?search=',
+  listMostSearched: '/services/most-searched',
+  search: '/services?search=',
 };
 
 const servicesService = {

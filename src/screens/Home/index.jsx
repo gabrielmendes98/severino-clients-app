@@ -29,12 +29,9 @@ const Home = ({ navigation }) => {
       }
 
       navigation.navigate('Search', {
-        screen: 'Specific',
+        screen: 'Service',
         params: {
-          generalServiceId: servicesFound[0].generalServiceId,
-          specificServiceIds: servicesFound.map(
-            service => service.specificServiceId,
-          ),
+          servicesIds: servicesFound.map(service => service.serviceId),
         },
       });
     });

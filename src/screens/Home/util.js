@@ -3,9 +3,7 @@ const prepareProfessionals = professionals =>
     ...rest,
     name: name.toUpperCase(),
     rating: rating || 'Novo Usuário',
-    services: profile.specificServices
-      .map(item => item.specificService.name)
-      .join(', '),
+    services: profile.services.map(item => item.service.name).join(', '),
   }));
 
 export { prepareProfessionals };

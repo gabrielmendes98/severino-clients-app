@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Loader from 'components/Loader';
-import { handleError } from './util';
+import { handleError } from './interceptors';
 
 const createApi = (baseURL = '', config = {}) => {
   const api = axios.create({
