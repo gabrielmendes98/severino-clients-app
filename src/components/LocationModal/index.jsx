@@ -36,7 +36,6 @@ const LocationModal = ({ closeModal }) => {
   const onChangeInput = useMemo(
     () =>
       debounce(value => {
-        console.log('value', value);
         setInputValue(inputValue);
         if (value === '') {
           setListOptions([]);

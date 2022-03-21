@@ -22,18 +22,11 @@ const Home = ({ navigation }) => {
       return;
     }
 
-    servicesService.search(searchValue).then(servicesFound => {
-      if (servicesFound.length === 0) {
-        toast.error('Nenhum serviço encontrado');
-        return;
-      }
-
-      navigation.navigate('Search', {
-        screen: 'Service',
-        params: {
-          servicesIds: servicesFound.map(service => service.serviceId),
-        },
-      });
+    navigation.navigate('Search', {
+      screen: 'Services',
+      params: {
+        search: searchValue,
+      },
     });
   };
 
