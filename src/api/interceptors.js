@@ -6,13 +6,18 @@ import * as RootNavigation from 'navigation/RootNavigation';
 const locationInterceptor = (path, options) => {
   if (options.needLocation) {
     if (store.location) {
-      path = `${path}&location=${store.location}`;
+      if (path.includes('?')) {
+        path = `${path}&location=${store.location}`;
+      } else {
+        path = `${path}?location=${store.location}`;
+      }
       return path;
     }
 
     toast.error('Informe sua localização acima');
     return null;
   }
+  console.log(path);
 
   return path;
 };

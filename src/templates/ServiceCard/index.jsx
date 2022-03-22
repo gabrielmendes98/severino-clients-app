@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 import { View, TouchableOpacity } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
@@ -8,8 +9,16 @@ import Text from 'components/Text';
 import styles from './style';
 
 const Service = ({ id, avatarUrl, name }) => {
+  const navigation = useNavigation();
+
   const onPress = () => {
-    console.log(id);
+    navigation.navigate('Search', {
+      screen: 'Workers',
+      params: {
+        serviceId: id,
+        serviceName: name,
+      },
+    });
   };
 
   return (
