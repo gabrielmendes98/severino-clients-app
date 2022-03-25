@@ -17,7 +17,6 @@ const locationInterceptor = (path, options) => {
     toast.error('Informe sua localização acima');
     return null;
   }
-  console.log(path);
 
   return path;
 };

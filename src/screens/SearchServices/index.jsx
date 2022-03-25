@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import toast from 'common/util/toast';
 import servicesService from 'api/services/services';
+import useStateRef from 'common/hooks/useStateRef';
 import SearchInput from 'components/Input/Search';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Services from './Services';
 
-const SearchServices = ({ route }) => {
-  const [searchValue, setSearchValue] = useState('');
+const SearchServices = ({ navigation, route }) => {
+  const [searchValue, setSearchValue, searchValueRef] = useStateRef('');
   const [services, setServices] = useState([]);
 
   const handleSearch = (search = searchValue) => {
@@ -28,14 +30,20 @@ const SearchServices = ({ route }) => {
     });
   };
 
-  useEffect(() => {
-    const search = route.params?.search;
-    if (search) {
-      setSearchValue(search);
-      handleSearch(search);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      const search = route.params?.search;
+      if (search) {
+        setSearchValue(search);
+        handleSearch(search);
+      }
+
+      return () => {
+        navigation.setParams({ search: searchValueRef.current });
+      };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []),
+  );
 
   return (
     <View>
@@ -61,6 +69,7 @@ const SearchServices = ({ route }) => {
 
 SearchServices.propTypes = {
   route: PropTypes.object,
+  navigation: PropTypes.object,
 };
 
 export default SearchServices;

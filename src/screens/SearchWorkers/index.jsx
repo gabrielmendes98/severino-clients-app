@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import { useFocusEffect } from '@react-navigation/native';
 import servicesService from 'api/services/services';
 import Professional from 'templates/Professional';
 import Text from 'components/Text';
@@ -9,12 +10,14 @@ import { prepareProfessionals } from './util';
 const SearchWorkers = ({ route }) => {
   const [workers, setWorkers] = useState([]);
 
-  useEffect(() => {
-    servicesService
-      .searchWorkers(route.params?.serviceId)
-      .then(prepareProfessionals)
-      .then(setWorkers);
-  }, [route.params?.serviceId]);
+  useFocusEffect(
+    useCallback(() => {
+      servicesService
+        .searchWorkers(route.params?.serviceId)
+        .then(prepareProfessionals)
+        .then(setWorkers);
+    }, [route.params?.serviceId]),
+  );
 
   return (
     <View>
