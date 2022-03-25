@@ -18,11 +18,21 @@ const Button = ({
   fullWidth,
   icon,
   textAlign,
+  align,
   ...props
 }) => {
   const customStyle = useMemo(
     () =>
-      styles({ size, color, weight, margin, variant, fullWidth, textAlign }),
+      styles({
+        size,
+        color,
+        weight,
+        margin,
+        variant,
+        fullWidth,
+        textAlign,
+        align,
+      }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [color, size, weight, variant, fullWidth],
   );
@@ -58,6 +68,14 @@ Button.propTypes = {
   weight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   icon: PropTypes.node,
   textAlign: PropTypes.oneOf(['auto', 'left', 'right', 'center', 'justify']),
+  align: PropTypes.oneOf([
+    'auto',
+    'flex-start',
+    'flex-end',
+    'center',
+    'stretch',
+    'baseline',
+  ]),
 };
 
 export default Button;

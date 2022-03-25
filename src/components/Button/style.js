@@ -13,6 +13,7 @@ const styles = ({
   margin,
   variant = 'contained',
   textAlign = 'center',
+  align = 'flex-start',
 }) => {
   const buttonStyles = {};
   const textStyles = {};
@@ -33,12 +34,14 @@ const styles = ({
 
   if (fullWidth) {
     width = '100%';
+    textStyles.flex = 1;
   }
 
   return StyleSheet.create({
     container: {
       borderRadius: theme.borderRadius,
       width,
+      alignSelf: align,
       ...marginHandler(margin),
     },
     button: {
@@ -48,13 +51,13 @@ const styles = ({
       paddingVertical: theme.spacing(1),
       width,
       flexDirection: 'row',
+      alignSelf: align,
     },
     text: {
       ...textStyles,
       alignSelf: 'center',
       fontSize: theme.fontSize(size),
       fontWeight: String(weight),
-      flex: 1,
       textAlign,
     },
     icon: {

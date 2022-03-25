@@ -111,7 +111,7 @@ const LocationModal = ({ closeModal }) => {
           </Button>
         )}
 
-        <Button onPress={closeModal} margin={{ top: 2 }}>
+        <Button fullWidth onPress={closeModal} margin={{ top: 2 }}>
           Fechar
         </Button>
       </View>
