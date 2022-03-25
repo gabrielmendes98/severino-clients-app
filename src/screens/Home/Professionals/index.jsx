@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import HorizontalScroll from 'components/Views/HorizontalScroll';
+import HorizontalScroll from 'components/HorizontalScroll';
 import Professional from './Professional';
 
 const Professionals = ({ professionals }) => (

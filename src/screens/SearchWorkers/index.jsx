@@ -8,9 +8,10 @@ import theme from 'common/styles/theme';
 import Professional from 'templates/Professional';
 import Button from 'components/Button';
 import Text from 'components/Text';
+import withModal from 'components/Modal/withModal';
 import { prepareProfessionals } from './util';
 
-const SearchWorkers = ({ route }) => {
+const SearchWorkers = ({ route, showModal }) => {
   const [workers, setWorkers] = useState([]);
 
   useFocusEffect(
@@ -54,4 +55,4 @@ SearchWorkers.propTypes = {
   route: PropTypes.object,
 };
 
-export default SearchWorkers;
+export default withModal(SearchWorkers);
