@@ -16,6 +16,7 @@ import useLocation from 'common/contexts/Location/useLocation';
 import toast from 'common/util/toast';
 import Button from 'components/Button';
 import Text from 'components/Text';
+import Container from 'components/Container';
 import styles, { selectedItemStyle, selectedItemTextColor } from './style';
 
 const LocationModal = ({ closeModal }) => {
@@ -54,7 +55,7 @@ const LocationModal = ({ closeModal }) => {
   );
 
   return (
-    <View style={styles.container}>
+    <Container horizontalSpacing={false}>
       <Text
         color="primary"
         size={1.3}
@@ -115,7 +116,7 @@ const LocationModal = ({ closeModal }) => {
           Fechar
         </Button>
       </View>
-    </View>
+    </Container>
   );
 };
 

@@ -3,10 +3,6 @@ import theme from 'common/styles/theme';
 import { SAFE_SPACING } from 'common/constants';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginVertical: theme.spacing(SAFE_SPACING),
-  },
   wrapper: {
     paddingHorizontal: theme.spacing(SAFE_SPACING),
   },
