@@ -7,18 +7,22 @@ import Button from 'components/Button';
 
 const Buttons = ({ actions, handleClose }) => (
   <View style={styles.container}>
-    {actions.map(({ onClick, skipClose, label, ...btnProps }) => (
-      <Button
-        key={label}
-        onPress={() => {
-          if (onClick) onClick(handleClose);
-          if (!skipClose) handleClose();
-        }}
-        {...btnProps}
-      >
-        {label}
-      </Button>
-    ))}
+    {actions.map(
+      ({ onPress, skipClose, label, fullWidth = true, ...btnProps }) => (
+        <Button
+          key={label}
+          onPress={() => {
+            if (onPress) onPress(handleClose);
+            if (!skipClose) handleClose();
+          }}
+          fullWidth={fullWidth}
+          margin={{ top: 2 }}
+          {...btnProps}
+        >
+          {label}
+        </Button>
+      ),
+    )}
   </View>
 );
 

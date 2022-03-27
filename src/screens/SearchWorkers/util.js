@@ -6,4 +6,6 @@ const prepareProfessionals = professionals =>
     services: profile.services.map(item => item.service.name).join(', '),
   }));
 
-export { prepareProfessionals };
+const orderByOptions = [{ label: 'Melhor avaliação', name: 'bestRating' }];
+
+export { prepareProfessionals, orderByOptions };

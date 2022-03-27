@@ -6,13 +6,18 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 import servicesService from 'api/services/services';
 import theme from 'common/styles/theme';
 import Professional from 'templates/Professional';
+import showOrderByModal from 'templates/OrderByModal/showModal';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import withModal from 'components/Modal/withModal';
-import { prepareProfessionals } from './util';
+import { orderByOptions, prepareProfessionals } from './util';
 
 const SearchWorkers = ({ route, showModal }) => {
   const [workers, setWorkers] = useState([]);
+  const [order, setOrder] = useState({});
+
+  const handleOrderBy = () =>
+    showOrderByModal({ showModal, options: orderByOptions, setOrder, order });
 
   useFocusEffect(
     useCallback(() => {
@@ -39,7 +44,7 @@ const SearchWorkers = ({ route, showModal }) => {
           />
         }
         margin={{ bottom: 3 }}
-        onPress={() => console.log('filter')}
+        onPress={handleOrderBy}
       >
         Ordenar por
       </Button>
@@ -53,6 +58,7 @@ const SearchWorkers = ({ route, showModal }) => {
 
 SearchWorkers.propTypes = {
   route: PropTypes.object,
+  showModal: PropTypes.func,
 };
 
 export default withModal(SearchWorkers);
