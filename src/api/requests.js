@@ -25,6 +25,8 @@ const requests = baseApi => ({
   update(path, options = {}) {
     return baseApi.request(path, { ...options, method: 'PUT' });
   },
+
+  ...baseApi,
 });
 
 export default requests;
