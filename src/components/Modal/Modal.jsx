@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal as RNModal, StyleSheet } from 'react-native';
+import RNModal from 'react-native-modal';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import theme from 'common/styles/theme';
 import Text from 'components/Text';
 
+import createStyles from './style';
 import renderButtons from './renderButtons';
 
 const Modal = ({
@@ -13,15 +13,25 @@ const Modal = ({
   actions,
   body: Body,
   closeModal,
+  isOpen,
+  fullScreen,
+  height,
   ...other
 }) => {
   const getButtons = renderButtons(closeModal);
   const bodyContent = Body ? (
     <Body {...other} closeModal={closeModal} renderButtons={getButtons} />
   ) : null;
+  const styles = createStyles({ fullScreen, height });
 
   return (
-    <RNModal animationType="slide">
+    <RNModal
+      isVisible={isOpen}
+      style={styles.modal}
+      useNativeDriver
+      onBackdropPress={closeModal}
+      {...other}
+    >
       <SafeAreaView style={styles.container}>
         {Boolean(title) && <Text testID="modal-title">{title}</Text>}
 
@@ -35,12 +45,10 @@ const Modal = ({
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: theme.colors.background.main,
-    flex: 1,
-  },
-});
+Modal.defaultProps = {
+  fullScreen: true,
+  height: 50,
+};
 
 Modal.propTypes = {
   actions: PropTypes.array.isRequired,
@@ -48,6 +56,9 @@ Modal.propTypes = {
   closeModal: PropTypes.func.isRequired,
   message: PropTypes.string,
   title: PropTypes.string,
+  isOpen: PropTypes.bool,
+  fullScreen: PropTypes.bool,
+  height: PropTypes.number,
 };
 
 export default Modal;

@@ -62,7 +62,7 @@ const withModal = WrappedComponent => {
           showModal={handleShow}
         />
 
-        {isOpen && <Modal closeModal={handleClose} {...modalData} />}
+        <Modal closeModal={handleClose} isOpen={isOpen} {...modalData} />
       </>
     );
   };
