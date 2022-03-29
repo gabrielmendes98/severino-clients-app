@@ -4,4 +4,14 @@ const setApiHeaders = (header, value) => {
   baseApi.defaults.headers[header] = value;
 };
 
-export { setApiHeaders };
+const parseParams = ({ order, ...other }) => {
+  let params = {};
+
+  if (order) {
+    params = { ...params, sort: order };
+  }
+
+  return { ...params, ...other };
+};
+
+export { setApiHeaders, parseParams };

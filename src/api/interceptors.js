@@ -3,22 +3,20 @@ import toast from 'common/util/toast';
 import { DEFAULT_ERROR_MESSAGE } from 'common/constants';
 import * as RootNavigation from 'navigation/RootNavigation';
 
-const locationInterceptor = (path, options) => {
+const locationInterceptor = options => {
   if (options.needLocation) {
     if (store.location) {
-      if (path.includes('?')) {
-        path = `${path}&location=${store.location}`;
-      } else {
-        path = `${path}?location=${store.location}`;
-      }
-      return path;
+      return {
+        ...options,
+        params: { ...options.params, location: store.location },
+      };
     }
 
     toast.error('Informe sua localização acima');
     return null;
   }
 
-  return path;
+  return options;
 };
 
 const handleError = error => {

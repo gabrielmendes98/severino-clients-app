@@ -14,18 +14,19 @@ import { orderByOptions, prepareProfessionals } from './util';
 
 const SearchWorkers = ({ route, showModal }) => {
   const [workers, setWorkers] = useState([]);
-  const [order, setOrder] = useState({});
+  const [order, setOrder] = useState();
 
   const handleOrderBy = () =>
     showOrderByModal({ showModal, options: orderByOptions, setOrder, order });
 
   useFocusEffect(
     useCallback(() => {
+      const params = { order };
       servicesService
-        .searchWorkers(route.params?.serviceId)
+        .searchWorkers(route.params?.serviceId, params)
         .then(prepareProfessionals)
         .then(setWorkers);
-    }, [route.params?.serviceId]),
+    }, [route.params?.serviceId, order]),
   );
 
   return (

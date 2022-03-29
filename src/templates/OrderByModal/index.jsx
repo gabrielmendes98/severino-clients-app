@@ -13,7 +13,7 @@ const OrderByModal = ({
 }) => {
   const [selected, setSelected] = useState(initialSelected);
 
-  const onSelect = name => checked => setSelected({ [name]: checked });
+  const onSelect = name => checked => setSelected(checked ? name : null);
 
   const onConfirm = () => setOrder(selected);
 
@@ -28,7 +28,7 @@ const OrderByModal = ({
         renderItem={({ item: { label, name } }) => (
           <Checkbox
             label={label}
-            checked={selected[name]}
+            checked={selected === name}
             onValueChange={onSelect(name)}
           />
         )}
@@ -52,7 +52,7 @@ OrderByModal.propTypes = {
   ),
   setOrder: PropTypes.func.isRequired,
   renderButtons: PropTypes.func.isRequired,
-  initialSelected: PropTypes.object.isRequired,
+  initialSelected: PropTypes.string,
 };
 
 export default OrderByModal;

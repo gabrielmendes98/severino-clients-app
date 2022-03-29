@@ -6,11 +6,12 @@ const requests = baseApi => ({
   },
 
   get(path, options = {}) {
-    const newPath = locationInterceptor(path, options);
-    if (!newPath) {
+    const newOptions = locationInterceptor(options);
+    if (!newOptions) {
       return Promise.reject();
     }
-    return baseApi.request(newPath, { ...options, data: null });
+
+    return baseApi.request(path, { ...newOptions, data: null });
   },
 
   post(path, options = {}) {
