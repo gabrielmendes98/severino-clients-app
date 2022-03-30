@@ -21,7 +21,7 @@ const Professional = ({ professional }) => (
       <View style={styles.evaluation}>
         <FontAwesomeIcons color={theme.colors.primary} name="star" size={20} />
         <Text color="primary" margin={{ left: 0.5 }} weight="bold">
-          {professional.rating}
+          {professional.rating || 'Novo usuário'}
         </Text>
       </View>
 
@@ -36,9 +36,7 @@ const Professional = ({ professional }) => (
       <View style={styles.actions}>
         <FavoriteButton
           workerId={professional.id}
-          initialFavorite={Boolean(
-            professional.customerWorkerFavorites?.length,
-          )}
+          initialFavorite={Boolean(professional.isFavorite)}
         />
         {professional.hasWhatsapp && (
           <>

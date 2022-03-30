@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import professionalsService from 'api/services/professionals';
 import servicesService from 'api/services/services';
 import toast from 'common/util/toast';
@@ -31,13 +32,17 @@ const Home = ({ navigation }) => {
   };
 
   useEffect(() => {
-    professionalsService
-      .listRecent()
-      .then(prepareProfessionals)
-      .then(setProfessionals);
-
     servicesService.listMostSearched().then(setServices);
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      professionalsService
+        .listRecent()
+        .then(prepareProfessionals)
+        .then(setProfessionals);
+    }, []),
+  );
 
   return (
     <View>

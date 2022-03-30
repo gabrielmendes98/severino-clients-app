@@ -6,8 +6,8 @@ const routes = {
 };
 
 const usersService = {
-  create: data => baseApi.post(routes.create, { data }),
-  login: data => baseApi.post(routes.login, { data }),
+  create: data => baseApi.post(routes.create, data),
+  login: data => baseApi.post(routes.login, data),
 };
 
 export { routes as usersServiceRoutes };

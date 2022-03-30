@@ -1,9 +1,8 @@
 const prepareProfessionals = professionals =>
-  professionals.map(({ name, rating, profile, ...rest }) => ({
+  professionals.map(({ profile, customerWorkerFavorites, ...rest }) => ({
     ...rest,
-    name: name.toUpperCase(),
-    rating: rating || 'Novo Usuário',
     services: profile.services.map(item => item.service.name).join(', '),
+    isFavorite: Boolean(customerWorkerFavorites?.length),
   }));
 
 const orderByOptions = [{ label: 'Melhor avaliação', name: 'bestRating' }];

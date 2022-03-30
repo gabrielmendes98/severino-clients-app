@@ -14,14 +14,14 @@ const Professional = ({ professional }) => (
     {professional.avatarUrl ? (
       <Image source={{ uri: professional.avatarUrl }} style={styles.avatar} />
     ) : (
-      <TextAvatar text={professional.name} />
+      <TextAvatar text={professional.name.toUppercase()} />
     )}
 
     <View style={styles.card}>
       <View style={styles.evaluation}>
         <FontAwesomeIcons color={theme.colors.primary} name="star" size={20} />
         <Text color="primary" margin={{ left: 0.5 }} weight="bold">
-          {professional.rating}
+          {professional.rating || 'Novo usuário'}
         </Text>
       </View>
 
@@ -36,9 +36,7 @@ const Professional = ({ professional }) => (
       <View style={styles.actions}>
         <FavoriteButton
           workerId={professional.id}
-          initialFavorite={Boolean(
-            professional.customerWorkerFavorites?.length,
-          )}
+          initialFavorite={professional.isFavorite}
         />
         {professional.hasWhatsapp && (
           <>
