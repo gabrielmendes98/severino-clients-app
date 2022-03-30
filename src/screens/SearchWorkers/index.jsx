@@ -5,6 +5,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import servicesService from 'api/services/services';
 import theme from 'common/styles/theme';
+import { useFavorite, withFavorite } from 'common/contexts/Favorite';
 import Professional from 'templates/Professional';
 import showOrderByModal from 'templates/OrderByModal/showModal';
 import Button from 'components/Button';
@@ -13,8 +14,9 @@ import withModal from 'components/Modal/withModal';
 import { orderByOptions, prepareProfessionals } from './util';
 
 const SearchWorkers = ({ route, showModal }) => {
-  const [workers, setWorkers] = useState([]);
+  const [professionals, setProfessionals] = useState([]);
   const [order, setOrder] = useState();
+  const { setFavorites } = useFavorite();
 
   const handleOrderBy = () =>
     showOrderByModal({ showModal, options: orderByOptions, setOrder, order });
@@ -25,8 +27,11 @@ const SearchWorkers = ({ route, showModal }) => {
       servicesService
         .searchWorkers(route.params?.serviceId, params)
         .then(prepareProfessionals)
-        .then(setWorkers);
-    }, [route.params?.serviceId, order]),
+        .then(([preparedProfessionals, favorites]) => {
+          setProfessionals(preparedProfessionals);
+          setFavorites(favorites);
+        });
+    }, [order, route.params?.serviceId, setFavorites]),
   );
 
   return (
@@ -50,7 +55,7 @@ const SearchWorkers = ({ route, showModal }) => {
         Ordenar por
       </Button>
 
-      {workers.map(worker => (
+      {professionals.map(worker => (
         <Professional key={worker.id} professional={worker} />
       ))}
     </View>
@@ -62,4 +67,4 @@ SearchWorkers.propTypes = {
   showModal: PropTypes.func,
 };
 
-export default withModal(SearchWorkers);
+export default withModal(withFavorite(SearchWorkers));

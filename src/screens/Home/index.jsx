@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import professionalsService from 'api/services/professionals';
 import servicesService from 'api/services/services';
+import { withFavorite, useFavorite } from 'common/contexts/Favorite';
 import toast from 'common/util/toast';
 import Text from 'components/Text';
 import SearchInput from 'components/Input/Search';
@@ -16,6 +17,7 @@ const Home = ({ navigation }) => {
   const [professionals, setProfessionals] = useState();
   const [services, setServices] = useState();
   const [searchValue, setSearchValue] = useState('');
+  const { setFavorites } = useFavorite();
 
   const handleSearch = () => {
     if (!searchValue) {
@@ -40,8 +42,11 @@ const Home = ({ navigation }) => {
       professionalsService
         .listRecent()
         .then(prepareProfessionals)
-        .then(setProfessionals);
-    }, []),
+        .then(([preparedProfessionals, favorites]) => {
+          setProfessionals(preparedProfessionals);
+          setFavorites(favorites);
+        });
+    }, [setFavorites]),
   );
 
   return (
@@ -80,4 +85,4 @@ Home.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default Home;
+export default withFavorite(Home);

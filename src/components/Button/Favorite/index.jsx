@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import theme from 'common/styles/theme';
 import professionalsService from 'api/services/professionals';
+import { useFavorite } from 'common/contexts/Favorite';
 
-const FavoriteButton = ({ workerId, initialFavorite }) => {
-  const [isFavorite, setIsFavorite] = useState(initialFavorite);
+const FavoriteButton = ({ workerId }) => {
+  const { favorites, updateFavorite } = useFavorite();
 
   const favorite = () =>
     professionalsService
       .favorite(workerId)
-      .then(({ favorited }) => setIsFavorite(favorited));
+      .then(({ favorited }) => updateFavorite(workerId, favorited));
 
-  return isFavorite ? (
+  return favorites[workerId] ? (
     <FontAwesomeIcons
       onPress={favorite}
       color={theme.colors.red}
@@ -31,7 +32,6 @@ const FavoriteButton = ({ workerId, initialFavorite }) => {
 
 FavoriteButton.propTypes = {
   workerId: PropTypes.string.isRequired,
-  initialFavorite: PropTypes.bool,
 };
 
 export default FavoriteButton;

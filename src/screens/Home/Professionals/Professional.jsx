@@ -34,10 +34,7 @@ const Professional = ({ professional }) => (
       </Text>
 
       <View style={styles.actions}>
-        <FavoriteButton
-          workerId={professional.id}
-          initialFavorite={Boolean(professional.isFavorite)}
-        />
+        <FavoriteButton workerId={professional.id} />
         {professional.hasWhatsapp && (
           <>
             <Text color="light" size={1.3}>
