@@ -4,11 +4,11 @@ import { View, TouchableOpacity } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import theme from 'common/styles/theme';
 import useLocation from 'common/contexts/Location/useLocation';
+import showLocationModal from 'templates/LocationModal/showModal';
 import Logo from 'components/Icons/Logo';
 import BackButton from 'components/Button/Back';
 import withModal from 'components/Modal/withModal';
 import Text from 'components/Text';
-import showLocationModal from 'templates/LocationModal/showModal';
 import styles from './style';
 
 const Header = ({ showModal, back }) => {
