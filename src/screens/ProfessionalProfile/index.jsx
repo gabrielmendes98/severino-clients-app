@@ -39,11 +39,15 @@ const ProfessionalProfile = () => {
     }, [route.params?.workerId, setFavorites]),
   );
 
+  console.log(data);
+
   return (
     <View>
       <View style={styles.header}>
+        <View style={styles.box}>
+          <FavoriteButton workerId={data.id} />
+        </View>
         <Image source={{ uri: data.avatarUrl }} style={styles.avatar} />
-        <FavoriteButton workerId={data.id} />
       </View>
 
       <Text>{data.name}</Text>

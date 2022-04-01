@@ -3,6 +3,7 @@ import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import SearchServices from 'screens/SearchServices';
 import SearchWorkers from 'screens/SearchWorkers';
 import ProfessionalProfile from 'screens/ProfessionalProfile';
+import ProfessionalProfileLayout from 'screens/ProfessionalProfile/Layout';
 import Main from 'components/Main';
 import { createStack } from 'navigation/util';
 
@@ -16,13 +17,12 @@ const searchStackRoutes = [
     name: 'Workers',
     component: SearchWorkers,
     layout: Main,
-    back: true,
+    layoutProps: { back: true },
   },
   {
     name: 'ProfessionalProfile',
     component: ProfessionalProfile,
-    layout: Main,
-    back: true,
+    layout: ProfessionalProfileLayout,
   },
 ];
 

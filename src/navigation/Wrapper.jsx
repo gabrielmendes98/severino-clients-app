@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 
 const wrapper =
-  ({ component: Component, layout: Layout = View, back }) =>
+  ({ component: Component, layout: Layout = View, layoutProps }) =>
   props =>
     (
-      <Layout style={styles.layout} back={back}>
+      <Layout style={styles.layout} {...layoutProps}>
         <Component {...props} />
       </Layout>
     );
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 wrapper.propTypes = {
   component: PropTypes.node.isRequired,
   layout: PropTypes.node,
-  back: PropTypes.bool,
+  layoutProps: PropTypes.object,
 };
 
 export default wrapper;

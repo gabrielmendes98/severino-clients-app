@@ -5,7 +5,7 @@ import theme from 'common/styles/theme';
 import professionalsService from 'api/services/professionals';
 import { useFavorite } from 'common/contexts/Favorite';
 
-const FavoriteButton = ({ workerId }) => {
+const FavoriteButton = ({ workerId, style }) => {
   const { favorites, updateFavorite } = useFavorite();
 
   const favorite = () =>
@@ -19,6 +19,7 @@ const FavoriteButton = ({ workerId }) => {
       color={theme.colors.red}
       name="heart"
       size={20}
+      style={style}
     />
   ) : (
     <FontAwesomeIcons
@@ -26,12 +27,14 @@ const FavoriteButton = ({ workerId }) => {
       color={theme.colors.black}
       name="heart-o"
       size={20}
+      style={style}
     />
   );
 };
 
 FavoriteButton.propTypes = {
   workerId: PropTypes.string.isRequired,
+  style: PropTypes.object,
 };
 
 export default FavoriteButton;

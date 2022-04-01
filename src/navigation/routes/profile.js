@@ -17,13 +17,13 @@ const profileStackRoutes = [
     name: 'SignUp',
     component: SignUp,
     layout: Main,
-    back: true,
+    layoutProps: { back: true },
   },
   {
     name: 'Login',
     component: Login,
     layout: Main,
-    back: true,
+    layoutProps: { back: true },
   },
 ];
 
