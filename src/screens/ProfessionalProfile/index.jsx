@@ -1,6 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React, { useState, useCallback } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, FlatList } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import { useFocusEffect, useRoute } from '@react-navigation/native';
 import theme from 'common/styles/theme';
@@ -78,7 +78,16 @@ const ProfessionalProfile = () => {
       </View>
 
       <SectionTitle>Meus trabalhos</SectionTitle>
-      {/* LISTA HORIZONTAL passando data.workPhotos */}
+      <FlatList
+        data={data.workPhotos}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <Image source={{ uri: item.url }} style={styles.workPhoto} />
+        )}
+        horizontal
+        style={styles.workPhotos}
+        contentContainerStyle={styles.workPhotosWrapper}
+      />
 
       <SectionTitle>Experiência</SectionTitle>
       {data.experiences?.map(experience => (
