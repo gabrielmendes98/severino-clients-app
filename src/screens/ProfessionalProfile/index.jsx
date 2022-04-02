@@ -14,9 +14,9 @@ import Button from 'components/Button';
 import styles from './style';
 
 // eslint-disable-next-line react/prop-types
-const SectionTitle = ({ title }) => (
-  <Text size={1.2} color="primary">
-    {title}
+const SectionTitle = ({ children }) => (
+  <Text size={1.1} weight="600" color="primary">
+    {children}
   </Text>
 );
 
