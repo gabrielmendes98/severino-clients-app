@@ -39,8 +39,6 @@ const ProfessionalProfile = () => {
     }, [route.params?.workerId, setFavorites]),
   );
 
-  console.log(data);
-
   return (
     <View>
       <View style={styles.header}>
@@ -50,13 +48,15 @@ const ProfessionalProfile = () => {
         <Image source={{ uri: data.avatarUrl }} style={styles.avatar} />
       </View>
 
-      <Text>{data.name}</Text>
-      <Stars length={data.rating} />
+      <Text align="center" size={1.2} margin={{ bottom: 0.5 }}>
+        {data.name}
+      </Text>
+      <Stars justify="center" length={data.rating} />
 
       <View style={styles.numberLocation}>
         <View style={styles.align}>
           {data.hasWhatsapp && <WhatsappButton phone={data.phone} />}
-          <Text>{data.phone}</Text>
+          <Text margin={{ left: 1 }}>{data.phone}</Text>
         </View>
 
         <View style={styles.align}>
@@ -65,11 +65,13 @@ const ProfessionalProfile = () => {
             name="map-marker"
             size={theme.fontSize(2)}
           />
-          <Text>{data.location}</Text>
+          <Text margin={{ left: 1 }}>{data.location}</Text>
         </View>
       </View>
 
-      <Text>{data.services?.join(' | ')}</Text>
+      <Text align="center" color="light">
+        {data.services?.join(' | ')}
+      </Text>
 
       <View style={styles.description}>
         <Text>{data.description}</Text>

@@ -3,9 +3,18 @@ import PropTypes from 'prop-types';
 import { Text as RNText } from 'react-native';
 import styles from './style';
 
-const Text = ({ children, style, size, color, weight, margin, ...props }) => {
+const Text = ({
+  children,
+  style,
+  size,
+  color,
+  weight,
+  margin,
+  align,
+  ...props
+}) => {
   const customStyle = useMemo(
-    () => styles({ size, color, weight, margin }),
+    () => styles({ size, color, weight, margin, align }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [color, size, weight],
   );
@@ -15,6 +24,10 @@ const Text = ({ children, style, size, color, weight, margin, ...props }) => {
       {children}
     </RNText>
   );
+};
+
+Text.defaultProps = {
+  align: 'auto',
 };
 
 Text.propTypes = {
@@ -29,6 +42,7 @@ Text.propTypes = {
   size: PropTypes.number,
   style: PropTypes.object,
   weight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  align: PropTypes.oneOf(['auto', 'left', 'right', 'center', 'justify']),
 };
 
 export default Text;

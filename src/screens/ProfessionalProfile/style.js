@@ -26,9 +26,23 @@ const styles = StyleSheet.create({
     width: theme.spacing(12),
     zIndex: 1,
   },
-  numberLocation: {},
-  align: {},
-  description: {},
+  numberLocation: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: theme.spacing(2.5),
+    marginBottom: theme.spacing(3),
+  },
+  align: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  description: {
+    marginTop: theme.spacing(2),
+    borderLeftWidth: theme.spacing(0.5),
+    borderLeftColor: theme.colors.primary,
+    paddingLeft: theme.spacing(1),
+  },
   whiteBox: {},
 });
 
