@@ -44,7 +44,12 @@ const styles = StyleSheet.create({
     paddingLeft: theme.spacing(1),
     marginBottom: theme.spacing(3),
   },
-  whiteBox: {},
+  whiteBox: {
+    padding: theme.spacing(1.5),
+    backgroundColor: theme.colors.white,
+    marginBottom: theme.spacing(1.5),
+    borderRadius: theme.borderRadius,
+  },
   workPhoto: {
     borderRadius: theme.borderRadius,
     height: theme.spacing(30),
@@ -57,6 +62,7 @@ const styles = StyleSheet.create({
   },
   workPhotosWrapper: {
     marginLeft: theme.spacing(SAFE_SPACING),
+    paddingRight: theme.spacing(SAFE_SPACING),
   },
 });
 

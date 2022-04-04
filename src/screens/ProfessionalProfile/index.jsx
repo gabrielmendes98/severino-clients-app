@@ -6,6 +6,8 @@ import { useFocusEffect, useRoute } from '@react-navigation/native';
 import theme from 'common/styles/theme';
 import professionalsService from 'api/services/professionals';
 import { useFavorite, withFavorite } from 'common/contexts/Favorite';
+import { formatPhone } from 'common/util/formatters';
+import useUser from 'common/contexts/User/useUser';
 import FavoriteButton from 'components/Button/Favorite';
 import Text from 'components/Text';
 import WhatsappButton from 'components/Button/Whatsapp';
@@ -14,8 +16,8 @@ import Button from 'components/Button';
 import styles from './style';
 
 // eslint-disable-next-line react/prop-types
-const SectionTitle = ({ children }) => (
-  <Text size={1.1} weight="600" color="primary">
+const SectionTitle = ({ children, margin }) => (
+  <Text size={1.1} weight="600" color="primary" margin={margin}>
     {children}
   </Text>
 );
@@ -24,6 +26,7 @@ const ProfessionalProfile = () => {
   const route = useRoute();
   const [data, setData] = useState({});
   const { setFavorites } = useFavorite();
+  const { signedPress } = useUser();
 
   const seeReviews = () => console.log('seeReviews');
   const reviewProfessional = () => console.log('reviewProfessional');
@@ -38,6 +41,8 @@ const ProfessionalProfile = () => {
       });
     }, [route.params?.workerId, setFavorites]),
   );
+
+  console.log(data);
 
   return (
     <View>
@@ -56,7 +61,7 @@ const ProfessionalProfile = () => {
       <View style={styles.numberLocation}>
         <View style={styles.align}>
           {data.hasWhatsapp && <WhatsappButton phone={data.phone} />}
-          <Text margin={{ left: 1 }}>{data.phone}</Text>
+          <Text margin={{ left: 1 }}>{formatPhone(data.phone)}</Text>
         </View>
 
         <View style={styles.align}>
@@ -89,7 +94,7 @@ const ProfessionalProfile = () => {
         contentContainerStyle={styles.workPhotosWrapper}
       />
 
-      <SectionTitle>Experiência</SectionTitle>
+      <SectionTitle margin={{ bottom: 2 }}>Experiência</SectionTitle>
       {data.experiences?.map(experience => (
         <View style={styles.whiteBox} key={experience.id}>
           <Text color="light">{experience.role}</Text>
@@ -98,18 +103,18 @@ const ProfessionalProfile = () => {
         </View>
       ))}
 
-      <SectionTitle>Formação Acadêmica</SectionTitle>
+      <SectionTitle margin={{ bottom: 2 }}>Formação Acadêmica</SectionTitle>
       {data.academicGraduations?.map(graduation => (
         <View style={styles.whiteBox} key={graduation.id}>
           <Text color="light">{graduation.degree.description}</Text>
-          {graduation.studyArea && (
+          {Boolean(graduation.studyArea) && (
             <Text color="light">{graduation.studyArea}</Text>
           )}
           <Text color="light">{graduation.institution}</Text>
         </View>
       ))}
 
-      <SectionTitle>Competências</SectionTitle>
+      <SectionTitle margin={{ bottom: 2 }}>Competências</SectionTitle>
       {data.skills?.map(skill => (
         <View style={styles.whiteBox} key={skill.id}>
           <Text color="light">{skill.name}</Text>
@@ -119,7 +124,11 @@ const ProfessionalProfile = () => {
       <Button fullWidth onPress={seeReviews} margin={{ bottom: 2 }}>
         Ver avaliações
       </Button>
-      <Button fullWidth variant="outlined" onPress={reviewProfessional}>
+      <Button
+        fullWidth
+        variant="outlined"
+        onPress={signedPress(reviewProfessional)}
+      >
         Avaliar
       </Button>
     </View>

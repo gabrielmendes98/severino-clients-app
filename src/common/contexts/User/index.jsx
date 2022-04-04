@@ -5,6 +5,7 @@ import AppLoading from 'expo-app-loading';
 import usersService from 'api/services/user';
 import { setToken, getToken, removeToken } from 'common/util/storage';
 import { setApiHeaders } from 'api/util';
+import toast from 'common/util/toast';
 
 const UserContext = createContext();
 UserContext.displayName = 'UserContext';
@@ -36,6 +37,15 @@ const UserProvider = ({ children }) => {
     return removeToken();
   };
 
+  const signedPress = callback => () => {
+    if (user) {
+      callback();
+      return;
+    }
+
+    toast.error('Você precisa estar logado para realizar essa ação');
+  };
+
   useEffect(() => {
     getToken().then(token => {
       if (token) {
@@ -48,7 +58,16 @@ const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <Provider value={{ user, signed: Boolean(user), signUp, login, logout }}>
+    <Provider
+      value={{
+        user,
+        signed: Boolean(user),
+        signUp,
+        login,
+        logout,
+        signedPress,
+      }}
+    >
       {loading ? <AppLoading /> : children}
     </Provider>
   );
