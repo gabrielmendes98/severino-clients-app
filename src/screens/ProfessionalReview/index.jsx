@@ -4,9 +4,11 @@ import { View } from 'react-native';
 import professionalsService from 'api/services/professionals';
 import Form from 'common/providers/Form';
 import toast from 'common/util/toast';
+import theme from 'common/styles/theme';
 import TextInput from 'components/Input/TextInput';
 import Text from 'components/Text';
 import Button from 'components/Button';
+import { INPUT_HEIGHT } from 'components/Input/TextInput/style';
 import Stars from 'components/Stars';
 import { form } from './util';
 
@@ -50,10 +52,14 @@ const ProfessionalReview = () => {
               name="comment"
               multiline
               onContentSizeChange={e => {
-                console.log(e.nativeEvent.contentSize.height);
                 setTextHeight(e.nativeEvent.contentSize.height);
               }}
-              style={{ height: Math.max(35, textHeight) }}
+              style={{ height: Math.max(INPUT_HEIGHT, textHeight) }}
+              containerProps={{
+                style: {
+                  height: Math.max(INPUT_HEIGHT, textHeight + theme.spacing(2)),
+                },
+              }}
             />
 
             <Button

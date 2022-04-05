@@ -17,6 +17,7 @@ const TextInput = ({
   name,
   rules,
   style,
+  containerProps: { style: containerStyle, ...containerProps },
   ...props
 }) => {
   const { control } = useForm();
@@ -44,7 +45,10 @@ const TextInput = ({
                 {error.message}
               </Text>
             )}
-            <View style={styles.container}>
+            <View
+              style={[styles.container, containerStyle]}
+              {...containerProps}
+            >
               {Boolean(icon) && icon}
 
               <RNTextInput
@@ -67,6 +71,7 @@ const TextInput = ({
 
 TextInput.defaultProps = {
   rules: {},
+  containerProps: {},
 };
 
 TextInput.propTypes = {
@@ -81,6 +86,7 @@ TextInput.propTypes = {
   name: PropTypes.string.isRequired,
   rules: PropTypes.object,
   style: PropTypes.object,
+  containerProps: PropTypes.object,
 };
 
 export default TextInput;
