@@ -13,7 +13,7 @@ const Form = ({ defaultValues, validations, children }) => {
   const bag = {
     control,
     handleSubmit,
-    restForm,
+    ...restForm,
   };
 
   return <Provider value={bag}>{children(bag)}</Provider>;

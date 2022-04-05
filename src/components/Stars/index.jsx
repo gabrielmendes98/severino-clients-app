@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import IonIcons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import theme from 'common/styles/theme';
 import styles from './style';
 
@@ -17,22 +17,23 @@ const starsArray = length => {
       array.push('star-half');
       total--;
     } else {
-      array.push('star-outline');
+      array.push('star-border');
     }
   }
 
   return array;
 };
 
-const Stars = ({ length, justify }) => (
+const Stars = ({ length, justify, onPress }) => (
   <View style={[styles.container, { justifyContent: justify }]}>
     {starsArray(length).map((starType, index) => (
-      <IonIcons
+      <MaterialIcons
         key={index}
         name={starType}
-        size={22}
+        size={27}
         color={theme.colors.primary}
         style={styles.star}
+        onPress={() => onPress && onPress(index)}
       />
     ))}
   </View>
@@ -52,6 +53,7 @@ Stars.propTypes = {
     'space-around',
     'space-evenly',
   ]),
+  onPress: PropTypes.func,
 };
 
 export default Stars;

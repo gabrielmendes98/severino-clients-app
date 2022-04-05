@@ -2,7 +2,11 @@
 import React, { useState, useCallback } from 'react';
 import { View, Image, FlatList } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
-import { useFocusEffect, useRoute } from '@react-navigation/native';
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
 import theme from 'common/styles/theme';
 import professionalsService from 'api/services/professionals';
 import { useFavorite, withFavorite } from 'common/contexts/Favorite';
@@ -24,12 +28,20 @@ const SectionTitle = ({ children, margin }) => (
 
 const ProfessionalProfile = () => {
   const route = useRoute();
+  const navigation = useNavigation();
   const [data, setData] = useState({});
   const { setFavorites } = useFavorite();
   const { signedPress } = useUser();
 
   const seeReviews = () => console.log('seeReviews');
-  const reviewProfessional = () => console.log('reviewProfessional');
+  const reviewProfessional = () =>
+    navigation.navigate('Search', {
+      screen: 'ProfessionalReview',
+      params: {
+        workerId: route.params?.workerId,
+        workerName: data?.name,
+      },
+    });
 
   useFocusEffect(
     useCallback(() => {

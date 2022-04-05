@@ -4,6 +4,7 @@ import SearchServices from 'screens/SearchServices';
 import SearchWorkers from 'screens/SearchWorkers';
 import ProfessionalProfile from 'screens/ProfessionalProfile';
 import ProfessionalProfileLayout from 'screens/ProfessionalProfile/Layout';
+import ProfessionalReview from 'screens/ProfessionalReview';
 import Main from 'components/Main';
 import { createStack } from 'navigation/util';
 
@@ -23,6 +24,12 @@ const searchStackRoutes = [
     name: 'ProfessionalProfile',
     component: ProfessionalProfile,
     layout: ProfessionalProfileLayout,
+  },
+  {
+    name: 'ProfessionalReview',
+    component: ProfessionalReview,
+    layout: Main,
+    layoutProps: { back: true },
   },
 ];
 

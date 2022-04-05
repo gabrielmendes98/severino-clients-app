@@ -10,7 +10,15 @@ import useForm from 'common/providers/Form/useForm';
 import Text from 'components/Text';
 import createStyles from './style';
 
-const TextInput = ({ placeholder, margin, icon, name, rules, ...props }) => {
+const TextInput = ({
+  placeholder,
+  margin,
+  icon,
+  name,
+  rules,
+  style,
+  ...props
+}) => {
   const { control } = useForm();
   const inputRef = useRef();
   const styles = useMemo(
@@ -44,7 +52,7 @@ const TextInput = ({ placeholder, margin, icon, name, rules, ...props }) => {
                 onChangeText={onChange}
                 placeholder={placeholder}
                 ref={inputRef}
-                style={styles.input}
+                style={[styles.input, style]}
                 value={value}
                 {...props}
               />
@@ -72,6 +80,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   rules: PropTypes.object,
+  style: PropTypes.object,
 };
 
 export default TextInput;

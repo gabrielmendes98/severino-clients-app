@@ -10,7 +10,7 @@ yup.setLocale({
   },
 });
 
-const resolver = schema => yupResolver(yup.object(schema).required());
+const resolver = schema => schema && yupResolver(yup.object(schema).required());
 
 export { resolver };
 export default yup;
