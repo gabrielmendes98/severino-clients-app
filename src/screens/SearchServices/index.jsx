@@ -8,27 +8,39 @@ import useStateRef from 'common/hooks/useStateRef';
 import SearchInput from 'components/Input/Search';
 import Button from 'components/Button';
 import Text from 'components/Text';
+import Skeleton from 'components/Skeleton';
 import Services from './Services';
+import styles from './style';
 
 const SearchServices = ({ navigation, route }) => {
   const [searchValue, setSearchValue, searchValueRef] = useStateRef('');
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const handleSearch = (search = searchValue) => {
-    if (!search) {
-      toast.error('Digite o serviço que deseja buscar');
-      return;
-    }
+  console.log('render');
 
-    servicesService.search(search).then(servicesFound => {
-      if (servicesFound.length === 0) {
-        toast.error('Nenhum serviço encontrado');
+  const handleSearch = useCallback(
+    (search = searchValue) => {
+      if (!search) {
+        toast.error('Digite o serviço que deseja buscar');
         return;
       }
+      setLoading(true);
 
-      setServices(servicesFound);
-    });
-  };
+      servicesService.search(search).then(servicesFound => {
+        setLoading(false);
+
+        if (servicesFound.length === 0) {
+          toast.error('Nenhum serviço encontrado');
+          return;
+        }
+
+        setServices(servicesFound);
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    [searchValue],
+  );
 
   useFocusEffect(
     useCallback(() => {
@@ -62,7 +74,16 @@ const SearchServices = ({ navigation, route }) => {
         Buscar
       </Button>
 
-      <Services services={services} />
+      <Skeleton
+        ready={!loading}
+        width={12}
+        height={12}
+        length={5}
+        containerStyle={styles.servicesContainer}
+        itemsStyle={styles.serviceContainer}
+      >
+        <Services services={services} />
+      </Skeleton>
     </View>
   );
 };

@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import SkeletonContent from 'react-native-skeleton-content';
 import theme from 'common/styles/theme';
@@ -12,9 +12,15 @@ const Skeleton = ({
   height,
   direction,
   spacing,
+  containerStyle,
+  itemsStyle,
 }) => (
   <SkeletonContent
-    containerStyle={{ flex: 1, flexDirection: direction }}
+    containerStyle={{
+      flex: 1,
+      flexDirection: direction,
+      ...containerStyle,
+    }}
     isLoading={!ready}
     layout={Array.from(Array(length)).map((_, index) => ({
       key: index,
@@ -22,10 +28,12 @@ const Skeleton = ({
       height: theme.spacing(height),
       marginRight: direction === 'row' ? theme.spacing(spacing) : 0,
       marginBottom: direction === 'column' ? theme.spacing(spacing) : 0,
+      ...itemsStyle,
     }))}
     boneColor={theme.colors.lightGrey}
     highlightColor={theme.colors.background.main}
   >
+    {console.log('render skeleton')}
     {children}
   </SkeletonContent>
 );
@@ -36,6 +44,7 @@ Skeleton.defaultProps = {
   height: 10,
   direction: 'row',
   spacing: 1.5,
+  wrap: false,
 };
 
 Skeleton.propTypes = {
@@ -46,6 +55,11 @@ Skeleton.propTypes = {
   height: PropTypes.number,
   direction: PropTypes.oneOf(['row', 'column']),
   spacing: PropTypes.number,
+  containerStyle: PropTypes.object,
+  itemsStyle: PropTypes.object,
 };
 
-export default Skeleton;
+export default memo(
+  Skeleton,
+  (prevProps, nextProps) => prevProps.ready === nextProps.ready,
+);

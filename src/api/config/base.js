@@ -29,7 +29,11 @@ const base = (baseURL, config = {}) => {
 
     if (mergedOptions.needLocation) {
       if (store.location) {
-        mergedOptions.params.location = store.location;
+        if (mergedOptions.params) {
+          mergedOptions.params.location = store.location;
+        } else {
+          mergedOptions.params = { location: store.location };
+        }
       } else {
         toast.error('Informe sua localização acima');
         return Promise.reject();
