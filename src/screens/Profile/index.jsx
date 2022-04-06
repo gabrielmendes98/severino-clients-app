@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import useUser from 'common/contexts/User/useUser';
 import theme from 'common/styles/theme';
@@ -8,8 +9,13 @@ import Button from 'components/Button';
 
 const Profile = () => {
   const { user, logout } = useUser();
+  const navigation = useNavigation();
 
   const handleLogout = () => logout();
+  const handleChangePassword = () =>
+    navigation.navigate('User', {
+      screen: 'ChangePassword',
+    });
 
   return (
     <View>
@@ -28,6 +34,7 @@ const Profile = () => {
             color={theme.colors.white}
           />
         }
+        onPress={handleChangePassword}
       >
         Mudar senha
       </Button>

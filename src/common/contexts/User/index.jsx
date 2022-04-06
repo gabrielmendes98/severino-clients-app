@@ -37,6 +37,8 @@ const UserProvider = ({ children }) => {
     return removeToken();
   };
 
+  const changePassword = data => usersService.update(data);
+
   const signedPress = callback => () => {
     if (user) {
       callback();
@@ -66,6 +68,7 @@ const UserProvider = ({ children }) => {
         login,
         logout,
         signedPress,
+        changePassword,
       }}
     >
       {loading ? <AppLoading /> : children}

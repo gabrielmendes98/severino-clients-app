@@ -4,6 +4,7 @@ import Join from 'screens/Join';
 import SignUp from 'screens/SignUp';
 import Profile from 'screens/Profile';
 import Login from 'screens/Login';
+import ChangePassword from 'screens/ChangePassword';
 import Main from 'components/Main';
 import { createStack } from '../util';
 
@@ -32,6 +33,12 @@ const signedProfileStackRoutes = [
     name: 'Profile',
     component: Profile,
     layout: Main,
+  },
+  {
+    name: 'ChangePassword',
+    component: ChangePassword,
+    layout: Main,
+    layoutProps: { back: true },
   },
 ];
 
