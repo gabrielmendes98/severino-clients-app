@@ -8,6 +8,7 @@ import { withFavorite, useFavorite } from 'common/contexts/Favorite';
 import toast from 'common/util/toast';
 import Text from 'components/Text';
 import SearchInput from 'components/Input/Search';
+import Skeleton from 'components/Skeleton';
 import Button from 'components/Button';
 import Services from './Services';
 import Professionals from './Professionals';
@@ -70,7 +71,9 @@ const Home = ({ navigation }) => {
         Alguns serviços disponíveis
       </Text>
 
-      <Services services={services} />
+      <Skeleton ready={Boolean(services)} length={5} width={12} height={12}>
+        <Services services={services} />
+      </Skeleton>
 
       <Text margin={{ bottom: 1, top: 4 }} size={1.2} weight="bold">
         Alguns profissionais disponíveis
