@@ -1,6 +1,7 @@
 import axios from 'axios';
 import defaultsDeep from 'lodash.defaultsdeep';
 import store from 'common/util/store';
+import toast from 'common/util/toast';
 import Loader from 'components/Loader';
 import { handleError } from './interceptors';
 
@@ -24,6 +25,15 @@ const base = (baseURL, config = {}) => {
     const mergedOptions = defaultsDeep(options, getConfig());
     if (mergedOptions.loader) {
       Loader.show();
+    }
+
+    if (mergedOptions.needLocation) {
+      if (store.location) {
+        mergedOptions.params.location = store.location;
+      } else {
+        toast.error('Informe sua localização acima');
+        return Promise.reject();
+      }
     }
 
     return axiosApi(path, mergedOptions)
