@@ -1,17 +1,10 @@
-import { locationInterceptor } from './interceptors';
-
 const requests = baseApi => ({
   request(path, options) {
     return baseApi.request(path, options);
   },
 
-  get(path, options = {}) {
-    const newOptions = locationInterceptor(options);
-    if (!newOptions) {
-      return Promise.reject();
-    }
-
-    return baseApi.request(path, { ...newOptions, data: null });
+  get(path, options) {
+    return baseApi.request(path, { loader: false, ...options, data: null });
   },
 
   post(path, options = {}) {
@@ -25,8 +18,6 @@ const requests = baseApi => ({
   update(path, options = {}) {
     return baseApi.request(path, { ...options, method: 'PUT' });
   },
-
-  ...baseApi,
 });
 
 export default requests;

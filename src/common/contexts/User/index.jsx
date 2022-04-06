@@ -4,17 +4,13 @@ import jwtDecode from 'jwt-decode';
 import AppLoading from 'expo-app-loading';
 import usersService from 'api/services/user';
 import { setToken, getToken, removeToken } from 'common/util/storage';
-import { setApiHeaders } from 'api/util';
 import toast from 'common/util/toast';
+import store from 'common/util/store';
 
 const UserContext = createContext();
 UserContext.displayName = 'UserContext';
 
 const { Provider } = UserContext;
-
-const setAuthorizationHeader = token => {
-  setApiHeaders('Authorization', token ? `Bearer ${token}` : '');
-};
 
 const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -24,7 +20,7 @@ const UserProvider = ({ children }) => {
     setToken(token);
     const decodedToken = jwtDecode(token);
     setUser(decodedToken.user);
-    setAuthorizationHeader(token);
+    store.setJwt(token);
   };
 
   const login = loginInfo => usersService.login(loginInfo).then(configureUser);
@@ -33,7 +29,7 @@ const UserProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
-    setAuthorizationHeader(null);
+    store.setJwt(null);
     return removeToken();
   };
 
@@ -53,7 +49,7 @@ const UserProvider = ({ children }) => {
       if (token) {
         const decodedToken = jwtDecode(token);
         setUser(decodedToken.user);
-        setAuthorizationHeader(token);
+        store.setJwt(token);
       }
       setLoading(false);
     });

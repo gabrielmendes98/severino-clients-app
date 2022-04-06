@@ -1,9 +1,3 @@
-import { baseApi } from './apis';
-
-const setApiHeaders = (header, value) => {
-  baseApi.defaults.headers[header] = value;
-};
-
 const parseParams = ({ order, ...other }) => {
   let params = {};
 
@@ -14,4 +8,4 @@ const parseParams = ({ order, ...other }) => {
   return { ...params, ...other };
 };
 
-export { setApiHeaders, parseParams };
+export { parseParams };
