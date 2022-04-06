@@ -79,7 +79,14 @@ const Home = ({ navigation }) => {
         Alguns profissionais disponíveis
       </Text>
 
-      <Professionals professionals={professionals} />
+      <Skeleton
+        ready={Boolean(professionals)}
+        length={5}
+        width={23}
+        height={27}
+      >
+        <Professionals professionals={professionals} />
+      </Skeleton>
     </View>
   );
 };
