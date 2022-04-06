@@ -24,15 +24,15 @@ const starsArray = length => {
   return array;
 };
 
-const Stars = ({ length, justify, onPress }) => (
+const Stars = ({ length, justify, onPress, size, spacing }) => (
   <View style={[styles.container, { justifyContent: justify }]}>
     {starsArray(length).map((starType, index) => (
       <MaterialIcons
         key={index}
         name={starType}
-        size={27}
+        size={size}
         color={theme.colors.primary}
-        style={styles.star}
+        style={{ marginRight: theme.spacing(spacing) }}
         onPress={() => onPress && onPress(index)}
       />
     ))}
@@ -41,6 +41,8 @@ const Stars = ({ length, justify, onPress }) => (
 
 Stars.defaultProps = {
   justify: 'flex-start',
+  size: 27,
+  spacing: 1,
 };
 
 Stars.propTypes = {
@@ -54,6 +56,8 @@ Stars.propTypes = {
     'space-evenly',
   ]),
   onPress: PropTypes.func,
+  size: PropTypes.number,
+  spacing: PropTypes.number,
 };
 
 export default Stars;

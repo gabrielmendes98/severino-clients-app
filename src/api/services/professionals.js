@@ -1,3 +1,4 @@
+import { parseParams } from 'api/util';
 import { baseApi } from '../apis';
 
 const routes = {
@@ -5,6 +6,7 @@ const routes = {
   favorites: '/favorites',
   profile: workerId => `/workers/${workerId}/profile`,
   reviews: '/reviews',
+  listReviews: professionalId => `/reviews/${professionalId}`,
 };
 
 const professionalsService = {
@@ -13,6 +15,10 @@ const professionalsService = {
   listFavorites: () => baseApi.get(routes.favorites),
   getProfile: workerId => baseApi.get(routes.profile(workerId)),
   createReview: data => baseApi.post(routes.reviews, data),
+  listReviews: (professionalId, params) =>
+    baseApi.get(routes.listReviews(professionalId), {
+      params: parseParams(params),
+    }),
 };
 
 export { routes as professionalsServiceRoutes };

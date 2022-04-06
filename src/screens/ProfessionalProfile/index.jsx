@@ -33,7 +33,15 @@ const ProfessionalProfile = () => {
   const { setFavorites } = useFavorite();
   const { signedPress } = useUser();
 
-  const seeReviews = () => console.log('seeReviews');
+  const seeReviews = () =>
+    navigation.navigate('Search', {
+      screen: 'ProfessionalReviewsList',
+      params: {
+        workerId: route.params?.workerId,
+        workerName: data?.name,
+      },
+    });
+
   const reviewProfessional = () =>
     navigation.navigate('Search', {
       screen: 'ProfessionalReview',

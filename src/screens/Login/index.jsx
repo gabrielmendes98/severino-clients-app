@@ -31,6 +31,7 @@ const Login = ({ navigation, route }) => {
               weight="bold"
               size={1.2}
               margin={{ bottom: 4, top: 3 }}
+              align="center"
             >
               Informe o seu e-mail e senha para continuar
             </Text>
