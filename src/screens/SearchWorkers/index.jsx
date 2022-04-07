@@ -10,11 +10,13 @@ import Professional from 'templates/Professional';
 import showOrderByModal from 'templates/OrderByModal/showModal';
 import Button from 'components/Button';
 import Text from 'components/Text';
+import Skeleton from 'components/Skeleton';
 import withModal from 'components/Modal/withModal';
 import { orderByOptions, prepareProfessionals } from './util';
+import styles from './style';
 
 const SearchWorkers = ({ route, showModal }) => {
-  const [professionals, setProfessionals] = useState([]);
+  const [professionals, setProfessionals] = useState();
   const [order, setOrder] = useState();
   const { setFavorites } = useFavorite();
 
@@ -55,9 +57,17 @@ const SearchWorkers = ({ route, showModal }) => {
         Ordenar por
       </Button>
 
-      {professionals.map(worker => (
-        <Professional key={worker.id} professional={worker} />
-      ))}
+      <Skeleton
+        ready={Boolean(professionals)}
+        itemsStyle={styles.skeletonItem}
+        height={16}
+        length={4}
+        direction="column"
+      >
+        {professionals?.map(worker => (
+          <Professional key={worker.id} professional={worker} />
+        ))}
+      </Skeleton>
     </View>
   );
 };

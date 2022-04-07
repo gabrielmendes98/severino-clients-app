@@ -33,7 +33,6 @@ const Skeleton = ({
     boneColor={theme.colors.lightGrey}
     highlightColor={theme.colors.background.main}
   >
-    {console.log('render skeleton')}
     {children}
   </SkeletonContent>
 );
