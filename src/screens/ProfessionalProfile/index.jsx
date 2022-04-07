@@ -18,6 +18,7 @@ import WhatsappButton from 'components/Button/Whatsapp';
 import Stars from 'components/Stars';
 import Button from 'components/Button';
 import styles from './style';
+import Loading from './Loading';
 
 // eslint-disable-next-line react/prop-types
 const SectionTitle = ({ children, margin }) => (
@@ -29,7 +30,7 @@ const SectionTitle = ({ children, margin }) => (
 const ProfessionalProfile = () => {
   const route = useRoute();
   const navigation = useNavigation();
-  const [data, setData] = useState({});
+  const [data, setData] = useState();
   const { setFavorites } = useFavorite();
   const { signedPress } = useUser();
 
@@ -62,7 +63,9 @@ const ProfessionalProfile = () => {
     }, [route.params?.workerId, setFavorites]),
   );
 
-  console.log(data);
+  if (!data) {
+    return <Loading />;
+  }
 
   return (
     <View>

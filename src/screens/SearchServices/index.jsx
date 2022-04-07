@@ -17,8 +17,6 @@ const SearchServices = ({ navigation, route }) => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  console.log('render');
-
   const handleSearch = useCallback(
     (search = searchValue) => {
       if (!search) {

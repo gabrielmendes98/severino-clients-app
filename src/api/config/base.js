@@ -21,7 +21,6 @@ const base = (baseURL, config = {}) => {
   });
 
   axiosApi.request = (path, options) => {
-    console.log(options);
     const mergedOptions = defaultsDeep(options, getConfig());
     if (mergedOptions.loader) {
       Loader.show();
