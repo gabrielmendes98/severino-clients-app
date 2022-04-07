@@ -15,30 +15,23 @@ import styles from './style';
 const SearchServices = ({ navigation, route }) => {
   const [searchValue, setSearchValue, searchValueRef] = useStateRef('');
   const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(false);
 
-  const handleSearch = useCallback(
-    (search = searchValue) => {
-      if (!search) {
-        toast.error('Digite o serviço que deseja buscar');
-        return;
+  const handleSearch = (search = searchValue) => {
+    if (!search) {
+      toast.error('Digite o serviço que deseja buscar');
+      return;
+    }
+
+    setServices();
+
+    servicesService.search(search).then(servicesFound => {
+      if (servicesFound.length === 0) {
+        toast.error('Nenhum serviço encontrado');
       }
-      setLoading(true);
 
-      servicesService.search(search).then(servicesFound => {
-        setLoading(false);
-
-        if (servicesFound.length === 0) {
-          toast.error('Nenhum serviço encontrado');
-          return;
-        }
-
-        setServices(servicesFound);
-      });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    },
-    [searchValue],
-  );
+      setServices(servicesFound);
+    });
+  };
 
   useFocusEffect(
     useCallback(() => {
@@ -73,7 +66,7 @@ const SearchServices = ({ navigation, route }) => {
       </Button>
 
       <Skeleton
-        ready={!loading}
+        ready={Boolean(services)}
         width={12}
         height={12}
         length={5}

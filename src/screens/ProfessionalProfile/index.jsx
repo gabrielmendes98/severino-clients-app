@@ -1,6 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React, { useState, useCallback } from 'react';
-import { View, Image, FlatList } from 'react-native';
+import { View, Image, FlatList, StatusBar } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import {
   useFocusEffect,
@@ -69,6 +69,11 @@ const ProfessionalProfile = () => {
 
   return (
     <View>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={theme.colors.primary}
+      />
+
       <View style={styles.header}>
         <View style={styles.box}>
           <FavoriteButton workerId={data.id} />

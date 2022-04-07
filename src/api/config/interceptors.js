@@ -20,5 +20,7 @@ const handleError = (error, { toast = true }) => {
       Toast.error(DEFAULT_ERROR_MESSAGE);
     }
   }
+
+  return Promise.reject({ ...error, status, message });
 };
 export { handleError };
