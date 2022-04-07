@@ -9,7 +9,11 @@ class Store {
   }
 
   setJwt(jwt) {
-    this.jwt = jwt;
+    if (jwt) {
+      this.jwt = `Bearer ${jwt}`;
+    } else {
+      this.jwt = null;
+    }
   }
 }
 

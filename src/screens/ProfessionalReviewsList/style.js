@@ -8,6 +8,12 @@ const styles = StyleSheet.create({
   reviews: {
     marginTop: theme.spacing(2),
   },
+  skeletonContainer: {
+    marginTop: theme.spacing(3),
+  },
+  skeletonItem: {
+    width: '100%',
+  },
 });
 
 export default styles;

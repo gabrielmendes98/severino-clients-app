@@ -11,10 +11,10 @@ const routes = {
 
 const professionalsService = {
   listRecent: () => baseApi.get(routes.listRecent),
-  favorite: workerId => baseApi.post(routes.favorites, { workerId }),
+  favorite: workerId => baseApi.post(routes.favorites, { data: { workerId } }),
   listFavorites: () => baseApi.get(routes.favorites),
   getProfile: workerId => baseApi.get(routes.profile(workerId)),
-  createReview: data => baseApi.post(routes.reviews, data),
+  createReview: data => baseApi.post(routes.reviews, { data }),
   listReviews: (professionalId, params) =>
     baseApi.get(routes.listReviews(professionalId), {
       params: parseParams(params),
