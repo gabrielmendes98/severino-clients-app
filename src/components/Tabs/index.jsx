@@ -14,7 +14,7 @@ const Tabs = ({ value, setValue, options }) => (
       >
         <Text
           align="center"
-          color={option.value === value && 'primary'}
+          color={option.value === value ? 'primary' : ''}
           size={1.1}
         >
           {option.label}

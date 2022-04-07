@@ -6,19 +6,24 @@ import Container from 'components/Container';
 import Header from 'components/Header';
 import styles from './style';
 
-const Main = ({ children, back }) => (
+const Main = ({ children, back, removeScrollView }) => (
   <SafeAreaView style={styles.container}>
     <Header back={back} />
 
-    <ScrollView keyboardShouldPersistTaps="handled">
+    {removeScrollView ? (
       <Container>{children}</Container>
-    </ScrollView>
+    ) : (
+      <ScrollView keyboardShouldPersistTaps="handled">
+        <Container>{children}</Container>
+      </ScrollView>
+    )}
   </SafeAreaView>
 );
 
 Main.propTypes = {
   children: PropTypes.node.isRequired,
   back: PropTypes.bool,
+  removeScrollView: PropTypes.bool,
 };
 
 export default Main;

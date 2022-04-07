@@ -3,7 +3,6 @@ import theme from 'common/styles/theme';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
   },
 });

@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { useFocusEffect, useRoute } from '@react-navigation/native';
 import professionalsService from 'api/services/professionals';
 import theme from 'common/styles/theme';
@@ -17,6 +17,7 @@ const ProfessionalReviewsList = () => {
 
   useFocusEffect(
     useCallback(() => {
+      setReviews(null);
       const params = {
         type,
       };
@@ -27,7 +28,7 @@ const ProfessionalReviewsList = () => {
   );
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text margin={{ bottom: 3 }} size={1.4} weight="bold">
         Avaliações sobre: {route.params?.workerName}
       </Text>
@@ -35,16 +36,17 @@ const ProfessionalReviewsList = () => {
       <Tabs options={reviewTypes} setValue={setType} value={type} />
 
       <Skeleton
-        ready={false}
-        containerStyle={styles.skeletonContainer}
+        ready={Boolean(reviews)}
+        containerStyle={styles.reviews}
         itemsStyle={styles.skeletonItem}
         length={5}
         direction="column"
       >
-        <View style={styles.reviews}>
-          {reviews?.map((review, index) => (
+        <FlatList
+          data={reviews}
+          keyExtractor={item => item.id}
+          renderItem={({ item: review, index }) => (
             <View
-              key={review.id}
               style={[
                 styles.review,
                 index !== reviews.length - 1 && {
@@ -59,8 +61,8 @@ const ProfessionalReviewsList = () => {
               </Text>
               <Text>{review.comment}</Text>
             </View>
-          ))}
-        </View>
+          )}
+        />
       </Skeleton>
     </View>
   );

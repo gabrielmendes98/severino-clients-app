@@ -36,7 +36,7 @@ const searchStackRoutes = [
     name: 'ProfessionalReviewsList',
     component: ProfessionalReviewsList,
     layout: Main,
-    layoutProps: { back: true },
+    layoutProps: { back: true, removeScrollView: true },
   },
 ];
 
