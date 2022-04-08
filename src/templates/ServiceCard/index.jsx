@@ -12,12 +12,9 @@ const Service = ({ id, avatarUrl, name }) => {
   const navigation = useNavigation();
 
   const onPress = () => {
-    navigation.navigate('Search', {
-      screen: 'Workers',
-      params: {
-        serviceId: id,
-        serviceName: name,
-      },
+    navigation.navigate('Workers', {
+      serviceId: id,
+      serviceName: name,
     });
   };
 

@@ -33,23 +33,17 @@ const ProfessionalProfile = () => {
   const [data, setData] = useState();
   const { setFavorites } = useFavorite();
   const { signedPress } = useUser();
-
+  console.log(route);
   const seeReviews = () =>
-    navigation.navigate('Search', {
-      screen: 'ProfessionalReviewsList',
-      params: {
-        workerId: route.params?.workerId,
-        workerName: data?.name,
-      },
+    navigation.navigate('ProfessionalReviewsList', {
+      workerId: route.params?.workerId,
+      workerName: data?.name,
     });
 
   const reviewProfessional = () =>
-    navigation.navigate('Search', {
-      screen: 'ProfessionalReview',
-      params: {
-        workerId: route.params?.workerId,
-        workerName: data?.name,
-      },
+    navigation.navigate('ProfessionalReview', {
+      workerId: route.params?.workerId,
+      workerName: data?.name,
     });
 
   useFocusEffect(

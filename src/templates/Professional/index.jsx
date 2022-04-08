@@ -14,11 +14,8 @@ const Professional = ({ professional }) => {
   const navigation = useNavigation();
 
   const handleNavigation = () =>
-    navigation.navigate('Search', {
-      screen: 'ProfessionalProfile',
-      params: {
-        workerId: professional.id,
-      },
+    navigation.navigate('ProfessionalProfile', {
+      workerId: professional.id,
     });
 
   console.log(professional);

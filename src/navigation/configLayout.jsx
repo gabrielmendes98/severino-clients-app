@@ -1,11 +1,10 @@
 /* eslint-disable react/function-component-definition */
 /* eslint-disable react/display-name */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 
-const wrapper =
-  ({ component: Component, layout: Layout = View, layoutProps }) =>
+const configLayout =
+  (Component, Layout = View, layoutProps) =>
   props =>
     (
       <Layout style={styles.layout} {...layoutProps}>
@@ -21,10 +20,4 @@ const styles = StyleSheet.create({
   },
 });
 
-wrapper.propTypes = {
-  component: PropTypes.node.isRequired,
-  layout: PropTypes.node,
-  layoutProps: PropTypes.object,
-};
-
-export default wrapper;
+export default configLayout;
