@@ -19,7 +19,7 @@ const searchStackRoutes = [
     name: 'Workers',
     component: SearchWorkers,
     layout: Main,
-    layoutProps: { back: true },
+    layoutProps: { back: true, removeScrollView: true },
   },
   {
     name: 'ProfessionalProfile',

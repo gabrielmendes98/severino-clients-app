@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { View, FlatList } from 'react-native';
 import { useFocusEffect, useRoute } from '@react-navigation/native';
 import professionalsService from 'api/services/professionals';
+import commonStyles from 'common/styles/common';
 import theme from 'common/styles/theme';
 import Text from 'components/Text';
 import Tabs from 'components/Tabs';
@@ -28,7 +29,7 @@ const ProfessionalReviewsList = () => {
   );
 
   return (
-    <View style={styles.container}>
+    <View style={commonStyles.flex1}>
       <Text margin={{ bottom: 3 }} size={1.4} weight="bold">
         Avaliações sobre: {route.params?.workerName}
       </Text>

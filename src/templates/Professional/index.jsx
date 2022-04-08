@@ -21,12 +21,14 @@ const Professional = ({ professional }) => {
       },
     });
 
+  console.log(professional);
+
   return (
     <TouchableOpacity style={styles.container} onPress={handleNavigation}>
       {professional.avatarUrl ? (
         <Image source={{ uri: professional.avatarUrl }} style={styles.avatar} />
       ) : (
-        <TextAvatar text={professional.name.toUppercase()} />
+        <TextAvatar text={professional.name.toUpperCase()} />
       )}
 
       <View style={styles.card}>

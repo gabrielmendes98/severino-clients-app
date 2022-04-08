@@ -1,10 +1,11 @@
 import React, { useCallback, useState } from 'react';
-import { View } from 'react-native';
+import { View, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import { useFocusEffect } from '@react-navigation/native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import servicesService from 'api/services/services';
 import theme from 'common/styles/theme';
+import commonStyles from 'common/styles/common';
 import { useFavorite, withFavorite } from 'common/contexts/Favorite';
 import Professional from 'templates/Professional';
 import showOrderByModal from 'templates/OrderByModal/showModal';
@@ -36,8 +37,10 @@ const SearchWorkers = ({ route, showModal }) => {
     }, [order, route.params?.serviceId, setFavorites]),
   );
 
+  console.log(professionals);
+
   return (
-    <View>
+    <View style={commonStyles.flex1}>
       <Text margin={{ bottom: 3 }} size={1.4} weight="bold">
         Serviço escolhido: {route.params?.serviceName}
       </Text>
@@ -64,9 +67,13 @@ const SearchWorkers = ({ route, showModal }) => {
         length={4}
         direction="column"
       >
-        {professionals?.map(worker => (
-          <Professional key={worker.id} professional={worker} />
-        ))}
+        <FlatList
+          data={professionals}
+          renderItem={({ item: worker }) => (
+            <Professional professional={worker} />
+          )}
+          keyExtractor={item => item.id}
+        />
       </Skeleton>
     </View>
   );

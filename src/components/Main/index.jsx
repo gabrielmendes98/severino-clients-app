@@ -17,7 +17,7 @@ const Main = ({ children, back, removeScrollView }) => (
     <Header back={back} />
 
     {removeScrollView ? (
-      <Container>{children}</Container>
+      <Container removeBottomMargin>{children}</Container>
     ) : (
       <ScrollView keyboardShouldPersistTaps="handled">
         <Container>{children}</Container>
