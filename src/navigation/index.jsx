@@ -29,7 +29,7 @@ const Navigation = () => {
           const { layout, component, ...routeProps } = route;
 
           const Component = layout
-            ? wrapper({ component, layout })
+            ? wrapper({ component, layout, ...routeProps })
             : component({ signed });
 
           return <Screen {...routeProps} component={Component} key={index} />;

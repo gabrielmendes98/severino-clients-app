@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react';
-import { View } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import professionalsService from 'api/services/professionals';
+import commonStyles from 'common/styles/common';
 import { useFavorite, withFavorite } from 'common/contexts/Favorite';
 import Professional from 'templates/Professional';
 import Text from 'components/Text';
@@ -15,6 +16,7 @@ const Favorites = () => {
 
   useFocusEffect(
     useCallback(() => {
+      setProfessionals();
       professionalsService
         .listFavorites()
         .then(prepareProfessionals)
@@ -26,7 +28,7 @@ const Favorites = () => {
   );
 
   return (
-    <View>
+    <View style={commonStyles.flex1}>
       <Text size={1.5} weight="bold" margin={{ bottom: 3 }}>
         Profissionais favoritados
       </Text>
@@ -38,9 +40,13 @@ const Favorites = () => {
         length={4}
         direction="column"
       >
-        {professionals?.map(professional => (
-          <Professional key={professional.id} professional={professional} />
-        ))}
+        <FlatList
+          data={professionals}
+          renderItem={({ item: professional }) => (
+            <Professional professional={professional} />
+          )}
+          keyExtractor={item => item.id}
+        />
       </Skeleton>
     </View>
   );

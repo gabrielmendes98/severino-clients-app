@@ -12,6 +12,9 @@ const favoritesTabs = {
       <FontAwesomeIcons color={color} name="heart-o" size={size} />
     ),
   },
+  layoutProps: {
+    removeScrollView: true,
+  },
 };
 
 export default favoritesTabs;
