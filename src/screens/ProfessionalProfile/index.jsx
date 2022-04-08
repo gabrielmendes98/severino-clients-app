@@ -35,15 +35,21 @@ const ProfessionalProfile = () => {
   const { signedPress } = useUser();
   console.log(route);
   const seeReviews = () =>
-    navigation.navigate('ProfessionalReviewsList', {
-      workerId: route.params?.workerId,
-      workerName: data?.name,
+    navigation.navigate('Professional', {
+      screen: 'ReviewsList',
+      params: {
+        workerId: route.params?.workerId,
+        workerName: data?.name,
+      },
     });
 
   const reviewProfessional = () =>
-    navigation.navigate('ProfessionalReview', {
-      workerId: route.params?.workerId,
-      workerName: data?.name,
+    navigation.navigate('Professional', {
+      screen: 'Review',
+      params: {
+        workerId: route.params?.workerId,
+        workerName: data?.name,
+      },
     });
 
   useFocusEffect(
