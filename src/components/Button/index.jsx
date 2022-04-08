@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, TouchableHighlight, Text } from 'react-native';
 import { BUTTON_TYPES } from './constants';
 import styles from './style';
+import theme from 'common/styles/theme';
 
 const { CONTAINED, OUTLINED, TEXT } = BUTTON_TYPES;
 
@@ -41,6 +42,9 @@ const Button = ({
     <TouchableHighlight
       onPress={onPress}
       style={customStyle.container}
+      underlayColor={
+        variant === OUTLINED ? theme.colors.beige : theme.colors.black
+      }
       {...props}
     >
       <View style={[customStyle.button, style]}>
