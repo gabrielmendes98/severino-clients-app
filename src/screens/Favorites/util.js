@@ -1,7 +1,7 @@
-const prepareProfessionals = professionals => {
+const prepareWorkers = workers => {
   const favorites = {};
   return [
-    professionals.map(({ worker: { profile, id, rating, ...rest } }) => {
+    workers.map(({ worker: { profile, id, rating, ...rest } }) => {
       favorites[id] = true;
       return {
         ...rest,
@@ -15,4 +15,4 @@ const prepareProfessionals = professionals => {
   ];
 };
 
-export { prepareProfessionals };
+export { prepareWorkers };

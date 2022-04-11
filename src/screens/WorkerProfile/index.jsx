@@ -8,7 +8,7 @@ import {
   useRoute,
 } from '@react-navigation/native';
 import theme from 'common/styles/theme';
-import professionalsService from 'api/services/professionals';
+import workersService from 'api/services/workers';
 import { useFavorite, withFavorite } from 'common/contexts/Favorite';
 import { formatPhone } from 'common/util/formatters';
 import useUser from 'common/contexts/User/useUser';
@@ -27,14 +27,14 @@ const SectionTitle = ({ children, margin }) => (
   </Text>
 );
 
-const ProfessionalProfile = () => {
+const WorkerProfile = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const [data, setData] = useState();
   const { setFavorites } = useFavorite();
   const { signedPress } = useUser();
   const seeReviews = () =>
-    navigation.navigate('Professional', {
+    navigation.navigate('Worker', {
       screen: 'ReviewsList',
       params: {
         workerId: route.params?.workerId,
@@ -42,8 +42,8 @@ const ProfessionalProfile = () => {
       },
     });
 
-  const reviewProfessional = () =>
-    navigation.navigate('Professional', {
+  const reviewWorker = () =>
+    navigation.navigate('Worker', {
       screen: 'Review',
       params: {
         workerId: route.params?.workerId,
@@ -53,7 +53,7 @@ const ProfessionalProfile = () => {
 
   useFocusEffect(
     useCallback(() => {
-      professionalsService.getProfile(route.params?.workerId).then(response => {
+      workersService.getProfile(route.params?.workerId).then(response => {
         setData(response);
         setFavorites({
           [response.id]: true,
@@ -151,15 +151,11 @@ const ProfessionalProfile = () => {
       <Button fullWidth onPress={seeReviews} margin={{ bottom: 2 }}>
         Ver avaliações
       </Button>
-      <Button
-        fullWidth
-        variant="outlined"
-        onPress={signedPress(reviewProfessional)}
-      >
+      <Button fullWidth variant="outlined" onPress={signedPress(reviewWorker)}>
         Avaliar
       </Button>
     </View>
   );
 };
 
-export default withFavorite(ProfessionalProfile);
+export default withFavorite(WorkerProfile);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { View } from 'react-native';
-import professionalsService from 'api/services/professionals';
+import workersService from 'api/services/workers';
 import Form from 'common/providers/Form';
 import toast from 'common/util/toast';
 import theme from 'common/styles/theme';
@@ -12,7 +12,7 @@ import { INPUT_HEIGHT } from 'components/Input/TextInput/style';
 import Stars from 'components/Stars';
 import { form } from './util';
 
-const ProfessionalReview = () => {
+const WorkerReview = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const [rating, setRating] = useState(0);
@@ -25,7 +25,7 @@ const ProfessionalReview = () => {
         'Selecione uma quantidade de estrelas para sua avaliação',
       );
     }
-    professionalsService
+    workersService
       .createReview({ workerId: route.params?.workerId, rating, ...data })
       .then(() => {
         toast.success('Agradecemos sua avaliação');
@@ -77,4 +77,4 @@ const ProfessionalReview = () => {
   );
 };
 
-export default ProfessionalReview;
+export default WorkerReview;

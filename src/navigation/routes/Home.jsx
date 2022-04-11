@@ -4,7 +4,7 @@ import HomeScreen from 'screens/Home';
 import SearchWorkers from 'screens/SearchWorkers';
 import Main from 'components/Main';
 import configLayout from '../configLayout';
-import Professional from './stacks/Professional';
+import Worker from './stacks/Worker';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,7 +25,7 @@ const Home = () => (
         removeScrollView: true,
       })}
     />
-    <Stack.Screen name="Professional" component={Professional} />
+    <Stack.Screen name="Worker" component={Worker} />
   </Stack.Navigator>
 );
 

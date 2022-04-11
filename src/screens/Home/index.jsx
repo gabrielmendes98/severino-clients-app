@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
-import professionalsService from 'api/services/professionals';
+import workersService from 'api/services/workers';
 import servicesService from 'api/services/services';
 import { withFavorite, useFavorite } from 'common/contexts/Favorite';
 import toast from 'common/util/toast';
@@ -11,11 +11,11 @@ import SearchInput from 'components/Input/Search';
 import Skeleton from 'components/Skeleton';
 import Button from 'components/Button';
 import Services from './Services';
-import Professionals from './Professionals';
-import { prepareProfessionals } from './util';
+import Workers from './Workers';
+import { prepareWorkers } from './util';
 
 const Home = ({ navigation }) => {
-  const [professionals, setProfessionals] = useState();
+  const [workers, setWorkers] = useState();
   const [services, setServices] = useState();
   const [searchValue, setSearchValue] = useState('');
   const { setFavorites } = useFavorite();
@@ -40,11 +40,11 @@ const Home = ({ navigation }) => {
 
   useFocusEffect(
     useCallback(() => {
-      professionalsService
+      workersService
         .listRecent()
-        .then(prepareProfessionals)
-        .then(([preparedProfessionals, favorites]) => {
-          setProfessionals(preparedProfessionals);
+        .then(prepareWorkers)
+        .then(([preparedWorkers, favorites]) => {
+          setWorkers(preparedWorkers);
           setFavorites(favorites);
         });
     }, [setFavorites]),
@@ -79,13 +79,8 @@ const Home = ({ navigation }) => {
         Alguns profissionais disponíveis
       </Text>
 
-      <Skeleton
-        ready={Boolean(professionals)}
-        length={5}
-        width={23}
-        height={27}
-      >
-        <Professionals professionals={professionals} />
+      <Skeleton ready={Boolean(workers)} length={5} width={23} height={27}>
+        <Workers workers={workers} />
       </Skeleton>
     </View>
   );

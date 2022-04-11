@@ -6,7 +6,7 @@ import BackButton from 'components/Button/Back';
 import Container from 'components/Container';
 import styles from './style';
 
-const ProfessionalProfileLayout = ({ children }) => (
+const WorkerProfileLayout = ({ children }) => (
   <SafeAreaView style={styles.container}>
     <View style={styles.header}>
       <BackButton color="white" />
@@ -18,8 +18,8 @@ const ProfessionalProfileLayout = ({ children }) => (
   </SafeAreaView>
 );
 
-ProfessionalProfileLayout.propTypes = {
+WorkerProfileLayout.propTypes = {
   children: PropTypes.any.isRequired,
 };
 
-export default ProfessionalProfileLayout;
+export default WorkerProfileLayout;

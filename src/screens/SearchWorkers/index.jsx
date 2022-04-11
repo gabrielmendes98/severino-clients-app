@@ -7,17 +7,17 @@ import servicesService from 'api/services/services';
 import theme from 'common/styles/theme';
 import commonStyles from 'common/styles/common';
 import { useFavorite, withFavorite } from 'common/contexts/Favorite';
-import Professional from 'templates/Professional';
+import Worker from 'templates/Worker';
 import showOrderByModal from 'templates/OrderByModal/showModal';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Skeleton from 'components/Skeleton';
 import withModal from 'components/Modal/withModal';
-import { orderByOptions, prepareProfessionals } from './util';
+import { orderByOptions, prepareWorkers } from './util';
 import styles from './style';
 
 const SearchWorkers = ({ route, showModal }) => {
-  const [professionals, setProfessionals] = useState();
+  const [workers, setWorkers] = useState();
   const [order, setOrder] = useState();
   const { setFavorites } = useFavorite();
 
@@ -29,9 +29,9 @@ const SearchWorkers = ({ route, showModal }) => {
       const params = { order };
       servicesService
         .searchWorkers(route.params?.serviceId, params)
-        .then(prepareProfessionals)
-        .then(([preparedProfessionals, favorites]) => {
-          setProfessionals(preparedProfessionals);
+        .then(prepareWorkers)
+        .then(([preparedWorkers, favorites]) => {
+          setWorkers(preparedWorkers);
           setFavorites(favorites);
         });
     }, [order, route.params?.serviceId, setFavorites]),
@@ -59,17 +59,15 @@ const SearchWorkers = ({ route, showModal }) => {
       </Button>
 
       <Skeleton
-        ready={Boolean(professionals)}
+        ready={Boolean(workers)}
         itemsStyle={styles.skeletonItem}
         height={16}
         length={4}
         direction="column"
       >
         <FlatList
-          data={professionals}
-          renderItem={({ item: worker }) => (
-            <Professional professional={worker} />
-          )}
+          data={workers}
+          renderItem={({ item: worker }) => <Worker worker={worker} />}
           keyExtractor={item => item.id}
         />
       </Skeleton>

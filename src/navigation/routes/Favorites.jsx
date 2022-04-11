@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FavoritesScreen from 'screens/Favorites';
 import Main from 'components/Main';
 import configLayout from 'navigation/configLayout';
-import Professional from './stacks/Professional';
+import Worker from './stacks/Worker';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +19,7 @@ const Favorites = () => (
         removeScrollView: true,
       })}
     />
-    <Stack.Screen name="Professional" component={Professional} />
+    <Stack.Screen name="Worker" component={Worker} />
   </Stack.Navigator>
 );
 

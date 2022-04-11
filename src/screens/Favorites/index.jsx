@@ -1,27 +1,27 @@
 import React, { useState, useCallback } from 'react';
 import { View, FlatList } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
-import professionalsService from 'api/services/professionals';
+import workersService from 'api/services/workers';
 import commonStyles from 'common/styles/common';
 import { useFavorite, withFavorite } from 'common/contexts/Favorite';
-import Professional from 'templates/Professional';
+import Worker from 'templates/Worker';
 import Text from 'components/Text';
 import Skeleton from 'components/Skeleton';
-import { prepareProfessionals } from './util';
+import { prepareWorkers } from './util';
 import styles from './style';
 
 const Favorites = () => {
-  const [professionals, setProfessionals] = useState();
+  const [workers, setWorkers] = useState();
   const { setFavorites } = useFavorite();
 
   useFocusEffect(
     useCallback(() => {
-      setProfessionals();
-      professionalsService
+      setWorkers();
+      workersService
         .listFavorites()
-        .then(prepareProfessionals)
-        .then(([preparedProfessionals, favorites]) => {
-          setProfessionals(preparedProfessionals);
+        .then(prepareWorkers)
+        .then(([preparedWorkers, favorites]) => {
+          setWorkers(preparedWorkers);
           setFavorites(favorites);
         });
     }, [setFavorites]),
@@ -34,17 +34,15 @@ const Favorites = () => {
       </Text>
 
       <Skeleton
-        ready={Boolean(professionals)}
+        ready={Boolean(workers)}
         itemsStyle={styles.skeletonItem}
         height={16}
         length={4}
         direction="column"
       >
         <FlatList
-          data={professionals}
-          renderItem={({ item: professional }) => (
-            <Professional professional={professional} />
-          )}
+          data={workers}
+          renderItem={({ item: worker }) => <Worker worker={worker} />}
           keyExtractor={item => item.id}
         />
       </Skeleton>

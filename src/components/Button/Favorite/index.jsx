@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { TouchableWithoutFeedback, View, StyleSheet } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import theme from 'common/styles/theme';
-import professionalsService from 'api/services/professionals';
+import workersService from 'api/services/workers';
 import { useFavorite } from 'common/contexts/Favorite';
 
 const FavoriteButton = ({ workerId, style }) => {
   const { favorites, updateFavorite } = useFavorite();
 
   const favorite = () =>
-    professionalsService
+    workersService
       .favorite(workerId)
       .then(({ favorited }) => updateFavorite(workerId, favorited));
 

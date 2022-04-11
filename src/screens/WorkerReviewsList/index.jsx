@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { View, FlatList } from 'react-native';
 import { useFocusEffect, useRoute } from '@react-navigation/native';
-import professionalsService from 'api/services/professionals';
+import workersService from 'api/services/workers';
 import commonStyles from 'common/styles/common';
 import theme from 'common/styles/theme';
 import Text from 'components/Text';
@@ -11,7 +11,7 @@ import Skeleton from 'components/Skeleton';
 import { reviewTypes, REVIEW_TYPES } from './util';
 import styles from './style';
 
-const ProfessionalReviewsList = () => {
+const WorkerReviewsList = () => {
   const route = useRoute();
   const [type, setType] = useState(REVIEW_TYPES.ALL);
   const [reviews, setReviews] = useState();
@@ -22,7 +22,7 @@ const ProfessionalReviewsList = () => {
       const params = {
         type,
       };
-      professionalsService
+      workersService
         .listReviews(route.params?.workerId, params)
         .then(setReviews);
     }, [route.params?.workerId, type]),
@@ -69,4 +69,4 @@ const ProfessionalReviewsList = () => {
   );
 };
 
-export default ProfessionalReviewsList;
+export default WorkerReviewsList;

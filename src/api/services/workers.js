@@ -6,20 +6,20 @@ const routes = {
   favorites: '/favorites',
   profile: workerId => `/workers/${workerId}/profile`,
   reviews: '/reviews',
-  listReviews: professionalId => `/reviews/${professionalId}`,
+  listReviews: workerId => `/reviews/${workerId}`,
 };
 
-const professionalsService = {
+const workersService = {
   listRecent: () => baseApi.get(routes.listRecent),
   favorite: workerId => baseApi.post(routes.favorites, { data: { workerId } }),
   listFavorites: () => baseApi.get(routes.favorites),
   getProfile: workerId => baseApi.get(routes.profile(workerId)),
   createReview: data => baseApi.post(routes.reviews, { data }),
-  listReviews: (professionalId, params) =>
-    baseApi.get(routes.listReviews(professionalId), {
+  listReviews: (workerId, params) =>
+    baseApi.get(routes.listReviews(workerId), {
       params: parseParams(params),
     }),
 };
 
-export { routes as professionalsServiceRoutes };
-export default professionalsService;
+export { routes as workersServiceRoutes };
+export default workersService;
