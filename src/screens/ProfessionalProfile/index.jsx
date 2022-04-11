@@ -33,7 +33,6 @@ const ProfessionalProfile = () => {
   const [data, setData] = useState();
   const { setFavorites } = useFavorite();
   const { signedPress } = useUser();
-  console.log(route);
   const seeReviews = () =>
     navigation.navigate('Professional', {
       screen: 'ReviewsList',

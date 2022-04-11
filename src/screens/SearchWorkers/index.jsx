@@ -37,8 +37,6 @@ const SearchWorkers = ({ route, showModal }) => {
     }, [order, route.params?.serviceId, setFavorites]),
   );
 
-  console.log(professionals);
-
   return (
     <View style={commonStyles.flex1}>
       <Text margin={{ bottom: 3 }} size={1.4} weight="bold">

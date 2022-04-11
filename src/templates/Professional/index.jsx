@@ -21,8 +21,6 @@ const Professional = ({ professional }) => {
       },
     });
 
-  console.log(professional);
-
   return (
     <TouchableOpacity style={styles.container} onPress={handleNavigation}>
       {professional.avatarUrl ? (
