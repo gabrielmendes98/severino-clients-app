@@ -1,6 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, FlatList } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
 import workersService from 'api/services/workers';
 import commonStyles from 'common/styles/common';
 import { useFavorite, withFavorite } from 'common/contexts/Favorite';
@@ -14,18 +13,16 @@ const Favorites = () => {
   const [workers, setWorkers] = useState();
   const { setFavorites } = useFavorite();
 
-  useFocusEffect(
-    useCallback(() => {
-      setWorkers();
-      workersService
-        .listFavorites()
-        .then(prepareWorkers)
-        .then(([preparedWorkers, favorites]) => {
-          setWorkers(preparedWorkers);
-          setFavorites(favorites);
-        });
-    }, [setFavorites]),
-  );
+  useEffect(() => {
+    setWorkers();
+    workersService
+      .listFavorites()
+      .then(prepareWorkers)
+      .then(([preparedWorkers, favorites]) => {
+        setWorkers(preparedWorkers);
+        setFavorites(favorites);
+      });
+  }, [setFavorites]);
 
   return (
     <View style={commonStyles.flex1}>
