@@ -7,12 +7,11 @@ const form = {
     newPasswordConfirm: '',
   },
   validations: {
-    currentPassword: yup.string().trim().required(),
-    newPassword: yup.string().trim().required(),
+    currentPassword: yup.string().password(),
+    newPassword: yup.string().password(),
     newPasswordConfirm: yup
       .string()
-      .trim()
-      .required()
+      .password()
       .oneOf([yup.ref('newPassword'), null], 'As senhas devem corresponder'),
   },
 };

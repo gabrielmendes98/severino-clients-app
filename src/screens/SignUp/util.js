@@ -15,7 +15,7 @@ const form = {
   validations: {
     name: yup.string().trim().required(),
     email: yup.string().trim().email().required(),
-    password: yup.string().trim().required(),
+    password: yup.string().password(),
   },
 };
 

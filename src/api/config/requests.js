@@ -15,7 +15,7 @@ const requests = baseApi => ({
     return baseApi.request(path, { ...options, method: 'DELETE' });
   },
 
-  update(path, options = {}) {
+  put(path, options = {}) {
     return baseApi.request(path, { ...options, method: 'PUT' });
   },
 });
