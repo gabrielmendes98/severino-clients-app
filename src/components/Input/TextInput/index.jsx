@@ -17,6 +17,7 @@ const TextInput = ({
   name,
   rules,
   style,
+  endIcon,
   containerProps: { style: containerStyle, ...containerProps },
   ...props
 }) => {
@@ -60,6 +61,8 @@ const TextInput = ({
                 value={value}
                 {...props}
               />
+
+              {Boolean(endIcon) && endIcon}
             </View>
           </View>
         </TouchableWithoutFeedback>
@@ -76,6 +79,7 @@ TextInput.defaultProps = {
 
 TextInput.propTypes = {
   icon: PropTypes.node,
+  endIcon: PropTypes.node,
   margin: PropTypes.shape({
     top: PropTypes.number,
     right: PropTypes.number,

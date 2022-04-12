@@ -5,7 +5,7 @@ import Form from 'common/providers/Form';
 import useUser from 'common/contexts/User/useUser';
 import toast from 'common/util/toast';
 import Button from 'components/Button';
-import TextInput from 'components/Input/TextInput';
+import PasswordInput from 'components/Input/Password';
 import Text from 'components/Text';
 import styles from './style';
 import { form } from './util';
@@ -39,22 +39,13 @@ const ChangePassword = () => {
               Trocar senha
             </Text>
 
-            <TextInput
-              name="currentPassword"
-              placeholder="Senha atual"
-              secureTextEntry
-            />
+            <PasswordInput name="currentPassword" placeholder="Senha atual" />
 
-            <TextInput
-              name="newPassword"
-              placeholder="Nova senha"
-              secureTextEntry
-            />
+            <PasswordInput name="newPassword" placeholder="Nova senha" />
 
-            <TextInput
+            <PasswordInput
               name="newPasswordConfirm"
               placeholder="Confirme a nova senha"
-              secureTextEntry
             />
 
             <Button

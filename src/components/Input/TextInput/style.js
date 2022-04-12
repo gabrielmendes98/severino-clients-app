@@ -23,6 +23,7 @@ const createStyles = ({ margin }) =>
     input: {
       height: INPUT_HEIGHT,
       marginLeft: theme.spacing(1),
+      flex: 1,
     },
   });
 
