@@ -12,7 +12,7 @@ import Skeleton from 'components/Skeleton';
 import Services from './Services';
 import styles from './style';
 
-const SearchServices = ({ navigation, route }) => {
+const SearchServices = ({ route }) => {
   const [searchValue, setSearchValue, searchValueRef] = useStateRef('');
   const [services, setServices] = useState([]);
 
@@ -42,7 +42,9 @@ const SearchServices = ({ navigation, route }) => {
       }
 
       return () => {
-        navigation.setParams({ search: searchValueRef.current });
+        if (route.params) {
+          route.params.search = searchValueRef.current;
+        }
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
@@ -81,7 +83,6 @@ const SearchServices = ({ navigation, route }) => {
 
 SearchServices.propTypes = {
   route: PropTypes.object,
-  navigation: PropTypes.object,
 };
 
 export default SearchServices;
