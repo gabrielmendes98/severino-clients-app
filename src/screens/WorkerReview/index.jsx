@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { View } from 'react-native';
 import workersService from 'api/services/workers';
-import Form from 'common/providers/Form';
+import Form from 'common/contexts/Form';
 import toast from 'common/util/toast';
 import theme from 'common/styles/theme';
 import TextInput from 'components/Input/TextInput';

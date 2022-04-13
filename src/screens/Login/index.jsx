@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, View } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
-import Form from 'common/providers/Form';
+import Form from 'common/contexts/Form';
 import useUser from 'common/contexts/User/useUser';
 import Button from 'components/Button';
 import TextInput from 'components/Input/TextInput';

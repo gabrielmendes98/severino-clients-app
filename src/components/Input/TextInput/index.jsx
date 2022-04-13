@@ -6,7 +6,7 @@ import {
   View,
   TouchableWithoutFeedback,
 } from 'react-native';
-import useForm from 'common/providers/Form/useForm';
+import useForm from 'common/contexts/Form/useForm';
 import Text from 'components/Text';
 import createStyles from './style';
 
