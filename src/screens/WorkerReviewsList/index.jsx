@@ -8,6 +8,7 @@ import Text from 'components/Text';
 import Tabs from 'components/Tabs';
 import Stars from 'components/Stars';
 import Skeleton from 'components/Skeleton';
+import ListFallback from 'components/ListFallback';
 import { reviewTypes, REVIEW_TYPES } from './util';
 import styles from './style';
 
@@ -63,6 +64,13 @@ const WorkerReviewsList = () => {
               <Text>{review.comment}</Text>
             </View>
           )}
+          ListEmptyComponent={
+            <ListFallback
+              icon="chatbox-ellipses-outline"
+              message="Não encontramos avaliações com o filtro selecionado"
+              size={1.5}
+            />
+          }
         />
       </Skeleton>
     </View>

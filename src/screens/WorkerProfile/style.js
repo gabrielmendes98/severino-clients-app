@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   workPhotos: {
     marginHorizontal: theme.spacing(-SAFE_SPACING),
-    marginVertical: theme.spacing(2),
+    marginBottom: theme.spacing(2),
   },
   workPhotosWrapper: {
     marginLeft: theme.spacing(SAFE_SPACING),

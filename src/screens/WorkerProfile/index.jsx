@@ -13,9 +13,11 @@ import { useFavorite, withFavorite } from 'common/contexts/Favorite';
 import { formatPhone } from 'common/util/formatters';
 import useUser from 'common/contexts/User/useUser';
 import FavoriteButton from 'components/Button/Favorite';
+import ListFallback from 'components/ListFallback';
 import Text from 'components/Text';
 import WhatsappButton from 'components/Button/Whatsapp';
 import Stars from 'components/Stars';
+import List from 'components/List';
 import Button from 'components/Button';
 import styles from './style';
 import Loading from './Loading';
@@ -56,7 +58,7 @@ const WorkerProfile = () => {
       workersService.getProfile(route.params?.workerId).then(response => {
         setData(response);
         setFavorites({
-          [response.id]: true,
+          [response.id]: response.isFavorite,
         });
       });
     }, [route.params?.workerId, setFavorites]),
@@ -109,46 +111,88 @@ const WorkerProfile = () => {
         <Text>{data.description}</Text>
       </View>
 
-      <SectionTitle>Meus trabalhos</SectionTitle>
-      <FlatList
-        data={data.workPhotos}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <Image source={{ uri: item.url }} style={styles.workPhoto} />
-        )}
-        horizontal
-        style={styles.workPhotos}
-        contentContainerStyle={styles.workPhotosWrapper}
-      />
+      <SectionTitle margin={{ bottom: 2 }}>Meus trabalhos</SectionTitle>
+
+      {data.workPhotos?.length ? (
+        <FlatList
+          data={data.workPhotos}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <Image source={{ uri: item.url }} style={styles.workPhoto} />
+          )}
+          style={styles.workPhotos}
+          contentContainerStyle={styles.workPhotosWrapper}
+          horizontal
+        />
+      ) : (
+        <ListFallback
+          icon="image-outline"
+          message="Este profissional não adicionou fotos de seus trabalhos"
+          size={0.8}
+        />
+      )}
 
       <SectionTitle margin={{ bottom: 2 }}>Experiência</SectionTitle>
-      {data.experiences?.map(experience => (
-        <View style={styles.whiteBox} key={experience.id}>
-          <Text color="light">{experience.role}</Text>
-          <Text color="light">{experience.company}</Text>
-          <Text color="light">{experience.time}</Text>
-        </View>
-      ))}
+      <List
+        data={data.experiences}
+        keyExtractor={item => item.id}
+        renderItem={({ item: experience }) => (
+          <View style={styles.whiteBox}>
+            <Text color="light">{experience.role}</Text>
+            <Text color="light">{experience.company}</Text>
+            <Text color="light">{experience.time}</Text>
+          </View>
+        )}
+        ListEmptyComponent={
+          <ListFallback
+            icon="list-outline"
+            message="Este profissional não adicionou experiências profissionais"
+            size={0.8}
+          />
+        }
+      />
 
       <SectionTitle margin={{ bottom: 2 }}>Formação Acadêmica</SectionTitle>
-      {data.academicGraduations?.map(graduation => (
-        <View style={styles.whiteBox} key={graduation.id}>
-          <Text color="light">{graduation.degree.description}</Text>
-          {Boolean(graduation.studyArea) && (
-            <Text color="light">{graduation.studyArea}</Text>
-          )}
-          <Text color="light">{graduation.institution}</Text>
-        </View>
-      ))}
+      <List
+        data={data.academicGraduations}
+        keyExtractor={item => item.id}
+        renderItem={({ item: graduation }) => (
+          <View style={styles.whiteBox}>
+            <Text color="light">{graduation.degree.description}</Text>
+            {Boolean(graduation.studyArea) && (
+              <Text color="light">{graduation.studyArea}</Text>
+            )}
+            <Text color="light">{graduation.institution}</Text>
+          </View>
+        )}
+        ListEmptyComponent={
+          <ListFallback
+            icon="list-outline"
+            message="Este profissional não adicionou sua formação acadêmica"
+            size={0.8}
+          />
+        }
+      />
 
       <SectionTitle margin={{ bottom: 2 }}>Competências</SectionTitle>
-      {data.skills?.map(skill => (
-        <View style={styles.whiteBox} key={skill.id}>
-          <Text color="light">{skill.name}</Text>
-        </View>
-      ))}
+      <List
+        data={data.skills}
+        keyExtractor={item => item.id}
+        renderItem={({ item: skill }) => (
+          <View style={styles.whiteBox}>
+            <Text color="light">{skill.name}</Text>
+          </View>
+        )}
+        ListEmptyComponent={
+          <ListFallback
+            icon="list-outline"
+            message="Este profissional não adicionou competências"
+            size={0.8}
+          />
+        }
+      />
 
-      <Button fullWidth onPress={seeReviews} margin={{ bottom: 2 }}>
+      <Button fullWidth onPress={seeReviews} margin={{ bottom: 2, top: 2 }}>
         Ver avaliações
       </Button>
       <Button fullWidth variant="outlined" onPress={signedPress(reviewWorker)}>

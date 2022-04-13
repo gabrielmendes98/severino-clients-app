@@ -14,7 +14,8 @@ import styles from './style';
 
 const SearchServices = ({ route }) => {
   const [searchValue, setSearchValue, searchValueRef] = useStateRef('');
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState();
+  const [loading, setLoading] = useState(false);
 
   const handleSearch = (search = searchValue) => {
     if (!search) {
@@ -22,14 +23,11 @@ const SearchServices = ({ route }) => {
       return;
     }
 
-    setServices();
+    setLoading(true);
 
     servicesService.search(search).then(servicesFound => {
-      if (servicesFound.length === 0) {
-        toast.error('Nenhum serviço encontrado');
-      }
-
       setServices(servicesFound);
+      setLoading(false);
     });
   };
 
@@ -68,7 +66,7 @@ const SearchServices = ({ route }) => {
       </Button>
 
       <Skeleton
-        ready={Boolean(services)}
+        ready={!loading}
         width={12}
         height={12}
         length={5}

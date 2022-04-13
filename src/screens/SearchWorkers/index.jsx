@@ -13,6 +13,7 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 import Skeleton from 'components/Skeleton';
 import withModal from 'components/Modal/withModal';
+import ListFallback from 'components/ListFallback';
 import { orderByOptions, prepareWorkers } from './util';
 import styles from './style';
 
@@ -69,6 +70,13 @@ const SearchWorkers = ({ route, showModal }) => {
           data={workers}
           renderItem={({ item: worker }) => <Worker worker={worker} />}
           keyExtractor={item => item.id}
+          ListEmptyComponent={
+            <ListFallback
+              icon="list-outline"
+              message="Não encontramos profissionais que prestam esse serviço em sua localização"
+              size={1.5}
+            />
+          }
         />
       </Skeleton>
     </View>
