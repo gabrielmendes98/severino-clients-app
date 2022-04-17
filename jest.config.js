@@ -1,7 +1,6 @@
 module.exports = {
   preset: 'jest-expo',
   clearMocks: true,
-  collectCoverage: true,
   coverageDirectory: 'coverage',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests'],
   coverageThreshold: {

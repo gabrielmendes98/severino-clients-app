@@ -6,14 +6,14 @@ import { BUTTON_TYPES } from './constants';
 const { OUTLINED, CONTAINED } = BUTTON_TYPES;
 
 const styles = ({
-  size = 1,
-  color = 'primary',
-  fullWidth = false,
-  weight = 'normal',
+  size,
+  color,
+  fullWidth,
+  weight,
   margin,
-  variant = 'contained',
-  textAlign = 'center',
-  align = 'flex-start',
+  variant,
+  textAlign,
+  align,
 }) => {
   const buttonStyles = {};
   const textStyles = {};

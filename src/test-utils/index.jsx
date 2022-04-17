@@ -9,4 +9,4 @@ const customRender = (ui, options) =>
   render(ui, { wrapper: Wrapper, ...options });
 
 export * from '@testing-library/react-native';
-export { customRender as render };
+export { customRender as render, render as rawRender };

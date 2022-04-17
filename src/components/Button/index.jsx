@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { View, TouchableHighlight, Text } from 'react-native';
+import theme from 'common/styles/theme';
 import { BUTTON_TYPES } from './constants';
 import styles from './style';
-import theme from 'common/styles/theme';
 
 const { CONTAINED, OUTLINED, TEXT } = BUTTON_TYPES;
 
@@ -20,6 +20,7 @@ const Button = ({
   icon,
   textAlign,
   align,
+  testID,
   ...props
 }) => {
   const customStyle = useMemo(
@@ -45,14 +46,28 @@ const Button = ({
       underlayColor={
         variant === OUTLINED ? theme.colors.beige : theme.colors.black
       }
+      testID={testID}
       {...props}
     >
-      <View style={[customStyle.button, style]}>
+      <View style={[customStyle.button, style]} testID={`${testID}-view`}>
         {Boolean(icon) && <View style={customStyle.icon}>{icon}</View>}
-        <Text style={customStyle.text}>{children}</Text>
+        <Text style={customStyle.text} testID={`${testID}-text`}>
+          {children}
+        </Text>
       </View>
     </TouchableHighlight>
   );
+};
+
+Button.defaultProps = {
+  size: 1,
+  color: 'primary',
+  fullWidth: false,
+  weight: 'normal',
+  margin: {},
+  variant: 'contained',
+  textAlign: 'center',
+  align: 'flex-start',
 };
 
 Button.propTypes = {
@@ -80,6 +95,7 @@ Button.propTypes = {
     'stretch',
     'baseline',
   ]),
+  testID: PropTypes.string,
 };
 
 export default Button;
