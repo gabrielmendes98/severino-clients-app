@@ -14,7 +14,7 @@
       "commons/*": ["commons/*"],
       "templates/*": ["templates/*"],
       "navigation/*": ["navigation/*"],
-      "test-utils": ["test-utils"]
+      "test-utils/*": ["test-utils/*"]
     }
   },
   "moduleResolution": "classic",
