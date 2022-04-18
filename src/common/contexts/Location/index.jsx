@@ -36,7 +36,7 @@ const LocationProvider = ({ children }) => {
 };
 
 LocationProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 export { LocationContext };

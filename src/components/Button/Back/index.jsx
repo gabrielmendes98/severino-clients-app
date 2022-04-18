@@ -7,13 +7,17 @@ import { getColor } from 'common/styles/util';
 import theme from 'common/styles/theme';
 import styles from './style';
 
-const BackButton = ({ color }) => {
+const BackButton = ({ color, testID }) => {
   const { goBack } = useNavigation();
 
   return (
-    <TouchableHighlight onPress={goBack} style={styles.container}>
+    <TouchableHighlight
+      onPress={goBack}
+      style={styles.container}
+      testID={testID}
+    >
       <FontAwesomeIcons
-        color={color ? getColor(color) : theme.colors.primary}
+        color={getColor(color)}
         name="chevron-left"
         size={theme.spacing(3)}
       />
@@ -21,8 +25,13 @@ const BackButton = ({ color }) => {
   );
 };
 
+BackButton.defaultProps = {
+  color: 'primary',
+};
+
 BackButton.propTypes = {
   color: PropTypes.string,
+  testID: PropTypes.string,
 };
 
 export default BackButton;

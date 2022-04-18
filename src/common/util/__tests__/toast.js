@@ -3,10 +3,6 @@ import { View } from 'react-native';
 import { render, act } from 'test-utils';
 import toast from '../toast';
 
-jest.mock('react-native-toast-message', () =>
-  jest.requireActual('react-native-toast-message'),
-);
-
 it('toast error should show message on screen', async () => {
   const errorMessage = 'error message test';
   const { findByText } = render(<View></View>);
