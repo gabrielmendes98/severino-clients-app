@@ -9,6 +9,7 @@
       "*": ["src/*"],
       "components/*": ["components/*"],
       "screens/*": ["screens/*"],
+      "api/*": ["api/*"],
       "assets/*": ["assets/*"],
       "services/*": ["services/*"],
       "commons/*": ["commons/*"],

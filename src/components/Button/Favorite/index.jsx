@@ -6,7 +6,7 @@ import theme from 'common/styles/theme';
 import workersService from 'api/services/workers';
 import { useFavorite } from 'common/contexts/Favorite';
 
-const FavoriteButton = ({ workerId, style }) => {
+const FavoriteButton = ({ workerId, style, testID }) => {
   const { favorites, updateFavorite } = useFavorite();
 
   const favorite = () =>
@@ -15,7 +15,7 @@ const FavoriteButton = ({ workerId, style }) => {
       .then(({ favorited }) => updateFavorite(workerId, favorited));
 
   return (
-    <TouchableWithoutFeedback onPress={favorite}>
+    <TouchableWithoutFeedback onPress={favorite} testID={testID}>
       <View style={styles.container}>
         {favorites[workerId] ? (
           <FontAwesomeIcons
@@ -23,6 +23,7 @@ const FavoriteButton = ({ workerId, style }) => {
             name="heart"
             size={20}
             style={style}
+            testID={`${testID}-filled`}
           />
         ) : (
           <FontAwesomeIcons
@@ -30,6 +31,7 @@ const FavoriteButton = ({ workerId, style }) => {
             name="heart-o"
             size={20}
             style={style}
+            testID={`${testID}-outline`}
           />
         )}
       </View>
@@ -40,6 +42,7 @@ const FavoriteButton = ({ workerId, style }) => {
 FavoriteButton.propTypes = {
   workerId: PropTypes.string.isRequired,
   style: PropTypes.object,
+  testID: PropTypes.string,
 };
 
 const styles = StyleSheet.create({
