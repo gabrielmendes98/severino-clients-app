@@ -1,13 +1,12 @@
 import React from 'react';
-import MockAdapter from 'axios-mock-adapter';
 import { FavoriteProvider } from 'common/contexts/Favorite';
 import { rawRender, fireEvent } from 'test-utils';
-import { baseApi } from 'api/apis';
 import { workersEndpoints } from 'api/services/workers';
+import { apiMock } from 'api/util';
 import FavoriteButton from '../Favorite';
 
 it('should update favorite to true when click on it when it is false', async () => {
-  const mock = new MockAdapter(baseApi);
+  const mock = apiMock();
   mock.onPost(workersEndpoints.favorites).reply(200, {
     favorited: true,
   });
@@ -25,7 +24,7 @@ it('should update favorite to true when click on it when it is false', async () 
 });
 
 it('should update favorite to false when click on it when it is true', async () => {
-  const mock = new MockAdapter(baseApi);
+  const mock = apiMock();
   mock.onPost(workersEndpoints.favorites).reply(200, {
     favorited: false,
   });

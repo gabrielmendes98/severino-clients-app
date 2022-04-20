@@ -1,3 +1,6 @@
+import MockAdapter from 'axios-mock-adapter';
+import { baseApi } from './apis';
+
 const parseParams = ({ order, ...other }) => {
   let params = {};
 
@@ -8,4 +11,6 @@ const parseParams = ({ order, ...other }) => {
   return { ...params, ...other };
 };
 
-export { parseParams };
+const apiMock = () => new MockAdapter(baseApi);
+
+export { parseParams, apiMock };

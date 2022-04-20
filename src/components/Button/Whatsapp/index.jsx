@@ -15,7 +15,10 @@ const WhatsappButton = ({ phone }) => {
     Linking.openURL(WHATSAPP_URL + onlyNumbersFormat(phone));
 
   return (
-    <TouchableWithoutFeedback onPress={openWhatsapp}>
+    <TouchableWithoutFeedback
+      onPress={openWhatsapp}
+      testID={`whatsapp-button-${onlyNumbersFormat(phone)}`}
+    >
       <View style={styles.container}>
         <WhatsAppIcon size={21} />
       </View>
