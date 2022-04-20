@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should renders correctly when pass styling props as false 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "marginBottom": 12,
+        "marginTop": 12,
+        "paddingHorizontal": 0,
+      },
+      undefined,
+    ]
+  }
+>
+  <View>
+    TEST
+  </View>
+</View>
+`;
+
+exports[`should renders correctly when pass styling props as true 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "marginBottom": 0,
+        "marginTop": 12,
+        "paddingHorizontal": 12,
+      },
+      undefined,
+    ]
+  }
+>
+  <View>
+    TEST
+  </View>
+</View>
+`;
