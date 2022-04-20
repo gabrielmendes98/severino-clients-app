@@ -1,4 +1,5 @@
 const requests = baseApi => ({
+  ...baseApi,
   request(path, options) {
     return baseApi.request(path, options);
   },

@@ -5,8 +5,8 @@ const FavoriteContext = createContext();
 FavoriteContext.displayName = 'FavoriteContext';
 const { Provider } = FavoriteContext;
 
-const FavoriteProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState({});
+const FavoriteProvider = ({ children, initialFavorites }) => {
+  const [favorites, setFavorites] = useState(initialFavorites);
 
   const updateFavorite = useCallback(
     (id, value) =>
@@ -24,8 +24,13 @@ const FavoriteProvider = ({ children }) => {
   );
 };
 
+FavoriteProvider.defaultProps = {
+  initialFavorites: {},
+};
+
 FavoriteProvider.propTypes = {
   children: PropTypes.any.isRequired,
+  initialFavorites: PropTypes.object,
 };
 
 export { FavoriteContext };
