@@ -6,6 +6,7 @@ import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/asy
 import mockSafeAreaContext from 'react-native-safe-area-context/jest/mock';
 import { View } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
+import IonIcons from 'react-native-vector-icons/Ionicons';
 
 jest.mock('react-native-safe-area-context', () => mockSafeAreaContext);
 
@@ -22,5 +23,7 @@ jest.mock('react-native-reanimated', () => {
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 
 jest.mock('react-native-vector-icons/FontAwesome', () => jest.fn());
-
 FontAwesomeIcons.mockImplementation(props => <View {...props}></View>);
+
+jest.mock('react-native-vector-icons/IonIcons', () => jest.fn());
+IonIcons.mockImplementation(props => <View {...props}></View>);
