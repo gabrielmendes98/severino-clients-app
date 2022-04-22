@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should renders correctly 1`] = `
+<RCTScrollView
+  horizontal={true}
+  showsHorizontalScrollIndicator={false}
+  style={
+    Object {
+      "marginHorizontal": -12,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "marginLeft": 12,
+        }
+      }
+    >
+      <View />
+    </View>
+  </View>
+</RCTScrollView>
+`;
