@@ -30,6 +30,7 @@ const PasswordInput = ({ name, placeholder, showStartIcon }) => {
             color={theme.colors.primary}
             size={20}
             onPress={toggleShowing}
+            testID={`${name}-hide-icon`}
           />
         ) : (
           <IonIcons
@@ -37,6 +38,7 @@ const PasswordInput = ({ name, placeholder, showStartIcon }) => {
             color={theme.colors.primary}
             size={20}
             onPress={toggleShowing}
+            testID={`${name}-show-icon`}
           />
         )
       }
@@ -46,7 +48,7 @@ const PasswordInput = ({ name, placeholder, showStartIcon }) => {
 
 PasswordInput.propTypes = {
   name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   showStartIcon: PropTypes.bool,
 };
 
