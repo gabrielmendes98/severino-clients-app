@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { resolver } from 'common/util/yup';
+import { isFunction } from 'common/util/general';
 import { Provider } from './context';
 
 const Form = ({ defaultValues, validations, children }) => {
@@ -16,7 +17,11 @@ const Form = ({ defaultValues, validations, children }) => {
     ...restForm,
   };
 
-  return <Provider value={bag}>{children(bag)}</Provider>;
+  return (
+    <Provider value={bag}>
+      {isFunction(children) ? children(bag) : children}
+    </Provider>
+  );
 };
 
 Form.propTypes = {

@@ -59,6 +59,7 @@ const TextInput = ({
                 ref={inputRef}
                 style={[styles.input, style]}
                 value={value}
+                testID={name}
                 {...props}
               />
 
