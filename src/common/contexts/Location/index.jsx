@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
   getLocation,
@@ -14,11 +14,11 @@ const LocationProvider = ({ children }) => {
   const [location, setLocation] = useState();
   const [loading, setLoading] = useState(true);
 
-  const saveLocation = selectedLocation => {
+  const saveLocation = useCallback(selectedLocation => {
     setLocation(selectedLocation);
     setStorageLocation(selectedLocation);
-    store.setLocation(selectedLocation.id);
-  };
+    store.setLocation(selectedLocation?.id);
+  }, []);
 
   useEffect(() => {
     getLocation().then(storeLocation => {

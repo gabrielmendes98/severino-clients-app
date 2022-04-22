@@ -3,8 +3,8 @@ import { ScrollView, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import theme from 'common/styles/theme';
+import Header from 'templates/Header';
 import Container from 'components/Container';
-import Header from 'components/Header';
 import styles from './style';
 
 const Main = ({ children, back, removeScrollView }) => (

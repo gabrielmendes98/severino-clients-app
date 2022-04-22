@@ -24,7 +24,11 @@ const Header = ({ showModal, back }) => {
 
   return (
     <View style={styles.header}>
-      {back ? <BackButton /> : <Logo />}
+      {back ? (
+        <BackButton testID="header-back-button" />
+      ) : (
+        <Logo testID="header-logo" />
+      )}
       <View>
         <TouchableOpacity
           onPress={() => showLocationModal(showModal)}
@@ -40,6 +44,10 @@ const Header = ({ showModal, back }) => {
       </View>
     </View>
   );
+};
+
+Header.defaultProps = {
+  back: false,
 };
 
 Header.propTypes = {
