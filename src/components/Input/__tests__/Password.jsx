@@ -35,3 +35,14 @@ it('should change value on type', () => {
   fireEvent(getByTestId(inputName), 'onChangeText', testText);
   expect(getByTestId(inputName)).toHaveProp('value', testText);
 });
+
+it('should show start icon', () => {
+  const inputName = 'password';
+  const { getByTestId } = rawRender(
+    <Form defaultValues={{ [inputName]: '' }}>
+      <PasswordInput name={inputName} showStartIcon />
+    </Form>,
+  );
+
+  expect(getByTestId(`${inputName}-start-icon`)).toBeTruthy();
+});

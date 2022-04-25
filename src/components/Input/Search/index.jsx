@@ -3,9 +3,17 @@ import PropTypes from 'prop-types';
 import { TextInput, View, TouchableWithoutFeedback } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import theme from 'common/styles/theme';
+import { focus } from 'common/util/general';
 import createStyles from './style';
 
-const SearchInput = ({ placeholder, margin, value, setValue }) => {
+const SearchInput = ({
+  placeholder,
+  margin,
+  value,
+  setValue,
+  testID,
+  ...props
+}) => {
   const inputRef = useRef();
 
   const styles = useMemo(
@@ -14,10 +22,11 @@ const SearchInput = ({ placeholder, margin, value, setValue }) => {
     [],
   );
 
-  const focusInput = () => inputRef.current.focus();
-
   return (
-    <TouchableWithoutFeedback onPress={focusInput}>
+    <TouchableWithoutFeedback
+      onPress={() => focus(inputRef)}
+      testID={`${testID}-container`}
+    >
       <View style={styles.container}>
         <FontAwesomeIcons color={theme.colors.grey} name="search" size={20} />
 
@@ -27,6 +36,8 @@ const SearchInput = ({ placeholder, margin, value, setValue }) => {
           ref={inputRef}
           style={styles.input}
           value={value}
+          testID={testID}
+          {...props}
         />
       </View>
     </TouchableWithoutFeedback>
@@ -43,6 +54,7 @@ SearchInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   setValue: PropTypes.func.isRequired,
+  testID: PropTypes.string,
 };
 
 export default SearchInput;

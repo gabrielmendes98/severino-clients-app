@@ -1,3 +1,5 @@
 const isFunction = value => typeof value === 'function';
 
-export { isFunction };
+const focus = ref => ref.current.focus();
+
+export { isFunction, focus };

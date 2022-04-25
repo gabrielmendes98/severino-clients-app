@@ -19,6 +19,7 @@ const PasswordInput = ({ name, placeholder, showStartIcon }) => {
             name="lock-closed-outline"
             color={theme.colors.primary}
             size={20}
+            testID={`${name}-start-icon`}
           />
         )
       }

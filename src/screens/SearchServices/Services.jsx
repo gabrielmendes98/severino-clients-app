@@ -8,7 +8,6 @@ import styles from './style';
 
 const Services = ({ services }) => (
   <View style={styles.servicesContainer}>
-    {console.log(services)}
     <List
       data={services}
       keyExtractor={item => item.serviceId}

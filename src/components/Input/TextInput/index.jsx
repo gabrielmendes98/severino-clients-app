@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import useForm from 'common/contexts/Form/useForm';
+import { focus } from 'common/util/general';
 import Text from 'components/Text';
 import createStyles from './style';
 
@@ -29,8 +30,6 @@ const TextInput = ({
     [],
   );
 
-  const focusInput = () => inputRef.current.focus();
-
   return (
     <Controller
       control={control}
@@ -39,7 +38,10 @@ const TextInput = ({
         field: { onChange, onBlur, value },
         fieldState: { error },
       }) => (
-        <TouchableWithoutFeedback onPress={focusInput}>
+        <TouchableWithoutFeedback
+          onPress={() => focus(inputRef)}
+          testID={`${name}-container`}
+        >
           <View style={styles.wrapper}>
             {Boolean(error) && (
               <Text color="red" size={0.8} margin={{ top: -2 }}>
