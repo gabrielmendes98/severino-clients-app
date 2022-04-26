@@ -2,24 +2,24 @@ import { StyleSheet } from 'react-native';
 import theme from 'common/styles/theme';
 
 const createStyles = ({ fullScreen, height }) => {
-  const modalStyles = {};
   const containerStyles = {};
+  const contentStyles = {};
 
   if (!fullScreen) {
-    modalStyles.justifyContent = 'flex-end';
-    containerStyles.flex = 0;
-    containerStyles.height = `${height}%`;
+    containerStyles.justifyContent = 'flex-end';
+    contentStyles.flex = 0;
+    contentStyles.height = `${height}%`;
   }
 
   return StyleSheet.create({
-    modal: {
-      margin: 0,
-      ...modalStyles,
-    },
     container: {
+      margin: 0,
+      ...containerStyles,
+    },
+    content: {
       backgroundColor: theme.colors.background.main,
       flex: 1,
-      ...containerStyles,
+      ...contentStyles,
     },
   });
 };

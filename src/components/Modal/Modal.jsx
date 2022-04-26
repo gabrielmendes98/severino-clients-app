@@ -27,12 +27,13 @@ const Modal = ({
   return (
     <RNModal
       isVisible={isOpen}
-      style={styles.modal}
+      style={styles.container}
       useNativeDriver
       onBackdropPress={closeModal}
+      testID="modal-container"
       {...other}
     >
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.content} testID="modal-content">
         {Boolean(title) && <Text testID="modal-title">{title}</Text>}
 
         {Boolean(message) && <Text testID="modal-message">{message}</Text>}
@@ -45,13 +46,8 @@ const Modal = ({
   );
 };
 
-Modal.defaultProps = {
-  fullScreen: true,
-  height: 50,
-};
-
 Modal.propTypes = {
-  actions: PropTypes.array.isRequired,
+  actions: PropTypes.array,
   body: PropTypes.any,
   closeModal: PropTypes.func.isRequired,
   message: PropTypes.string,

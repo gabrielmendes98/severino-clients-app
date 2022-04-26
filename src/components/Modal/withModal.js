@@ -2,50 +2,45 @@ import React, { useCallback, useState } from 'react';
 import theme from 'common/styles/theme';
 import Modal from './Modal';
 
-const buttonCancel = label => ({
+const cancelButtonConfig = label => ({
   color: theme.colors.primary,
-  id: 'modal-cancel',
-  label: label || 'Cancelar',
+  testID: 'modal-cancel',
+  label,
 });
 
 const withModal = WrappedComponent => {
   const ModalComponent = props => {
     const [isOpen, setIsOpen] = useState(false);
-    const [modalData, setModalData] = useState({
-      title: '',
-      message: '',
-      actions: [],
-    });
+    const [modalData, setModalData] = useState();
 
     const handleClose = useCallback(() => {
       setIsOpen(false);
-      return modalData.customHandleClose && modalData.customHandleClose();
+      return modalData.onClose && modalData.onClose();
     }, [modalData]);
 
-    const handleShow = useCallback(
+    const showModal = useCallback(
       ({
-        title = '',
-        message = '',
         actions = [],
         cancelButton = true,
-        body = null,
-        handleClose: customHandleClose,
-        cancelLabel = '',
-        ...othersProps
+        cancelLabel = 'Cancelar',
+        fullScreen = true,
+        height = 50,
+        title,
+        message,
+        onClose,
+        body,
       }) => {
         const currentModalData = {
+          actions: cancelButton
+            ? [cancelButtonConfig(cancelLabel), ...actions]
+            : actions,
           title,
           message,
-          actions: cancelButton
-            ? [buttonCancel(cancelLabel), ...actions]
-            : actions,
+          onClose,
+          fullScreen,
+          height,
           body,
-          ...othersProps,
         };
-
-        if (customHandleClose) {
-          currentModalData.customHandleClose = customHandleClose;
-        }
 
         setModalData(currentModalData);
         setIsOpen(true);
@@ -59,7 +54,7 @@ const withModal = WrappedComponent => {
           {...props}
           closeModal={handleClose}
           modalOpened={isOpen}
-          showModal={handleShow}
+          showModal={showModal}
         />
 
         <Modal closeModal={handleClose} isOpen={isOpen} {...modalData} />
