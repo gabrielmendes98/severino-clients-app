@@ -23,7 +23,7 @@ const Header = ({ showModal, back }) => {
   );
 
   return (
-    <View style={styles.header}>
+    <View style={styles.header} testID="header-container">
       {back ? (
         <BackButton testID="header-back-button" />
       ) : (
