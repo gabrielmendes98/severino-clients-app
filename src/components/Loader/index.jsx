@@ -1,11 +1,12 @@
 /* eslint-disable react/function-component-definition */
 import React, { useState, useImperativeHandle } from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import LottieView from 'lottie-react-native';
 import styles from './style';
 
 let currentRef;
-function Loader() {
+function Loader({ testID }) {
   const [loadersCount, setLoadersCount] = useState(0);
   const [show, setShow] = useState(false);
 
@@ -31,7 +32,7 @@ function Loader() {
 
   return (
     show && (
-      <View style={styles.container}>
+      <View style={styles.container} testID={testID}>
         <LottieView
           source={require('../../assets/loader.json')}
           style={styles.animation}
@@ -48,6 +49,10 @@ Loader.show = () => {
 
 Loader.hide = () => {
   currentRef?.hide();
+};
+
+Loader.propTypes = {
+  testID: PropTypes.string,
 };
 
 export default Loader;
