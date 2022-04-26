@@ -3,6 +3,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import SkeletonContent from 'react-native-skeleton-content';
 import theme from 'common/styles/theme';
+import { generateItemsStyleWithProps } from './util';
 
 const Skeleton = ({
   children,
@@ -24,10 +25,12 @@ const Skeleton = ({
     isLoading={!ready}
     layout={Array.from(Array(length)).map((_, index) => ({
       key: index,
-      width: theme.spacing(width),
-      height: theme.spacing(height),
-      marginRight: direction === 'row' ? theme.spacing(spacing) : 0,
-      marginBottom: direction === 'column' ? theme.spacing(spacing) : 0,
+      ...generateItemsStyleWithProps({
+        width,
+        height,
+        direction,
+        spacing,
+      }),
       ...itemsStyle,
     }))}
     boneColor={theme.colors.lightGrey}
@@ -60,5 +63,6 @@ Skeleton.propTypes = {
 
 export default memo(
   Skeleton,
+  /* istanbul ignore next */
   (prevProps, nextProps) => prevProps.ready === nextProps.ready,
 );
