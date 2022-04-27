@@ -34,6 +34,7 @@ const Stars = ({ length, justify, onPress, size, spacing }) => (
         color={theme.colors.primary}
         style={{ marginRight: theme.spacing(spacing) }}
         onPress={() => onPress && onPress(index)}
+        testID={starType}
       />
     ))}
   </View>
