@@ -28,6 +28,9 @@ const Text = ({
 
 Text.defaultProps = {
   align: 'auto',
+  size: 1,
+  color: 'main',
+  weight: 'normal',
 };
 
 Text.propTypes = {

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with correct styles with default props 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "color": "#000",
+        "fontSize": 14.4,
+        "fontWeight": "normal",
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 0,
+        "textAlign": "auto",
+      },
+      undefined,
+    ]
+  }
+>
+  TEST TEXT
+</Text>
+`;
+
+exports[`should render with correct styles with props 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "color": "#838383",
+        "fontSize": 21.6,
+        "fontWeight": "bold",
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 16,
+        "textAlign": "center",
+      },
+      undefined,
+    ]
+  }
+>
+  TEST TEXT
+</Text>
+`;
