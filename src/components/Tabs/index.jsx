@@ -11,6 +11,11 @@ const Tabs = ({ value, setValue, options }) => (
         style={getOptionStyles(option.value, value)}
         onPress={() => setValue(option.value)}
         key={option.value}
+        testID={
+          option.value === value
+            ? `selected-${option.value}`
+            : `unselected-${option.value}`
+        }
       >
         <Text
           align="center"
@@ -27,7 +32,12 @@ const Tabs = ({ value, setValue, options }) => (
 Tabs.propTypes = {
   value: PropTypes.string,
   setValue: PropTypes.func.isRequired,
-  options: PropTypes.array.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      label: PropTypes.string,
+    }).isRequired,
+  ),
 };
 
 export default Tabs;
