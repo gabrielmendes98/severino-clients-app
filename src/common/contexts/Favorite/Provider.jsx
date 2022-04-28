@@ -33,5 +33,5 @@ FavoriteProvider.propTypes = {
   initialFavorites: PropTypes.object,
 };
 
-export { FavoriteContext };
+export { FavoriteContext, Provider };
 export default FavoriteProvider;

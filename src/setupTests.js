@@ -8,7 +8,6 @@ import { View } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { SvgCssUri } from 'react-native-svg';
 
 jest.mock('react-native-safe-area-context', () => mockSafeAreaContext);
 
@@ -34,9 +33,3 @@ jest.mock('react-native-vector-icons/MaterialIcons', () => jest.fn());
 MaterialIcons.mockImplementation(props => <View {...props}></View>);
 
 jest.mock('lodash.debounce', () => jest.fn(fn => fn));
-
-jest.mock('react-native-svg', () => ({
-  ...jest.requireActual('react-native-svg'),
-  SvgCssUri: jest.fn(),
-}));
-SvgCssUri.mockImplementation(props => <View {...props}></View>);

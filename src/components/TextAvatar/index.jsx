@@ -4,14 +4,14 @@ import { View } from 'react-native';
 import Text from 'components/Text';
 import createStyles from './style';
 
-const TextAvatar = ({ text, size }) => {
+const TextAvatar = ({ text, size, testID }) => {
   const styles = useMemo(() => createStyles({ size }), [size]);
   const textArray = text.split(' ');
   const avatar =
     textArray.length >= 2 ? textArray[0][0] + textArray[1][0] : textArray[0][0];
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID={testID}>
       <Text color="white" size={size / 4}>
         {avatar.toUpperCase()}
       </Text>
@@ -27,6 +27,7 @@ TextAvatar.defaultProps = {
 TextAvatar.propTypes = {
   size: PropTypes.number,
   text: PropTypes.string.isRequired,
+  testID: PropTypes.string,
 };
 
 export default TextAvatar;

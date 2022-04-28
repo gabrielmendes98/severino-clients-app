@@ -24,9 +24,13 @@ const Worker = ({ worker }) => {
   return (
     <TouchableOpacity style={styles.container} onPress={handleNavigation}>
       {worker.avatarUrl ? (
-        <Image source={{ uri: worker.avatarUrl }} style={styles.avatar} />
+        <Image
+          source={{ uri: worker.avatarUrl }}
+          style={styles.avatar}
+          testID={`${worker.id}-image-avatar`}
+        />
       ) : (
-        <TextAvatar text={worker.name.toUpperCase()} />
+        <TextAvatar text={worker.name} testID={`${worker.id}-text-avatar`} />
       )}
 
       <View style={styles.card}>
@@ -42,7 +46,7 @@ const Worker = ({ worker }) => {
         </View>
 
         <Text margin={{ bottom: 1 }} numberOfLines={2} weight="bold">
-          {worker.name}
+          {worker.name.toUpperCase()}
         </Text>
 
         <Text color="light" margin={{ bottom: 2 }} numberOfLines={2}>
@@ -50,7 +54,10 @@ const Worker = ({ worker }) => {
         </Text>
 
         <View style={styles.actions}>
-          <FavoriteButton workerId={worker.id} />
+          <FavoriteButton
+            workerId={worker.id}
+            testID={`${worker.id}-favorite-button`}
+          />
           {worker.hasWhatsapp && (
             <>
               <Text color="light" size={1.3}>
@@ -66,7 +73,15 @@ const Worker = ({ worker }) => {
 };
 
 Worker.propTypes = {
-  worker: PropTypes.object.isRequired,
+  worker: PropTypes.shape({
+    id: PropTypes.string,
+    avatarUrl: PropTypes.string,
+    name: PropTypes.string,
+    rating: PropTypes.number,
+    services: PropTypes.string,
+    hasWhatsapp: PropTypes.bool,
+    phone: PropTypes.string,
+  }),
 };
 
 export default Worker;
