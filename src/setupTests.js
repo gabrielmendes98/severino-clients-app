@@ -31,3 +31,5 @@ IonIcons.mockImplementation(props => <View {...props}></View>);
 
 jest.mock('react-native-vector-icons/MaterialIcons', () => jest.fn());
 MaterialIcons.mockImplementation(props => <View {...props}></View>);
+
+jest.mock('lodash.debounce', () => jest.fn(fn => fn));

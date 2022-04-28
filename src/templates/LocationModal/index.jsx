@@ -1,5 +1,6 @@
 import React, { useState, useRef, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import debounce from 'lodash.debounce';
 import {
   TouchableWithoutFeedback,
   View,
@@ -9,11 +10,11 @@ import {
   Keyboard,
 } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
-import debounce from 'lodash.debounce';
 import locationsService from 'api/services/locations';
-import theme from 'common/styles/theme';
 import useLocation from 'common/contexts/Location/useLocation';
+import { focus } from 'common/util/general';
 import toast from 'common/util/toast';
+import theme from 'common/styles/theme';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import Container from 'components/Container';
@@ -26,7 +27,11 @@ const LocationModal = ({ closeModal }) => {
   const [selectedLocation, setSelectedLocation] = useState();
   const [listOptions, setListOptions] = useState([]);
 
-  const focusInput = () => inputRef.current.focus();
+  const currentLocation = location
+    ? `${location.name}, ${location.state.acronym}`
+    : 'Não selecionado';
+
+  const focusInput = () => focus(inputRef);
 
   const handleSave = () => {
     saveLocation(selectedLocation);
@@ -62,14 +67,13 @@ const LocationModal = ({ closeModal }) => {
         weight="bold"
         margin={{ bottom: 3 }}
         style={styles.wrapper}
-      >{`Localização atual: ${
-        location
-          ? `${location.name}, ${location.state.acronym}`
-          : 'Não slecionado'
-      }`}</Text>
+      >{`Localização atual: ${currentLocation}`}</Text>
 
       <View style={styles.wrapper}>
-        <TouchableWithoutFeedback onPress={focusInput}>
+        <TouchableWithoutFeedback
+          onPress={focusInput}
+          testID="location-input-container"
+        >
           <View style={styles.inputContainer}>
             <FontAwesomeIcons
               color={theme.colors.grey}
@@ -97,6 +101,7 @@ const LocationModal = ({ closeModal }) => {
           <TouchableOpacity
             onPress={() => setSelectedLocation(item)}
             style={[styles.listItem, selectedItemStyle(selectedLocation, item)]}
+            testID={`city-item-${item.id}`}
           >
             <Text
               color={selectedItemTextColor(selectedLocation, item)}

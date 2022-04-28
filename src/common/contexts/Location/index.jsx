@@ -39,5 +39,5 @@ LocationProvider.propTypes = {
   children: PropTypes.any.isRequired,
 };
 
-export { LocationContext };
+export { LocationContext, Provider };
 export default LocationProvider;

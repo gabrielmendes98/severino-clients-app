@@ -1,12 +1,12 @@
 import { baseApi } from '../apis';
 
-const routes = {
-  search: '/locations/cities',
+const endpoints = {
+  search: cityName => `/locations/cities/${cityName}`,
 };
 
 const locationsService = {
-  search: value => baseApi.get(`${routes.search}/${value}`),
+  search: cityName => baseApi.get(endpoints.search(cityName)),
 };
 
-export { routes as locationsRoutes };
+export { endpoints as locationsEndpoints };
 export default locationsService;
