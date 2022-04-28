@@ -30,6 +30,7 @@ const OrderByModal = ({
             label={label}
             checked={selected === name}
             onValueChange={onSelect(name)}
+            testID={name}
           />
         )}
         keyExtractor={item => item.name}
@@ -49,7 +50,7 @@ OrderByModal.propTypes = {
       label: PropTypes.string,
       name: PropTypes.string,
     }),
-  ),
+  ).isRequired,
   setOrder: PropTypes.func.isRequired,
   renderButtons: PropTypes.func.isRequired,
   initialSelected: PropTypes.string,

@@ -15,7 +15,7 @@ const withModal = WrappedComponent => {
 
     const handleClose = useCallback(() => {
       setIsOpen(false);
-      return modalData.onClose && modalData.onClose();
+      return modalData?.onClose && modalData.onClose();
     }, [modalData]);
 
     const showModal = useCallback(
@@ -29,6 +29,7 @@ const withModal = WrappedComponent => {
         message,
         onClose,
         body,
+        ...aditionalProps
       }) => {
         const currentModalData = {
           actions: cancelButton
@@ -40,6 +41,7 @@ const withModal = WrappedComponent => {
           fullScreen,
           height,
           body,
+          ...aditionalProps,
         };
 
         setModalData(currentModalData);
