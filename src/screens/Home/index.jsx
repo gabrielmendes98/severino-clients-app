@@ -61,6 +61,7 @@ const Home = ({ navigation }) => {
         placeholder="Busque por serviços"
         value={searchValue}
         setValue={setSearchValue}
+        testID="home-search-input"
       />
 
       <Button fullWidth margin={{ bottom: 3 }} onPress={handleSearch}>
