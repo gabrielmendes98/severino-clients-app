@@ -14,11 +14,12 @@ const ChangePassword = () => {
   const { changePassword } = useUser();
   const navigation = useNavigation();
 
-  const handleLogin = data =>
+  const handleLogin = data => {
     changePassword(data).then(() => {
       toast.success('Senha alterada com sucesso');
       navigation.navigate('Home');
     });
+  };
 
   return (
     <View style={styles.container}>

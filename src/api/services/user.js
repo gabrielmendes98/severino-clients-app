@@ -1,15 +1,15 @@
 import { baseApi } from '../apis';
 
-const routes = {
+const usersEndpoints = {
   customers: '/customers',
   login: '/customers/session',
 };
 
 const usersService = {
-  create: data => baseApi.post(routes.customers, { data }),
-  login: data => baseApi.post(routes.login, { data }),
-  update: data => baseApi.put(routes.customers, { data }),
+  create: data => baseApi.post(usersEndpoints.customers, { data }),
+  login: data => baseApi.post(usersEndpoints.login, { data }),
+  update: data => baseApi.put(usersEndpoints.customers, { data }),
 };
 
-export { routes as usersServiceRoutes };
+export { usersEndpoints };
 export default usersService;
