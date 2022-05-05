@@ -20,6 +20,7 @@ const Favorites = () => {
       .listFavorites()
       .then(prepareWorkers)
       .then(([preparedWorkers, favorites]) => {
+        preparedWorkers;
         setWorkers(preparedWorkers);
         setFavorites(favorites);
       });

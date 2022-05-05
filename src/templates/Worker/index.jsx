@@ -22,7 +22,11 @@ const Worker = ({ worker }) => {
     });
 
   return (
-    <TouchableOpacity style={styles.container} onPress={handleNavigation}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={handleNavigation}
+      testID="worker-card"
+    >
       {worker.avatarUrl ? (
         <Image
           source={{ uri: worker.avatarUrl }}
@@ -77,7 +81,7 @@ Worker.propTypes = {
     id: PropTypes.string,
     avatarUrl: PropTypes.string,
     name: PropTypes.string,
-    rating: PropTypes.number,
+    rating: PropTypes.string,
     services: PropTypes.string,
     hasWhatsapp: PropTypes.bool,
     phone: PropTypes.string,
