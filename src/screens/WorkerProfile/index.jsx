@@ -35,6 +35,7 @@ const WorkerProfile = () => {
   const [data, setData] = useState();
   const { setFavorites } = useFavorite();
   const { signedPress } = useUser();
+
   const seeReviews = () =>
     navigation.navigate('Worker', {
       screen: 'ReviewsList',

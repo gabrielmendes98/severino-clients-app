@@ -6,4 +6,6 @@ it('should show service cards', () => {});
 
 it('should show worker cards', () => {});
 
+it('should show favorite workers', () => {});
+
 it('should show error message when search without fill search input', () => {});
