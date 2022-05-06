@@ -22,4 +22,13 @@ module.exports = {
   transform: {
     '^.+\\.[jt]sx?$': 'babel-jest',
   },
+  collectCoverageFrom: [
+    '<rootDir>/src/components/**/*.{js,jsx}',
+    '<rootDir>/src/screens/**/*.{js,jsx}',
+    '<rootDir>/src/templates/**/*.{js,jsx}',
+    '<rootDir>/src/common/contexts/**/*.{js,jsx}',
+    '!<rootDir>/src/components/**/style.js',
+    '!<rootDir>/src/screens/**/style.js',
+    '!<rootDir>/src/templates/**/style.js',
+  ],
 };
