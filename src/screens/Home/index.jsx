@@ -6,6 +6,7 @@ import workersService from 'api/services/workers';
 import servicesService from 'api/services/services';
 import { withFavorite, useFavorite } from 'common/contexts/Favorite';
 import toast from 'common/util/toast';
+import useUser from 'common/contexts/User/useUser';
 import Text from 'components/Text';
 import SearchInput from 'components/Input/Search';
 import Skeleton from 'components/Skeleton';
@@ -19,6 +20,7 @@ const Home = ({ navigation }) => {
   const [services, setServices] = useState();
   const [searchValue, setSearchValue] = useState('');
   const { setFavorites } = useFavorite();
+  const { signed } = useUser();
 
   const handleSearch = () => {
     if (!searchValue) {
@@ -47,7 +49,8 @@ const Home = ({ navigation }) => {
           setWorkers(preparedWorkers);
           setFavorites(favorites);
         });
-    }, [setFavorites]),
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [setFavorites, signed]),
   );
 
   return (

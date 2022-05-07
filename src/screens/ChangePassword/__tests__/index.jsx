@@ -26,12 +26,10 @@ it('should be able to fill form and submit. then receive success message and red
   const api = apiMock();
   api.onPut(usersEndpoints.favorites).reply(200, {});
 
-  const { getByPlaceholderText, getByText, findByPlaceholderText } = render(
-    <ChangePassword />,
-  );
+  const { getByPlaceholderText, getByText } = render(<ChangePassword />);
 
   fireEvent(
-    await findByPlaceholderText(/^senha atual$/i),
+    getByPlaceholderText(/^senha atual$/i),
     'onChangeText',
     data.currentPassword,
   );
@@ -62,12 +60,10 @@ it('should show validation error when new password confirmation does not match',
     newPasswordConfirm: 'newPasswordWrong',
   };
 
-  const { getByPlaceholderText, getByText, findByPlaceholderText } = render(
-    <ChangePassword />,
-  );
+  const { getByPlaceholderText, getByText } = render(<ChangePassword />);
 
   fireEvent(
-    await findByPlaceholderText(/^senha atual$/i),
+    getByPlaceholderText(/^senha atual$/i),
     'onChangeText',
     data.currentPassword,
   );

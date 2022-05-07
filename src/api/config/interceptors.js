@@ -11,9 +11,8 @@ const handleError = (error, { toast = true }) => {
       screen: 'Login',
       params: { redirect: true },
     });
-  }
-
-  if (toast) {
+    Toast.error('Você precisa estar logado para realizar essa ação');
+  } else if (toast) {
     if (message) {
       Toast.error(message);
     } else {

@@ -7,6 +7,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { rawRender, fireEvent } from 'test-utils';
 import BackButton from '../Back';
 
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+}));
+
 const backButtonTestID = 'back-button';
 const homeButtonTestID = 'home-button';
 

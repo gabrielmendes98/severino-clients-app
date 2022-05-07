@@ -39,6 +39,10 @@ const FavoriteButton = ({ workerId, style, testID }) => {
   );
 };
 
+FavoriteButton.defaultProps = {
+  testID: 'favorite-button',
+};
+
 FavoriteButton.propTypes = {
   workerId: PropTypes.string.isRequired,
   style: PropTypes.object,

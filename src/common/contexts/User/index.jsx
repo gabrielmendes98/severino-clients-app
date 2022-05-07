@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import jwtDecode from 'jwt-decode';
-import AppLoading from 'expo-app-loading';
 import usersService from 'api/services/user';
 import { setToken, getToken, removeToken } from 'common/util/storage';
 import toast from 'common/util/toast';
@@ -65,9 +64,10 @@ const UserProvider = ({ children }) => {
         logout,
         signedPress,
         changePassword,
+        loading,
       }}
     >
-      {loading ? <AppLoading /> : children}
+      {children}
     </Provider>
   );
 };

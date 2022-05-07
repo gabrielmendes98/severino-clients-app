@@ -22,7 +22,11 @@ const Worker = ({ worker }) => {
     });
 
   return (
-    <TouchableOpacity style={styles.container} onPress={handleNavigation}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={handleNavigation}
+      testID="worker-card-container"
+    >
       {worker.avatarUrl ? (
         <Image source={{ uri: worker.avatarUrl }} style={styles.avatar} />
       ) : (

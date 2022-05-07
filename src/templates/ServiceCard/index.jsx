@@ -19,7 +19,7 @@ const Service = ({ id, avatarUrl, name }) => {
   };
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} testID="service-card-container">
       <View style={styles.serviceContainer}>
         <Shadow
           distance={5}

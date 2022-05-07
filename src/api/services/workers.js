@@ -1,7 +1,7 @@
 import { parseParams } from 'api/util';
 import { baseApi } from '../apis';
 
-const endpoints = {
+const workersEndpoints = {
   listRecent: '/workers/recent',
   favorites: '/favorites',
   profile: workerId => `/workers/${workerId}/profile`,
@@ -10,17 +10,17 @@ const endpoints = {
 };
 
 const workersService = {
-  listRecent: () => baseApi.get(endpoints.listRecent),
+  listRecent: () => baseApi.get(workersEndpoints.listRecent),
   favorite: workerId =>
-    baseApi.post(endpoints.favorites, { data: { workerId } }),
-  listFavorites: () => baseApi.get(endpoints.favorites),
-  getProfile: workerId => baseApi.get(endpoints.profile(workerId)),
-  createReview: data => baseApi.post(endpoints.reviews, { data }),
+    baseApi.post(workersEndpoints.favorites, { data: { workerId } }),
+  listFavorites: () => baseApi.get(workersEndpoints.favorites),
+  getProfile: workerId => baseApi.get(workersEndpoints.profile(workerId)),
+  createReview: data => baseApi.post(workersEndpoints.reviews, { data }),
   listReviews: (workerId, params) =>
-    baseApi.get(endpoints.listReviews(workerId), {
+    baseApi.get(workersEndpoints.listReviews(workerId), {
       params: parseParams(params),
     }),
 };
 
-export { endpoints as workersEndpoints };
+export { workersEndpoints };
 export default workersService;
