@@ -28,9 +28,13 @@ const Worker = ({ worker }) => {
       testID="worker-card-container"
     >
       {worker.avatarUrl ? (
-        <Image source={{ uri: worker.avatarUrl }} style={styles.avatar} />
+        <Image
+          source={{ uri: worker.avatarUrl }}
+          style={styles.avatar}
+          testID={`${worker.id}-image-avatar`}
+        />
       ) : (
-        <TextAvatar text={worker.name} />
+        <TextAvatar text={worker.name} testID={`${worker.id}-text-avatar`} />
       )}
 
       <View style={styles.card}>
@@ -54,7 +58,10 @@ const Worker = ({ worker }) => {
         </Text>
 
         <View style={styles.actions}>
-          <FavoriteButton workerId={worker.id} />
+          <FavoriteButton
+            workerId={worker.id}
+            testID={`${worker.id}-favorite-button`}
+          />
           {worker.hasWhatsapp && (
             <>
               <Text color="light" size={1.3}>
