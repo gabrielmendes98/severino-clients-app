@@ -44,7 +44,12 @@ const TextInput = ({
         >
           <View style={styles.wrapper}>
             {Boolean(error) && (
-              <Text color="red" size={0.8} margin={{ top: -2 }}>
+              <Text
+                color="red"
+                size={0.8}
+                margin={{ top: -2 }}
+                testID={`${name}-input-error`}
+              >
                 {error.message}
               </Text>
             )}
