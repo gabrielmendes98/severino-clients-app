@@ -38,7 +38,6 @@
       "error",
       { "namedComponents": "arrow-function" }
     ],
-    "react/no-multi-comp": ["error", { "ignoreStateless": false }],
     "react/no-unstable-nested-components": ["error", { "allowAsProps": false }],
     "react/no-unused-prop-types": "error",
     "react/jsx-boolean-value": "error",

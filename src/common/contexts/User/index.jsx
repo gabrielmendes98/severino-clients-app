@@ -76,5 +76,5 @@ UserProvider.propTypes = {
   children: PropTypes.any.isRequired,
 };
 
-export { UserContext };
+export { UserContext, Provider };
 export default UserProvider;

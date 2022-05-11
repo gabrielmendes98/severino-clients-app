@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/no-multi-comp */
 import React, { useEffect } from 'react';
 import useLocation from 'common/contexts/Location/useLocation';
 import { rawRender, render, waitFor, fireEvent } from 'test-utils';

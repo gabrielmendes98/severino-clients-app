@@ -9,6 +9,9 @@ import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { SvgCssUri } from 'react-native-svg';
+import store from 'common/util/store';
+
+store.setLocation('locationMock');
 
 jest.mock('react-native-safe-area-context', () => mockSafeAreaContext);
 

@@ -1,4 +1,3 @@
-/* eslint-disable react/no-multi-comp */
 import React, { useState, useCallback } from 'react';
 import { View, Image, FlatList, StatusBar } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';

@@ -1,9 +1,13 @@
 import React from 'react';
-import { NavigationContext } from '@react-navigation/native';
 import { servicesEndpoints } from 'api/services/services';
 import { workersEndpoints } from 'api/services/workers';
 import { apiMock } from 'api/util';
-import { render, fireEvent, waitFor } from 'test-utils';
+import {
+  render,
+  fireEvent,
+  waitFor,
+  NavigationContextProvider,
+} from 'test-utils';
 import Home from '../index';
 
 const servicesMock = [
@@ -176,11 +180,6 @@ const workersMock = [
   },
 ];
 
-const navContext = {
-  isFocused: () => true,
-  addListener: jest.fn(() => jest.fn()),
-};
-
 const navigation = {
   navigate: jest.fn(),
 };
@@ -191,9 +190,9 @@ beforeEach(() => {
 
 const renderHome = () =>
   render(
-    <NavigationContext.Provider value={navContext}>
+    <NavigationContextProvider>
       <Home navigation={navigation} />,
-    </NavigationContext.Provider>,
+    </NavigationContextProvider>,
   );
 
 describe('search input tests', () => {
@@ -261,5 +260,5 @@ it('should show favorite workers', async () => {
 
   const { findAllByTestId } = renderHome();
 
-  expect(await findAllByTestId('favorite-button-filled')).toHaveLength(3);
+  expect(await findAllByTestId(/favorite-button-filled/i)).toHaveLength(3);
 });

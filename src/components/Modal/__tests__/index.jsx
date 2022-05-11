@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/no-multi-comp */
 import React from 'react';
 import { View, TouchableWithoutFeedback } from 'react-native';
 import { rawRender, fireEvent, waitFor } from 'test-utils';

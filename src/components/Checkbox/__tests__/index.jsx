@@ -1,4 +1,3 @@
-/* eslint-disable react/no-multi-comp */
 import React, { useState } from 'react';
 import { rawRender, fireEvent } from 'test-utils';
 import Checkbox from '../index';
