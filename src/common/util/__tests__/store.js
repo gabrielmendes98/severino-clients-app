@@ -1,5 +1,7 @@
 import store from '../store';
 
+store.setLocation('');
+
 it('should start with empty location', () => {
   expect(store.location).toBe('');
 });

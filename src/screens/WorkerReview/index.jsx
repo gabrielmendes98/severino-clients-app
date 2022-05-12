@@ -10,7 +10,7 @@ import Text from 'components/Text';
 import Button from 'components/Button';
 import { INPUT_HEIGHT } from 'components/Input/TextInput/style';
 import Stars from 'components/Stars';
-import { form } from './util';
+import { form, throwError } from './util';
 
 const WorkerReview = () => {
   const route = useRoute();
@@ -21,9 +21,8 @@ const WorkerReview = () => {
   const handleReview = data => {
     if (!rating) {
       toast.error('Selecione uma quantidade de estrelas para sua avaliação');
-      throw new Error(
-        'Selecione uma quantidade de estrelas para sua avaliação',
-      );
+      throwError();
+      return;
     }
     workersService
       .createReview({ workerId: route.params?.workerId, rating, ...data })
