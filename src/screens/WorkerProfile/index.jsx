@@ -118,7 +118,11 @@ const WorkerProfile = () => {
           data={data.workPhotos}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <Image source={{ uri: item.url }} style={styles.workPhoto} />
+            <Image
+              source={{ uri: item.url }}
+              style={styles.workPhoto}
+              testID="worker-service-photo"
+            />
           )}
           style={styles.workPhotos}
           contentContainerStyle={styles.workPhotosWrapper}
@@ -139,7 +143,9 @@ const WorkerProfile = () => {
         renderItem={({ item: experience }) => (
           <View style={styles.whiteBox}>
             <Text color="light">{experience.role}</Text>
-            <Text color="light">{experience.company}</Text>
+            {experience.company && (
+              <Text color="light">{experience.company}</Text>
+            )}
             <Text color="light">{experience.time}</Text>
           </View>
         )}
