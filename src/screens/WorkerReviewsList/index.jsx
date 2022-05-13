@@ -56,6 +56,7 @@ const WorkerReviewsList = () => {
                   borderBottomWidth: theme.borderWidth,
                 },
               ]}
+              testID={`review-${index}`}
             >
               <Stars length={review.rating} size={22} spacing={0.3} />
               <Text weight="bold" margin={{ top: 0.5, bottom: 0.5 }}>
