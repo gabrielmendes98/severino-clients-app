@@ -1,10 +1,11 @@
 import { useContext } from 'react';
+import { throwError } from 'common/util/throwError';
 import { UserContext } from './index';
 
 const useUser = () => {
   const data = useContext(UserContext);
   if (!data) {
-    throw new Error(
+    return throwError(
       'Verifique se seu componente está envolvido em um UserProvider',
     );
   }

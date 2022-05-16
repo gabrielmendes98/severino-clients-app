@@ -38,13 +38,18 @@ MaterialIcons.mockImplementation(props => <View {...props}></View>);
 
 jest.mock('lodash.debounce', () => jest.fn(fn => fn));
 
+jest.mock('common/util/throwError', () => ({
+  __esModule: true,
+  throwError: jest.fn(),
+}));
+
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: jest.fn(),
 }));
 
 jest.mock('react-native-svg', () => ({
-  __esModule: true, // this property makes it work
+  __esModule: true,
   default: jest.requireActual('react-native-svg'),
   ...jest.requireActual('react-native-svg'),
   SvgCssUri: jest.fn(),

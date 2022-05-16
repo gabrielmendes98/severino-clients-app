@@ -5,12 +5,13 @@ import workersService from 'api/services/workers';
 import Form from 'common/contexts/Form';
 import toast from 'common/util/toast';
 import theme from 'common/styles/theme';
+import { throwError } from 'common/util/throwError';
 import TextInput from 'components/Input/TextInput';
 import Text from 'components/Text';
 import Button from 'components/Button';
 import { INPUT_HEIGHT } from 'components/Input/TextInput/style';
 import Stars from 'components/Stars';
-import { form, throwError } from './util';
+import { form } from './util';
 
 const WorkerReview = () => {
   const route = useRoute();
@@ -21,7 +22,7 @@ const WorkerReview = () => {
   const handleReview = data => {
     if (!rating) {
       toast.error('Selecione uma quantidade de estrelas para sua avaliação');
-      throwError();
+      throwError('Selecione uma quantidade de estrelas para sua avaliação');
       return;
     }
     workersService
@@ -33,6 +34,11 @@ const WorkerReview = () => {
   };
 
   const onPressStars = index => setRating(index + 1);
+
+  /* istanbul ignore next */
+  const onContentSizeChange = e => {
+    setTextHeight(e.nativeEvent.contentSize.height);
+  };
 
   return (
     <View>
@@ -50,9 +56,8 @@ const WorkerReview = () => {
               placeholder="Mensagem"
               name="comment"
               multiline
-              onContentSizeChange={e => {
-                setTextHeight(e.nativeEvent.contentSize.height);
-              }}
+              /* istanbul ignore next */
+              onContentSizeChange={onContentSizeChange}
               style={{ height: Math.max(INPUT_HEIGHT, textHeight) }}
               containerProps={{
                 style: {

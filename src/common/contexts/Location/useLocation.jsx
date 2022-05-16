@@ -1,10 +1,11 @@
 import { useContext } from 'react';
+import { throwError } from 'common/util/throwError';
 import { LocationContext } from './index';
 
 const useLocation = () => {
   const data = useContext(LocationContext);
   if (!data) {
-    throw new Error(
+    return throwError(
       'Verifique se seu componente está envolvido em um LocationProvider',
     );
   }

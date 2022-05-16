@@ -4,7 +4,7 @@ import { render, fireEvent } from 'test-utils';
 import { validationMessages } from 'common/util/yup';
 import { apiMock } from 'api/util';
 import workersService, { workersEndpoints } from 'api/services/workers';
-import * as util from '../util';
+import * as util from 'common/util/throwError';
 import WorkerReview from '../index';
 
 const workerId = 'workerId';
@@ -27,7 +27,7 @@ useRoute.mockImplementation(() => ({
 }));
 
 it('should show error when do not fill evaluation stars', async () => {
-  jest.spyOn(util, 'throwError').mockImplementation(jest.fn());
+  const spy = jest.spyOn(util, 'throwError');
   const { getByText, findByText, getByPlaceholderText } = render(
     <WorkerReview />,
   );
@@ -41,6 +41,9 @@ it('should show error when do not fill evaluation stars', async () => {
       /selecione uma quantidade de estrelas para sua avaliação/i,
     ),
   ).toBeTruthy();
+  expect(spy).toHaveBeenCalledWith(
+    'Selecione uma quantidade de estrelas para sua avaliação',
+  );
 });
 
 it('should be able to create review then show success message and navigate to home', async () => {

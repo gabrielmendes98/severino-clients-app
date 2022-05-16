@@ -11,8 +11,4 @@ const form = {
   },
 };
 
-const throwError = () => {
-  throw new Error('Selecione uma quantidade de estrelas para sua avaliação');
-};
-
-export { form, throwError };
+export { form };
