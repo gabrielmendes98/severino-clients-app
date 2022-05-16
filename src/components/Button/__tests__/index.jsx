@@ -124,11 +124,10 @@ it('should have transparent background when variant is text', () => {
 
 it('should be able to add icon to button', () => {
   const iconId = 'mock-icon';
-  const { getByTestId, debug } = rawRender(
+  const { getByTestId } = rawRender(
     <Button variant="text" testID="button" icon={<View testID={iconId} />}>
       children
     </Button>,
   );
-  debug();
   expect(getByTestId(iconId)).toBeTruthy();
 });
