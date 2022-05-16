@@ -1,5 +1,5 @@
 module.exports = {
-  preset: 'jest-expo',
+  preset: './jest-preset.js',
   clearMocks: true,
   coverageDirectory: 'coverage',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests'],
