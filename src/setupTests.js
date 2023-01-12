@@ -30,7 +30,7 @@ jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 jest.mock('react-native-vector-icons/FontAwesome', () => jest.fn());
 FontAwesomeIcons.mockImplementation(props => <View {...props}></View>);
 
-jest.mock('react-native-vector-icons/IonIcons', () => jest.fn());
+jest.mock('react-native-vector-icons/Ionicons', () => jest.fn());
 IonIcons.mockImplementation(props => <View {...props}></View>);
 
 jest.mock('react-native-vector-icons/MaterialIcons', () => jest.fn());
