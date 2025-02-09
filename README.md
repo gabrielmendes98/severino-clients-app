@@ -1,16 +1,16 @@
 # Severino Clients App
 
-Severino é uma aplicação que busca facilitar a pesquisa por profissionais de
-diversas áreas, como um catálogo mais moderno.
+Severino is an application that seeks to facilitate research by professionals from
+various areas, such as a more modern catalog.
 
-Este projeto é uma das partes da aplicação Severino, que será composta por:
+This project is one of the parts of the Severino application, which will be composed of:
 
-- Um portal web para os clientes (React)
-- Um app para os clientes (React Native) - Corresponde a este repositório
-- Um portal para os profissionais (React) 
-- Um servidor para servir todas as aplicações (NodeJS)
+- A web portal for clients (React)
+- An app for clients (React Native) - Corresponds to this repository
+- A portal for professionals (React)
+- A server to serve all applications (NodeJS)
 
-As Principais bibliotecas utilizadas para fazer essa aplicação foram:
+The main libraries used to make this application were:
 
 - React Native
 - React Hook Forms
@@ -20,7 +20,7 @@ As Principais bibliotecas utilizadas para fazer essa aplicação foram:
 - PropTypes
 - Yup
 
-Para testes automatizados e testes estáticos, foram utilizados:
+For automated tests and static tests, the following were used:
 
 - Jest
 - React Native Testing Library
@@ -34,20 +34,20 @@ Para testes automatizados e testes estáticos, foram utilizados:
 <hr/>
 <br/>
 
-### Cobertura de testes:
+### Coverage tests:
 
 ![image](https://user-images.githubusercontent.com/26449308/212188017-dcc6d5d7-e5df-4f57-a1d6-99b7ba22371c.png)
 <br/> <br/>
 
-### Arquitetura geral:
+### General architecture:
 
-![arquitetura-geral](https://user-images.githubusercontent.com/26449308/146116357-83ade62b-9c51-4f55-ad7c-be62c8aedb11.png)
+![general-architecture](https://user-images.githubusercontent.com/26449308/146116357-83ade62b-9c51-4f55-ad7c-be62c8aedb11.png)
 
 ### TODO:
 
-- Adicionar Typescript
+- Add Typescript
 
-### Rodando localmente:
+### Running locally:
 
 - `yarn`
 - `yarn start`
